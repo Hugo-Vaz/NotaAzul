@@ -1,0 +1,21 @@
+@{    
+    string imgPathPrion = @Url.Content("~/Content/prion");
+}
+
+<form id="frmFiltroCursoTurma" action="" style="margin-bottom: 30px;">
+    <input type="hidden" name="Filtro.Tipo" value="CursoTurma" />
+    <label class="st-labeltext" for="AnoLetivo" style="position:relative; float:left;margin-left: 5px;width: 102px;">Ano Letivo:</label>
+        <input type="text" class="st-forminput" id="AnoLetivo"  maxlength="4" style="position:relative;float:left;width:50px;" mask="integer" />
+        <a id="btnBuscarCursos" class="icon-button tips cursor" original-title="Busca todos os cursos do ano letivo informado" style="position:relative; top:8px; left:4px;">
+           <img src="@imgPathPrion/search.png" height="18" width="18" alt="icon" />
+        </a>
+    <div class="clear"></div>
+    <label class="st-labeltext" for="Filtro_Curso" style="margin-left: 5px; width:99px;">Curso: </label>
+    <select id="ListaCurso" name="Filtro.Curso" class="uniform" mandatory="true" message="O Curso não pode ser vazio"></select>
+
+    <label class="st-labeltext" for="ListaTurma" style="margin-left: 5px; width:30px;">Turma: </label>
+    <select id="ListaTurma" name="Filtro.Turma" class="uniform"></select>
+
+    <label class="st-labeltext" for="ListaTurma" style="margin-left: 5px; width:30px;">Aluno: </label>
+    <select id="ListaAluno" name="Filtro.Aluno" class="uniform"></select>
+</form>

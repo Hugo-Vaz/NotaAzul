@@ -1,0 +1,52 @@
+﻿<script language="javascript" type="text/javascript" >
+    var idConfig= '@ViewData["Id"]';
+    var tipoMedia = '@ViewData["TipoMedia"]';
+
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/ProfessorConfiguracao/configuracao.js"
+    ]);
+</script>
+
+@{  string imgPathNotaAzul = @Url.Content("~/Content/notaAzul");}
+
+<div>
+    <form id="frmConfigProfessor" name="frmConfigProfessor" action="" method="post">        
+        <input type="hidden" id="ProfessorConfiguracao_Id" name="ProfessorConfiguracao.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="TipoMedia">Estilo de Nota</label>
+            <select class="uniform" id="listaTiposMedia" name="TipoMedia" mandatory="true" message="A forma de calcular a média não pode ser vazia" />
+            
+            <div  style="margin-left: 35px;">
+                <img  alt="Valores" src="@imgPathNotaAzul/valores.jpg"  />
+            </div>
+
+            <div id="GrpImagens">
+                <div id="aritmetica_ponderada" style="display:none;margin-left: 65px;">
+                    <img id="MediaAritimeticaPonderada"  alt="Cálculo de média aritimética ponderada" src="@imgPathNotaAzul/mediaAritmeticaPonderada.jpg"  />
+                </div>
+
+                <div id="aritmetica_simples" style="display:none;margin-left: 65px;">
+                    <img id="MediaAritimeticaSimples"  alt="Cálculo de média aritimética simples" src="@imgPathNotaAzul/mediaAritmeticaSimples.jpg"  />
+                </div>
+
+                <div id="geometrica" style="display:none;margin-left: 65px;">
+                    <img id="MediaGeometrica"  alt="Cálculo de média geométrica" src="@imgPathNotaAzul/mediaGeometrica.jpg" />
+                </div>
+            
+                <div id="harmonica" style="display:none;margin-left: 65px;">
+                    <img id="MediaHarmonica1"  alt="Cálculo de média harmônica" src="@imgPathNotaAzul/mediaHarmonica1.jpg" style="margin-right: 15px;"/>
+                    <img id="MediaHarmonica2"  alt="Cálculo de média harmônica" src="@imgPathNotaAzul/mediaHarmonica2.jpg" />
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>       
+        
+
+        <div class="button-boxP">
+             <input id="btnSalvarConfig" type="button" value="Salvar Configuração" class="button-green" />
+        </div>
+
+    </form>
+</div>

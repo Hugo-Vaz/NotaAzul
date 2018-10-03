@@ -1,0 +1,37 @@
+﻿@model NotaAzul.ViewModels.Cargo.vmDados
+           
+@{
+    ViewBag.Title = "Cargo :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Cargo/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+
+    <form id="frmCargo" name="frmCargo" action="" method="post">
+        <input type="hidden" id="Cargo_Id" name="Cargo.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Cargo_Nome" style="width: 100px;">Nome</label>
+            <input type="text" class="st-forminput" id="Cargo_Nome" name="Cargo.Nome" maxlength="50" style="width:350px;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" style="width: 100px;">Situação</label>
+
+            @foreach (var y in Model.Situacoes)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.Cargo.IdSituacao, y.Id, y.Padrao, y.Nome, new { @class = "uniform", @style = "opacity:0;" })
+                </label>
+            }
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>

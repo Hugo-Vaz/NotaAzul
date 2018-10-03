@@ -1,0 +1,13 @@
+@model NotaAzul.ViewModels.Relatorios.vmDados
+<form id="frmFiltroSituacao" >
+    <input type="hidden" name="Filtro.Tipo" value="Situacao" />
+
+    <label class="st-labeltext" style="margin-left:5px;width: 70px;">Situação:</label>
+    @foreach (var y in Model.Situacoes)
+        {
+            var Situacao = "Filtro.Situacao";
+            <label class="radio" style="">
+                @Html.RadioButtonFor(x =>Situacao , y.Id, y.Padrao, y.Nome, new { @class = "uniform", @style = "opacity:0;" })
+            </label>
+        }
+</form>

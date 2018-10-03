@@ -1,0 +1,15 @@
+﻿<script language="javascript" type="text/javascript">
+    document.title = "Lista de matrículas - " + nomeProjeto;
+
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Matricula/lista.js"
+    ]);
+</script>
+
+ <div id="divAluno">
+        @{Html.RenderPartial("../Relatorios/FiltroAluno");}
+         <div class="button-boxP" style="margin-bottom: 15px;">
+            <input id="btnAplicarFiltroAluno" type="button" value="Aplicar Filtro" class="button-green"/>                 
+        </div>     
+    </div>    
+<div id="listaMatriculas" class="list"></div>

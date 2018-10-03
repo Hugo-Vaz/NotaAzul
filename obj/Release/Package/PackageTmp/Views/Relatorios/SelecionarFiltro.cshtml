@@ -1,0 +1,23 @@
+<script language="javascript" type="text/javascript">
+    var valoresRadio = ('@ViewData["Filtro"].ToString()').split(',');
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Relatorios/selecionarFiltro.js"
+    ]);
+</script>
+
+<div id="SelecionarFiltros">
+    @{
+        var opcoesRadio = (string[]) ViewData["OpcoesRadio"];
+        var valoresRadio = (string[])ViewData["ValoresRadio"];
+        var filtroInclusoNoRadio = (ViewData["PrimeiroFiltroDoRadio"].ToString() != "" || ViewData["PrimeiroFiltroDoRadio"].ToString() != null)
+                    ? ViewData["PrimeiroFiltroDoRadio"].ToString()
+                    : ""; 
+        <label class="st-labeltext" for="Opcoes_Relatorio" style="width: 100px;position: relative;margin-left: 5px;margin-bottom: 10px;">Tipo de Filtro:</label>  
+        for(Int32 i=0;i<opcoesRadio.Length;i++){
+            <label class="radio" style="margin-right:10px;position: relative;">
+            <input type="radio" id="@valoresRadio[i]" class="uniform"  name="Opcao" value="@valoresRadio[i]" />@opcoesRadio[i]
+            </label> 
+         }
+    <div class="clear"></div>
+    }
+</div>

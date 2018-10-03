@@ -1,0 +1,75 @@
+@{
+    ViewBag.Title = "Cheque :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Cheque/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+    <form id="frmCheque" name="frmCheque" action="" method="post">
+        <input type="hidden" id="Cheque_Id" name="Cheque.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Cheque_NomeAlunoResponsavel" style="margin-right: 20px;width:80px;">Responsável</label>
+            <input type="hidden" id="Cheque_IdAlunoResponsavel" name="Cheque.IdResponsavel" />                               
+            <ul><input type="text" class="st-forminput" id="Cheque_NomeAlunoResponsavel" name="Cheque.NomeAlunoResponsavel"  maxlength="50" style="width:447px;" mandatory="true" message="O Responsavel não pode ser vazio" /></ul>
+            <div class="clear"></div>
+        </div>  
+        
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Cheque_NomeEmissor" style="width: 30px;margin-right: 70px;">Emissor</label>
+            <input type="text" class="st-forminput" id="Cheque_NomeEmissor" name="Cheque.NomeEmissor" maxlength="50" style="width:370px;float:left;" />
+
+            <label class="st-labeltext" for="Cheque_TelefoneEmissor" style="width: 28px;margin-right: 25px;margin-left: 15px;">Telefone</label>
+            <input type="text" class="st-forminput" id="Cheque_TelefoneEmissor" name="Cheque.TelefoneEmissor" maxlength="15" />
+            <div class="clear"></div>
+        </div>        
+      
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Cheque_Banco" style="width: 30px;margin-right: 70px;">Banco</label>
+            <input type="text" class="st-forminput" id="Cheque_Banco" name="Cheque.Banco" maxlength="5" style="width:50px;float:left;" mandatory="true" message="O banco não pode ser vazio" mask="integer"/>
+
+            <label class="st-labeltext2" for="Cheque_Agencia" style="width: 30px;margin-left:10px;float:left;margin-right: 25px;">Agência</label>
+            <input type="text" class="st-forminput" id="Cheque_Agencia" name="Cheque.Agencia" maxlength="10" style="width:70px;float:left;" mandatory="true" message="A agência não pode ser vazio" mask="integer"/>
+            
+            <label class="st-labeltext2" for="Cheque_ContaCorrente" style="width: 85px;margin-left:10px;float:left;margin-right: 5px;">Conta Corrente</label>
+            <input type="text" class="st-forminput" id="Cheque_ContaCorrente" name="Cheque.ContaCorrente" maxlength="20" style="width: 80px;float:left;margin-right: 25px;" mandatory="true" message="A conta corrente não pode ser vazio" mask="integer" />
+            
+            <label class="st-labeltext2" for="Cheque_Numero" style="width: 50px;float:left;margin-left: -12px">Número</label>
+            <input type="text" class="st-forminput" id="Cheque_Numero" name="Cheque.Numero" maxlength="10" style="width:60px;float:left;" mandatory="true" message="O número não pode ser vazio" mask="integer"/>
+
+            <div class="clear"></div>
+        </div>        
+              
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Cheque_Valor" style="width: 100px;">Valor</label>
+            <input type="text" class="st-forminput" id="Cheque_Valor" name="Cheque.Valor" mask="money" style="width:136px;float: left;" mandatory="true" message="O valor não pode ser vazio" />
+
+            <label class="st-labeltext" for="chequeAlineaLista" style="width: 75px;margin-left: 40px;">Alinea</label>            
+            <select id="chequeAlineaLista" name="Cheque.Alinea" style="width:375px;" class="uniform"></select>
+            <div class="clear"></div>
+        </div>         
+     
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Cheque_Proprio" style="width: 100px;">Próprio</label>                             
+            <div style="float:left;">
+                <label class="radio" style="margin-right:10px;position: relative;">
+                    <input type="radio" class="uniform" id="Cheque_ProprioSim" checked name="Cheque.Proprio" value="true" />Sim
+                </label> 
+
+                <label class="radio" style="position: relative;">
+                    <input type="radio" class="uniform" id="Cheque_ProprioNao" name="Cheque.Proprio" value="false"/>Não
+                </label>   
+            </div>
+            
+            <label class="st-labeltext" for="Cheque_BomPara" style="width:100px;margin-left: 70px;">Bom Para</label>
+            <input type="text" class="st-forminput" id="Cheque_BomPara" name="Cheque.BomPara" maxlength="12" style="width:70px;" mask="dd/mm/aaaa" />
+            <div class="clear"></div>
+        </div>        
+        
+    </form>
+</div>

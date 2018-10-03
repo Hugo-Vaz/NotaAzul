@@ -1,0 +1,137 @@
+﻿ @model NotaAzul.ViewModels.Corporacao.vmDados
+
+<div id="CarneCompleto" style="position: relative;">
+    <div id="capaCarneMensalidade" style="position: relative;height: 200px;width:90%;">
+        <div style="line-height:120%;position:relative;">
+	        <h1 style="float:left;">@Model.Corporacao.Nome</h1>
+        </div>
+
+        <div style="float:right;">
+            <p style="float:right;">Telefone: @Model.Corporacao.Telefone1</p>
+            <div style="clear:both;"></div>
+            <h2 style="float:left;">Carnê de Mensalidades</h2>
+        </div>
+
+        <div style="float:left;">
+            <p>
+                Valor da mensalidade a pagar até o dia <label id="Capa_DiaVencimento1" style="position:relative;display: inline-block;width: 20px"></label> 
+                de cada mês = R$<label id="Capa_ValorMensalidadeDesconto" style="position:relative;display: inline-block;width: 20px"></label>.
+            </p>    
+            <p>
+                Após o dia <label id="Capa_DiaVencimento2" style="position:relative;display: inline-block;width: 20px"></label> a mensalidade será de R$ 
+                <label id="Capa_ValorMensalidadeAcrescimo" style="position:relative;display: inline-block;width: 20px"></label>.
+            </p>
+        </div>
+        
+    </div>
+
+    <div id="carneMensalidade" style="position: relative;page-break-inside:avoid;" >
+        <div id="Folhas" class="carneMensalidadeFolhas">
+            <div id="LadoA" class="Campo" style="float:left;">
+                <div style="line-height:120%;position:relative;">
+	                <h3 style="position:relative;">@Model.Corporacao.Nome</h3>
+                </div> 
+
+	            <div class="Linha">
+		            <div style="width:450px;border:1px solid;">
+		                <label>Nome:</label><label id="NomeAlunoA" class="Campo"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">	
+		            <div style="width:190px;border:1px solid;position:relative;" >
+		                <label>Turno:</label><label id="TurnoAlunoA" class="Campo"></label>	
+		            </div>
+
+		            <div style="width:231px;border:1px solid;left:218px;position:relative;bottom: 19px;" >
+		                <label>Série:</label><label id="AnoEscolarAlunoA" class="Campo"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">
+		            <div style="position:relative;left:206px;bottom: 22px;display:inline-block;" >
+		                <label>Mensalidade:</label><label id="MensalidadeAlunoA" class="Campo" mask="money" style="display: inline-block;width: 145px;border: 1px solid;position: relative;left: 19px;top: 4px;"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">
+		            <div style="position:relative;left:205px;bottom: 22px;"  >
+		                <label style="display: inline-block;width: 135px;position: relative;right: 55px;top: 2px;">Mensalidade após o vencimento</label>
+                        <label id="MensalidadeMultaA" mask="money" class="Campo" style="display: inline-block;width: 145px;border: 1px solid;position: relative;bottom: 11px;right: 39px;"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">
+		            <div style="position:relative;width:190px;border:1px solid;bottom:22px;">
+		                <label>Vencimento:</label><label id="VencimentoMensalidadeA" class="Campo"></label>	
+		            </div>
+
+		            <div style="position:relative;width:231px;border:1px solid;bottom: 44px;left: 218px;">
+		                <label>Parcelas:</label><label id="ParcelasMensalidadeA" class="Campo"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">
+		            <div  style="position: relative;width: 450px;border: 1px solid;bottom: 44px;" >
+		                <label>Rúbrica:</label><label></label>	
+		            </div>
+                </div>
+            </div>
+
+            <hr style=" width: 0;height: 108%;border: 1px solid;float: left;margin: 0 10px 0 10px;" />
+
+            <div id="LadoB" class="Campo" style="float:left;">
+                <div style="line-height:120%;position:relative;">
+	                <h3 style="position:relative;">@Model.Corporacao.Nome</h3>
+                </div>
+
+	            <div class="Linha">
+		            <div  style="width:450px;border:1px solid;">
+		                <label>Nome:</label><label id="NomeAlunoB" class="Campo"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">	
+		            <div style="width:190px;border:1px solid;position:relative;" >
+		                <label>Turno:</label><label id="TurnoAlunoB" class="Campo"></label>	
+		            </div>
+
+		            <div style="width:231px;border:1px solid;left:218px;position:relative;bottom: 19px;" >
+		                <label>Série:</label><label id="AnoEscolarAlunoB" class="Campo"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">
+		            <div style="position:relative;left:206px;bottom: 22px;" >
+		                <label>Mensalidade:</label><label id="MensalidadeAlunoB" class="Campo" mask="money" style="display: inline-block;width: 145px;border: 1px solid;position: relative;left: 19px;top: 4px;"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">
+		            <div style="position:relative;left:205px;bottom: 22px;"  >
+		                <label style="display: inline-block;width: 135px;position: relative;right: 55px;top: 2px;">Mensalidade após o vencimento</label>
+                        <label id="MensalidadeMultaB" class="Campo" mask="money" style="display: inline-block;width: 145px;border: 1px solid;position: relative;bottom: 11px;right: 39px;"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">
+		            <div style="position:relative;width:190px;border:1px solid;bottom:22px;">
+		                <label>Vencimento:</label><label id="VencimentoMensalidadeB" class="Campo"></label>	
+		            </div>
+
+		            <div style="position:relative;width:231px;border:1px solid;bottom: 44px;left: 218px;">
+		                <label>Parcelas:</label><label id="ParcelasMensalidadeB" class="Campo"></label>	
+		            </div>
+                </div>
+
+	            <div class="Linha">
+		            <div style="position: relative;width: 450px;border: 1px solid;bottom: 44px;" >
+		                <label>Rúbrica:</label><label></label>	
+		            </div>
+                </div>
+            </div>
+
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</div>

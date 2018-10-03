@@ -1,0 +1,16 @@
+﻿<script language="javascript" type="text/javascript">
+    // necessário fazer esta verificação aqui, pois a lista de aluno é uma exceção
+    // não há necessidade de fazer isso para as outras páginas
+    // motivo de fazer isso aqui: perguntar para TMZ
+    if (NotaAzul.Aluno == null) { NotaAzul.Aluno = {}; }
+
+    document.title = "Lista de alunos - " + nomeProjeto;
+
+    Prion.Loader.Carregar({
+        url: rootDir + "Scripts/Views/Aluno/lista.js",
+        fn: function () { NotaAzul.Aluno.Lista.Iniciar(); }
+    });
+
+</script>
+
+<div id="listaAlunos" class="list"></div>

@@ -1,0 +1,75 @@
+﻿<script language="javascript" type="text/javascript" >
+    var cidadeDefault = '@ViewData["CidadeDefault"]',
+        estadoDefault = '@ViewData["EstadoDefault"]',
+        listaParentesco = NotaAzul.GetConfig("grau_parentesco:lista").Valor.split(','),
+        diaPagamento = '@ViewData["DiaPagamentoDefault"]',
+        trocarMensalidade = '@ViewData["TrocaMensalidade"]',
+        listaCartao = ('@ViewData["ListaBandeira"].ToString()').split(',');
+
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/ConfiguracaoDoSistema/configuracao.js"
+    ]);
+</script>
+
+<div>
+    <form id="frmConfigSistema" name="frmConfigSistema" action="" method="post">
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Estado.Id">Estado</label>
+            <select class="uniform" id="listaEstados" name="IdEstado" mandatory="true" message="O estado não pode ser vazia"  />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Cidade.Id">Cidade</label>
+            <select class="uniform" id="listaCidades" name="IdCidade" mandatory="true" message="A cidade não pode ser vazia"  />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="DiaPagamento" style="width: 152px;float:left">Dia do Pagamento</label>
+            <input type="text" class="st-forminput" id="DiaPagamento" name="DiaPagamento" mask="integer" maxlength="50" style="width:40px;float:left" />
+            
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="listaParentesco" style="width: 152px;float:left">Graus de Parantesco</label>
+            <input type="text" class="st-forminput" id="novoGrau" style="position: relative;float: left;"/>
+
+            <a href="#" id="addGrau"  class="icon-button tips cursor" data="{'original-title':'Novo Grau de Parentesco'}" original-title="Novo Grau de Parentesco" style="float: left; position: relative; top: 0px; padding: 4px 10px !important;">
+            <img src="Content/prion/new.png" alt="Novo Grau de Parentesco"/></a>
+            
+            <a href="#" id="removeGrau"  class="icon-button tips cursor" data="{'original-title':'Exclui Grau de Parentesco'}" original-title="Exclui Grau de Parentesco" style="float: left; position: relative; top: 0px; padding: 4px 10px !important;">
+            <img src="Content/prion/delete.png" alt="Exclui Grau de Parentesco"/></a>
+            <div class="clear"></div>
+
+            <select class="uniform" id="listaParentesco"  />
+            <div class="clear"></div>
+        </div>
+
+         <div class="st-form-line">
+          <label class="st-labeltext" for="listaBandeiraCartao" style="width: 152px;float:left">Bandeiras de Cartão</label>
+
+            <input type="text" class="st-forminput" id="novoCartao" style="position: relative;float: left;"/>
+
+            <a href="#" id="addCartao"  class="icon-button tips cursor" data="{'original-title':'Nova Bandeira de Cartão'}" original-title="Nova Bandeira de Cartão" style="float: left; position: relative; top: 0px; padding: 4px 10px !important;">
+            <img src="Content/prion/new.png" alt="Nova Bandeira de Cartão"/></a>
+
+            <a href="#" id="removeCartao"  class="icon-button tips cursor" data="{'original-title':'Exclui Bandeira de Cartão'}" original-title="Exclui Bandeira de Cartão" style="float: left; position: relative; top: 0px; padding: 4px 10px !important;">
+            <img src="Content/prion/delete.png" alt="Exclui Bandeira de Cartão"/></a>
+            <div class="clear"></div>
+
+            <select class="uniform" id="listaBandeiraCartao"/>
+            <div class="clear"></div>
+        </div>
+        <div class="button-boxP">
+             <input id="btnSalvarConfig" type="button" value="Salvar Config do Sistema" class="button-green" />
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Config_TrocaDiaPagamento">Em datas inválidas,o dia de pagamento será substituído para: </label>
+            <select class="uniform" id="Config_TrocaDiaPagamento" name="TrocaDiaPagamento" mandatory="true" message="A cidade não pode ser vazia"  />
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>

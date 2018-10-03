@@ -1,0 +1,49 @@
+﻿@model NotaAzul.ViewModels.Curso.vmDados
+
+@{
+    ViewBag.Title = "Curso :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Curso/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+
+    <form id="frmCurso" name="frmCurso" action="" method="post">
+        <input type="hidden" id="Curso_Id" name="Curso.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Curso_Nome" style="width: 100px;">Nome</label>
+            <input type="text" class="st-forminput" id="Curso_Nome" name="Curso.Nome" maxlength="100" style="width:362px;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" style="width: 100px;">Segmento</label>
+            <select id="comboboxSegmento" name="Curso.IdSegmento" class="uniform" mandatory="true" message="É necessário escolher um Segmento"></select>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext">Curso Curricular</label>
+            <label style="color: #3C5868; position:relative; top:6px; margin-right:10px; right: 50px;"><span>@Html.RadioButtonFor(x => x.Curso.CursoCurricular, "true", new { @class = "uniform", @style = "opacity:0;" })</span>Sim</label> 
+            <label style="color: #3C5868; position:relative; top:6px; margin-right:10px; right: 50px;"><span>@Html.RadioButtonFor(x => x.Curso.CursoCurricular, "false", new { @class = "uniform", @style = "opacity:0;" })</span>Não</label>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" style="width: 100px;">Situação</label>
+                    
+            @foreach(var y in Model.Situacoes)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.Curso.IdSituacao , y.Id, y.Padrao, y.Nome, new {@class = "uniform", @style = "opacity:0;" })
+                </label>
+            }
+            <div class="clear"></div> 
+        </div>
+    </form>
+</div>

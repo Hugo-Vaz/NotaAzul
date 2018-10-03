@@ -1,0 +1,30 @@
+<script language="javascript" type="text/javascript">
+    document.title = "Contas à receber - " + nomeProjeto;
+
+    Prion.Loader.Carregar([rootDir + "Scripts/Views/ContasReceber/lista.js"]);
+</script>
+<div id="radioBox">
+    <label class="st-labeltext" for="Opcoes_Relatorio" style="width: 100px;position: relative;margin-left: 5px;margin-bottom: 10px;">Filtrar por:</label>        
+            <label class="radio" style="margin-right:10px;position: relative;">
+            <input type="radio" id="radioAluno" class="uniform"  name="Opcao" value="divAluno" /> Aluno </label>                    
+            <label class="radio" style="margin-right:10px;position: relative;">
+            <input type="radio" id="radioCursoTurma" class="uniform"  name="Opcao" value="divCursoTurma" /> Curso Ano Letivo/Turma </label>
+    <div class="clear"></div>
+</div>
+<div id="filtros">
+    <div id="divAluno" style="display:none">
+        @{Html.RenderPartial("../Relatorios/FiltroAluno");}
+         <div class="button-boxP" style="margin-bottom: 15px;">
+            <input id="btnAplicarFiltroAluno" type="button" value="Aplicar Filtro" class="button-green"/>                 
+        </div>     
+    </div>    
+    <div id="divCursoTurma" style="display:none">
+        @{Html.RenderPartial("../Relatorios/FiltroCursoTurma");}
+         <div class="button-boxP" style="margin-top: 20px;">
+            <input id="btnAplicarFiltroCursoTurma" type="button" value="Aplicar Filtro" class="button-green"/>                
+        </div>     
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div id="listaContasReceber" class="list"></div>

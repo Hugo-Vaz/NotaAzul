@@ -1,0 +1,183 @@
+﻿<div id="FichaDeMatricula">
+    <div id="RelatorioCabecalho" style="display:block inline;">    
+        @{ Html.RenderPartial("../Shared/RelatorioCabecalho");}
+    </div>  
+
+    <div id="conteudoFicha" style="line-height:120%;position:relative;">
+	    <h3 style="position:relative;margin:20px 0px 30px 0px; text-align:center;">FICHA DE MATRÍCULA</h3>
+                
+        <div class="Linha">
+            <label>Nº DE MATRÍCULA:</label>
+            <label id="Matricula_Numero" class="Campo" style="width:166px;"></label>
+		    <label style="position: relative;left: 100px;">DATA:</label>
+		    <label id="Matricula_CadastroData" class="Campo" mask="dd/mm/aaaa" style="left: 115px;width:255px;"></label>
+        </div>
+
+        <div class="Linha">
+		    <label>NOME:</label>
+		    <label id="Aluno_Nome" class="Campo" style="width:655px;"></label><br/>
+        </div>
+
+        <div class="Linha">
+		    <label>GRUPO SANGUÍNEO:</label>
+		    <label id="Aluno_GrupoSanguineo" class="Campo" style="width:140px;" ></label>
+		    <label style="left: 30px;">DATA DE NASCIMENTO:</label>
+		    <label id="Aluno_DataNascimento" class="Campo" style="left: 35px; width:245px;"></label>
+        </div>
+
+        <div class="Linha">
+		    <label >PAI:</label>
+		    <label id="Pai_Nome" class="Campo" style="width:671px;height: 17px;" ></label>
+        </div>
+
+        <div class="Linha">
+		    <label >CPF:</label>
+		    <label id="Pai_Cpf" class="Campo" style="width:270px;" ></label>
+		    <label style="position:relative;left:160px;">RG:</label>
+		    <label id="Pai_Rg" class="Campo" style="width:185px;left:165px;" ></label>
+        </div>
+
+        <div class="Linha">
+		    <label >PROFISSÃO:</label>
+		    <label id="Pai_Profissao" class="Campo" style="width:622px;" ></label>
+        </div>
+
+        <div class="Linha">
+		    <label>MÃE:</label>
+		    <label id="Mae_Nome" class="Campo" style="width:667px;"></label>
+        </div>
+
+        <div class="Linha">
+		    <label >CPF:</label>
+		    <label id="Mae_Cpf" class="Campo" style="width:270px;"></label>
+		    <label style="position:relative;left:160px;">RG:</label>
+		    <label id="Mae_Rg" class="Campo" style="width:190px;left:165px;"></label>
+        </div>
+
+        <div class="Linha">
+		    <label >PROFISSÃO:</label>
+		    <label id="Mae_Profissao" class="Campo" style="width:620px;" ></label>
+        </div>
+
+        <div class="Linha">
+		    <label>REGISTRO DE NASCIMENTO:</label>
+		    <label id="Aluno_RegistroNascimento" class="Campo" style="width:528px;"></label>
+        </div>
+
+        <div class="Linha">
+		    <label>CIDADE:</label>
+		    <label id="Aluno_CidadeRegistroNascimento" class="Campo"  style="width:166px;"></label>
+		    <label style="left:10px;">ESTADO:</label>
+		    <label id="Aluno_EstadoRegistroNascimento" class="Campo" style="left:15px;width:65px;" ></label>
+		    <label style="left:20px;">NACIONALIDADE:</label>
+		    <label id="Aluno_Nacionalidade" class="Campo" style="left:25px;width:205px;"></label>
+        </div>
+
+        <div class="Linha">
+		    <label >Nº ORDEM:</label>
+		    <label id="Aluno_NumeroOrdem" class="Campo" style="width:98px;"></label>
+		    <label style="left:10px;">FLS:</label>
+		    <label id="Aluno_Fls" class="Campo" style="left:15px;width:35px;"></label>
+		    <label style="left:20px;">LIVRO Nº:</label>
+		    <label id="Aluno_LivroNumero" class="Campo" style="left:25px;width:87px;" ></label>
+		    <label style="left:30px;">DATA REGISTRO:</label>
+		    <label id="Aluno_DataRegistroNascimento" class="Campo" style="left:30px;width:147px;" ></label>
+        </div>
+
+        <div class="Linha">
+		    <label >ENDERECO:</label>
+		    <label id="Responsavel_Endereco" class="Campo" style="width:623px;"></label>
+        </div>
+		
+        <div class="Linha">
+            <label >BAIRRO:</label>
+		    <label id="Responsavel_Bairro" class="Campo"  style="width:166px;"></label>
+		    <label style="left:10px;">CIDADE:</label>
+		    <label id="Responsavel_Cidade" class="Campo" style="left:15px;width:166px;"></label>
+            <label style="left:20px;">ESTADO:</label>
+		    <label id="Responsavel_Estado" class="Campo" style="left:20px;width:155px;"></label>
+        </div>
+        
+        <div class="Linha">  
+            <label >CEP:</label>
+		    <label id="Responsavel_Cep" class="Campo" style="width:200px;"></label>
+            <label style="position:relative;left: 100px;" >RELIGIÃO: </label>
+		    <label id="Aluno_Religiao" class="Campo" style="left: 110px;width:282px;" ></label>
+            </div>
+		
+        <div class="Linha">
+            <label style="position:relative;">TELEFONE:</label>
+		    <label id="Responsavel_Telefone" class="Campo" style="width:628px;height: 17px;"></label>
+        </div>
+
+	    <h4 style="position:relative;margin:25px auto;text-align:center">Informações pessoais sobre o(a) aluno(a)</h4>
+		
+        <div class="Linha">
+            <label>Possui algum problema de saúde?</label><label id="saude_Flag" class="Campo" style="width:62px;"></label>
+		    <label style="left:5px;">Qual?</label><label id="Aluno_observacaoSaude" class="Campo" style="left:10px;width:374px;" ></label>
+        </div>
+
+        <div class="Linha">
+		    <label>Toma alguma medicação controlada?</label><label id="medicacao_Flag" class="Campo" style="width:62px;"></label>
+		    <label style="left:5px;">Qual?</label><label id="Aluno_observacaoMedicacao" class="Campo" style="left:10px;width:360px;"></label>
+        </div>  
+        <br/>      
+		
+	    <h3 style="position:relative;margin:0px auto; text-align:center;" >SITUAÇÃO ESCOLAR</h3>
+	    <p style="position:relative;margin:25px auto; text-align:center;" >REGISTRO DE MATRÍCULA DE ACORDO COM O REGIMENTO ESCOLAR DESTE ESTABELECIMENTO</p>
+
+	    <table id="tableFichaDeMatricula">
+		    <thead>
+                <tr>
+				    <th>Ano Escolar</th>
+				    <th>Ano Letivo</th>
+				    <th>Turno</th>
+				    <th style="width: 850px;text-align:left">Eu requeiro a matrícula do(a) aluno(a) acima identificado, declarando estar de acordo com as disposições do Regimento Escolar do Estabelecimento e normas complementares. Assumo inteira responsabilidade pelas informações citadas nesta ficha</th>
+			    </tr>
+            </thead>
+		    <tbody>
+                <tr>
+				    <td><label id="anoEscolar_Matricula0" class="Campo" ></label><br/></td>
+				    <td><label id="anoLetivo_Matricula0" class="Campo"></label><br/></td>
+				    <td><label id="turno_Matricula0" class="Campo"></label><br/></td>
+				    <td></td>
+			    </tr>
+			    <tr>
+				    <td><label id="anoEscolar_Matricula1" class="Campo" ></label><br/></td>
+				    <td><label id="anoLetivo_Matricula1" class="Campo"></label><br/></td>
+				    <td><label id="turno_Matricula1" class="Campo" ></label><br/></td>
+				    <td></td>
+			    </tr>
+                <tr>
+				    <td><label id="anoEscolar_Matricula2" class="Campo" ></label><br/></td>
+				    <td><label id="anoLetivo_Matricula2" class="Campo"></label><br/></td>
+				    <td><label id="turno_Matricula2" class="Campo" ></label><br/></td>
+				    <td></td>
+			    </tr>
+                <tr>
+				    <td><label id="anoEscolar_Matricula3" class="Campo" ></label><br/></td>
+				    <td><label id="anoLetivo_Matricula3" class="Campo"></label><br/></td>
+				    <td><label id="turno_Matricula3" ></label><br/></td>
+				    <td></td>
+			    </tr>
+                <tr>
+				    <td><label id="anoEscolar_Matricula4" class="Campo" ></label><br/></td>
+				    <td><label id="anoLetivo_Matricula4" class="Campo"></label><br/></td>
+				    <td><label id="turno_Matricula4" class="Campo" ></label><br/></td>
+				    <td></td>
+			    </tr>			    
+            </tbody>   
+	    </table>
+        <br />	
+
+        <div class="Linha">	
+		    <label>Pedido de Transferência:</label>
+		    <label id="Matricula_PedidoTransferencia" class="Campo" style="left:10px;width:545px;"></label>
+        </div>
+
+        <div class="Linha">
+		    <label >Observação Geral:</label>
+            <label id="Matricula_ListaObservacao" class="Campo" style="width:576px;left:10px;"></label>
+        </div>
+    </div>
+</div>

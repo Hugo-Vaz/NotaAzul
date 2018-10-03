@@ -1,0 +1,59 @@
+﻿@model NotaAzul.ViewModels.GrupoDesconto.vmDados
+
+@{
+    ViewBag.Title = "GrupoDesconto :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/GrupoDesconto/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+    <form id="frmGrupoDesconto" name="frmGrupoDesconto" action="" method="post">
+        <input type="hidden" id="GrupoDesconto_Id" name="GrupoDesconto.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="GrupoDesconto_Nome" style="width: 100px;">Nome</label>
+            <input type="text" class="st-forminput" id="GrupoDesconto_Nome" name="GrupoDesconto.Nome" maxlength="50" style="width:478px; float: left;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+       
+        <div class="st-form-line">
+           
+        <label class="st-labeltext" for="GrupoDesconto_TipoDesconto" style="width: 97px; position: relative;">Tipo de Desconto</label>                
+            <label class="radio" style="margin-right:10px;position: relative;float: left;">
+                <input type="radio" class="uniform" id="GrupoDesconto_DescontoPercentual" name="GrupoDesconto.TipoDesconto" value="Percentual" />Percentual
+            </label> 
+
+            <label class="radio" style="position: relative;float: left;">
+                <input type="radio" class="uniform" id="GrupoDesconto_DescontoValorMonetario" name="GrupoDesconto.TipoDesconto" value="ValorMonetario" />Valor Monetário
+            </label>
+      
+            <label class="st-labeltext2" for="GrupoDesconto_Valor" style="width: 45px;float: left;position: relative;margin-left:108px;">Valor</label>
+            <input type="text" class="st-forminput" id="GrupoDesconto_Valor" name="GrupoDesconto.Valor" mask style="width: 112px;float: left;position: relative;" mandatory="true" message="O valor do desconto não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="GrupoDesconto_Descricao" style="width: 100px;">Descrição</label>
+            <input type="text" class="st-forminput" id="GrupoDesconto_Descricao" name="GrupoDesconto.Descricao" maxlength="255" style="width:478px;" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" style="width: 99px;">Situação</label>
+
+            @foreach (var y in Model.Situacoes)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.GrupoDesconto.IdSituacao, y.Id, y.Padrao, y.Nome, new { @class = "uniform", @style = "opacity:0;" })
+                </label>
+            }
+            <div class="clear"></div>
+        </div>
+       
+    </form>
+</div>

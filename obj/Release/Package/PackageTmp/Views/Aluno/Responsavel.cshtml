@@ -1,0 +1,163 @@
+﻿@model NotaAzul.ViewModels.Aluno.vmDados
+           
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Aluno/responsavelDados.js",
+        rootDir + "Scripts/Views/Aluno/responsavelLista.js"
+    ]);
+</script>
+
+<form id="frmAlunoResponsavel" name="frmAlunoResponsavel" action="" method="post">
+    <input type="hidden" id="AlunoResponsavel_Id" name="Id" primary-key="true" />
+    <input type="hidden" id="AlunoResponsavel_Apelido" name="Apelido" value="Principal" />
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="AlunoResponsavel_Nome">Nome</label>
+        <input type="text" class="st-forminput" id="AlunoResponsavel_Nome" name="Nome" mandatory="true" maxlength="255" message="É necessário informar o nome" style="width:480px;" />
+        <div class="clear"></div>
+    </div>   
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="AlunoResponsavel_CPF">CPF</label>
+
+        <div style="float: left; width:500px;">
+            <input type="text" class="st-forminput" id="AlunoResponsavel_CPF" name="CPF" maxlength="11" style="float: left; width:130px;" mask="cpf" mandatory="true" message="É necessário informar o CPF" />
+
+            <label class="st-labeltext" for="AlunoResponsavel_GrauParentesco" style="margin-left:20px; width:122px;">Grau de Parentesco</label>
+            <select id="responsavelGrauParentesco" name="GrauParentesco" class="uniform" mandatory="true" message="É necessário informar o Grau de Parentesco"></select>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="AlunoResponsavel_Profissao">Profissão</label>
+        <input type="text" class="st-forminput" id="AlunoResponsavel_Profissao" name="Profissao" maxlength="50" style="float: left; width:480px;" />
+        <div class="clear"></div>
+    </div>
+
+    <div class="st-form-line">
+
+        <label class="st-labeltext" for="AlunoResponsavel_RG" style="width: 149px;">RG</label>    
+        <input type="text" class="st-forminput" id="AlunoResponsavel_RG" name="RG" maxlength="50" style="position:relative; right: 159px;width:200px;" />
+
+        <label class="st-labeltext" for="AlunoResponsavel_MoraCom" style="width: 149px;position: relative;left: 254px;">Mora com o Aluno?</label>                
+        <label class="radio" style="margin-right:10px;position: relative;top: -3px;">
+            <input type="radio" class="uniform" id="AlunoResponsavel_MoraComSim" checked name="MoraCom" value="1"/>Sim
+        </label> 
+
+        <label class="radio" style="position: relative;top: -3px;">
+            <input type="radio" class="uniform" id="AlunoResponsavel_MoraComNao" name="MoraCom" value="0"/>Não
+        </label>
+        <div class="clear"></div>
+    </div>
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="AlunoResponsavel_Email">Email</label>
+        <input type="text" class="st-forminput" id="AlunoResponsavel_Email" name="Email"  maxlength="100"  style="width:380px;" />
+        <div class="clear"></div>
+    </div>
+
+    <div class="st-form-line" style="border-bottom-style: none;">        
+       
+        <label class="st-labeltext" for="AlunoResponsavel_Financeiro" style="width: 149px;position: relative;">Responsável Financeiro?</label>                
+        
+        <div style="position:relative;"> 
+            <label class="radio" style="margin-right:40px;position: relative;float:left;">
+                <input type="radio" class="uniform" id="AlunoResponsavel_FinanceiroSim" checked name="Financeiro" value="1"/>Sim
+            </label> 
+
+            <label class="radio" style="position: relative;float:left;">
+                <input type="radio" class="uniform" id="AlunoResponsavel_FinanceiroNao" name="Financeiro" value="0"/>Não
+            </label>  
+                       
+            <label class="st-labeltext" style="float:left;margin-left: 125px;width: 111px;">Situação</label>
+
+            @foreach (var y in Model.SituacoesResponsavel)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.Responsavel.IdSituacao, y.Id, y.Padrao, y.Nome, new { @class = "uniform", @style = "opacity:0;" }, "IdSituacao" )
+                </label>
+            }  
+               
+        </div>   
+        <div class="clear"></div>
+    </div>
+
+    
+
+</form>
+
+
+<!-- endereço -->
+<form id="frmResponsavelEndereco" name="frmResponsavelEndereco" action="" method="post" style="width: 94%; border: 1px solid rgb(154, 169, 170); margin: 0px auto; margin-top: 30px; position: relative;">
+    <input type="hidden" id="Endereco_Id" name="Id" value="@Model.SituacaoEndereco" />
+    <input type="hidden" id="Endereco_IdSituacao" name="IdSituacao" value="@Model.SituacaoEndereco" />
+
+    <div class="tituloDiv">Endereço</div>
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="Endereco_DadosEndereco" style="width: 110px;">Endereço</label>
+        <input type="text" class="st-forminput" id="Endereco_DadosEndereco" name="DadosEndereco" maxlength="255" mandatory="true" message="O endereço não pode ser vazio" style="width:480px;" />
+        <div class="clear"></div>
+    </div>
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="Endereco_Numero" style="width: 110px;">Número</label>
+
+        <div style="width:496px; float:left;">
+            <input type="text" class="st-forminput" id="Endereco_Numero" name="Numero" maxlength="10" style="position:relative;float:left;width:120px;" />
+            
+            <label class="st-labeltext2" for="Endereco_Complemento" style="position:relative; float:left;">Complemento</label>
+            <input type="text" class="st-forminput" id="Endereco_Complemento" name="Complemento" maxlength="50" style="position:relative;float:left;width:90px;" />
+
+            <label class="st-labeltext2" for="Endereco_Cep" style="position:relative; float:left;">CEP:</label>
+            <input type="text" class="st-forminput" id="Endereco_Cep" name="Cep" maxlength="8" mask="cep" style="position:relative;float:left;width:94px;" />
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="Endereco_Referencia" style="width: 110px;">Referência</label>
+        <input type="text" class="st-forminput" id="Endereco_Referencia" name="Referencia" maxlength="255" style="width:480px;" />
+        <div class="clear"></div>
+    </div>
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="responsavelListaEstados" style="width: 110px;">Estado</label>
+
+        <select id="responsavelListaEstados" name="IdEstado" class="uniform" mandatory="true" message="É necessário informar o Estado"></select>
+        <div class="clear"></div>
+    </div>
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="responsavelListaCidades" style="width: 110px;">Cidade</label>
+
+        <select id="responsavelListaCidades" name="IdCidade" class="uniform" mandatory="true" message="É necessário informar a Cidade"></select>
+        <div class="clear"></div>
+    </div>
+
+    <div class="st-form-line">
+        <label class="st-labeltext" for="responsavelListaBairros" style="width: 110px;">Bairro</label>
+
+        <select id="responsavelListaBairros" name="IdBairro" class="uniform" mandatory="true" message="É necessário informar o Bairro"></select>
+        <div class="clear"></div>
+    </div>
+</form>
+<!-- endereço -->
+
+<!--telefone-->
+<div> @{ Html.RenderPartial("../Shared/Telefone");} </div>
+
+<!--telefone-->
+
+
+<div class="button-boxP">
+    <input id="btnAlunoResponsavelSalvar" type="button" value="Salvar dados do Responsável" class="button-green" />
+    <input id="btnAlunoResponsavelCancelar" type="reset" value="Limpar" class="st-clear" />
+</div>
+<br />
+
+<div id="listaAlunoResponsaveis" class="list"></div>
+<br />

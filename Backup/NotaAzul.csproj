@@ -1,0 +1,852 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4A75007A-7314-42EE-8EAC-118B0728816D}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NotaAzul</RootNamespace>
+    <AssemblyName>NotaAzul</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.0.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\Prion.Framework\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\Prion.Framework\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.Optimization">
+      <HintPath>packages\Microsoft.Web.Optimization.0.1\lib\net40\Microsoft.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Data">
+      <HintPath>..\DllsPrion\Prion.Framework\Prion.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Generic">
+      <HintPath>..\DllsPrion\Prion.Framework\Prion.Generic.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Interface">
+      <HintPath>..\DllsPrion\Prion.Framework\Prion.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Pdf">
+      <HintPath>..\DllsPrion\Prion.Framework\Prion.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Tools">
+      <HintPath>..\DllsPrion\Prion.Framework\Prion.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Tools4">
+      <HintPath>..\DllsPrion\Prion.Framework\Prion.Tools4.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\Aluno.cs" />
+    <Compile Include="Business\Bairro.cs" />
+    <Compile Include="Business\Base.cs" />
+    <Compile Include="Business\Cargo.cs" />
+    <Compile Include="Business\Cheque.cs" />
+    <Compile Include="Business\Cidade.cs" />
+    <Compile Include="Business\ComposicaoNotaPeriodo.cs" />
+    <Compile Include="Business\ConfiguracaoSistema.cs" />
+    <Compile Include="Business\ConfiguracoesNotas.cs" />
+    <Compile Include="Business\ContasPagar.cs" />
+    <Compile Include="Business\ContasReceber.cs" />
+    <Compile Include="Business\Corporacao.cs" />
+    <Compile Include="Business\Curso.cs" />
+    <Compile Include="Business\CursoAnoLetivo.cs" />
+    <Compile Include="Business\Disciplina.cs" />
+    <Compile Include="Business\ChequeEstado.cs" />
+    <Compile Include="Business\Especie.cs" />
+    <Compile Include="Business\Funcionario.cs" />
+    <Compile Include="Business\GrupoDesconto.cs" />
+    <Compile Include="Business\Material.cs" />
+    <Compile Include="Business\Matricula.cs" />
+    <Compile Include="Business\MatriculaCurso.cs" />
+    <Compile Include="Business\Mensalidade.cs" />
+    <Compile Include="Business\Menu.cs" />
+    <Compile Include="Business\MovimentacaoFinanceira.cs" />
+    <Compile Include="Business\NotasAluno.cs" />
+    <Compile Include="Business\Professor.cs" />
+    <Compile Include="Business\ProfessorConfiguracao.cs" />
+    <Compile Include="Business\Relatorio.cs" />
+    <Compile Include="Business\Segmento.cs" />
+    <Compile Include="Business\Situacao.cs" />
+    <Compile Include="Business\Titulo.cs" />
+    <Compile Include="Business\TituloTipo.cs" />
+    <Compile Include="Business\Turma.cs" />
+    <Compile Include="Business\Turno.cs" />
+    <Compile Include="Business\Usuario.cs" />
+    <Compile Include="Business\UsuarioGrupo.cs" />
+    <Content Include="Content\jquery.ui\images\ui-anim_basic_16x16.gif" />
+    <Content Include="Content\notaAzul.css" />
+    <Compile Include="Controllers\BoletimController.cs" />
+    <Compile Include="Controllers\ChequeController.cs" />
+    <Compile Include="Controllers\ChequeEstadoController.cs" />
+    <Compile Include="Controllers\ComposicaoNotaController.cs" />
+    <Compile Include="Controllers\ConfiguracaoSistemaController.cs" />
+    <Compile Include="Controllers\ConfiguracoesNotasController.cs" />
+    <Compile Include="Controllers\ContasPagarController.cs" />
+    <Compile Include="Controllers\ContasReceberController.cs" />
+    <Compile Include="Controllers\DisciplinaTurmaController.cs" />
+    <Compile Include="Controllers\GrupoDescontoController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\AlunoController.cs" />
+    <Compile Include="Controllers\BairroController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CargoController.cs" />
+    <Compile Include="Controllers\CidadeController.cs" />
+    <Compile Include="Controllers\CorporacaoController.cs" />
+    <Compile Include="Controllers\CursoAnoLetivoController.cs" />
+    <Compile Include="Controllers\CursoController.cs" />
+    <Compile Include="Controllers\DisciplinaController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MaterialController.cs" />
+    <Compile Include="Controllers\MatriculaController.cs" />
+    <Compile Include="Controllers\MovimentacaoFinanceiraController.cs" />
+    <Compile Include="Controllers\NotasAlunoController.cs" />
+    <Compile Include="Controllers\ProfessorConfiguracaoController.cs" />
+    <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Controllers\RelatoriosController.cs" />
+    <Compile Include="Controllers\SegmentoController.cs" />
+    <Compile Include="Controllers\TituloController.cs" />
+    <Compile Include="Controllers\TituloTipoController.cs" />
+    <Compile Include="Controllers\TurmaController.cs" />
+    <Compile Include="Controllers\TurnoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\UsuarioGrupoController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Entidade.cs" />
+    <Compile Include="Helpers\GeradorDePdf.cs" />
+    <Compile Include="Helpers\Log.cs" />
+    <Compile Include="Helpers\MapeamentoTabela.cs" />
+    <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Helpers\VerifySession.cs" />
+    <Compile Include="Models\Aluno.cs" />
+    <Compile Include="Models\AlunoFilantropia.cs" />
+    <Compile Include="Models\AlunoResponsavel.cs" />
+    <Compile Include="Models\AlunoResponsavelGrauResponsabilidade.cs" />
+    <Compile Include="Models\AlunoResponsavelTelefone.cs" />
+    <Compile Include="Models\ComposicaoNotaPeriodo.cs" />
+    <Compile Include="Models\ContasPagar.cs" />
+    <Compile Include="Models\Curso.cs" />
+    <Compile Include="Models\CursoAnoLetivo.cs" />
+    <Compile Include="Models\Disciplina.cs" />
+    <Compile Include="Models\FormaDeAvaliacao.cs" />
+    <Compile Include="Models\GrupoDesconto.cs" />
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\Matricula.cs" />
+    <Compile Include="Models\MatriculaCurso.cs" />
+    <Compile Include="Models\MatriculaFormaDeAvaliacao.cs" />
+    <Compile Include="Models\MatriculaMedia.cs" />
+    <Compile Include="Models\MatriculaNota.cs" />
+    <Compile Include="Models\Mensalidade.cs" />
+    <Compile Include="Models\MensalidadeTitulo.cs" />
+    <Compile Include="Models\MovimentacaoFinanceira.cs" />
+    <Compile Include="Models\ComposicaoNota.cs" />
+    <Compile Include="Models\Observacao.cs" />
+    <Compile Include="Models\Professor.cs" />
+    <Compile Include="Models\ProfessorConfiguracao.cs" />
+    <Compile Include="Models\ProfessorDisciplina.cs" />
+    <Compile Include="Models\Receita.cs" />
+    <Compile Include="Models\ReceitaTitulo.cs" />
+    <Compile Include="Models\Segmento.cs" />
+    <Compile Include="Models\Turma.cs" />
+    <Compile Include="Models\Turno.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Aluno.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\AlunoFilantropia.cs" />
+    <Compile Include="Repository\AlunoResponsavel.cs" />
+    <Compile Include="Repository\AlunoResponsavelEndereco.cs" />
+    <Compile Include="Repository\AlunoResponsavelGrauResponsabilidade.cs" />
+    <Compile Include="Repository\AlunoResponsavelTelefone.cs" />
+    <Compile Include="Repository\Cheque.cs" />
+    <Compile Include="Repository\ComposicaoNotaPeriodo.cs" />
+    <Compile Include="Repository\ContasPagar.cs" />
+    <Compile Include="Repository\ContasReceber.cs" />
+    <Compile Include="Repository\MatriculaNota.cs" />
+    <Compile Include="Repository\MatriculaMedia.cs" />
+    <Compile Include="Repository\Curso.cs" />
+    <Compile Include="Repository\CursoAnoLetivo.cs" />
+    <Compile Include="Repository\Disciplina.cs" />
+    <Compile Include="Repository\FormaDeAvaliacao.cs" />
+    <Compile Include="Repository\GrupoDesconto.cs" />
+    <Compile Include="Repository\Material.cs" />
+    <Compile Include="Repository\Matricula.cs" />
+    <Compile Include="Repository\MatriculaCurso.cs" />
+    <Compile Include="Repository\Mensalidade.cs" />
+    <Compile Include="Repository\MovimentacaoFinanceira.cs" />
+    <Compile Include="Repository\ComposicaoNota.cs" />
+    <Compile Include="Repository\NotasAluno.cs" />
+    <Compile Include="Repository\Observacao.cs" />
+    <Compile Include="Repository\ProfessorConfiguracao.cs" />
+    <Compile Include="Repository\Receita.cs" />
+    <Compile Include="Repository\Relatorio.cs" />
+    <Compile Include="Repository\Segmento.cs" />
+    <Compile Include="Repository\Turma.cs" />
+    <Compile Include="Repository\Turno.cs" />
+    <Compile Include="Repository\Usuario.cs" />
+    <Compile Include="ViewModels\Cheque\vmDados.cs" />
+    <Compile Include="ViewModels\ChequeEstado\vmDados.cs" />
+    <Compile Include="ViewModels\ContasPagar\vmDados.cs" />
+    <Compile Include="ViewModels\GrupoDesconto\vmDados.cs" />
+    <Compile Include="ViewModels\Login\vmLogin.cs" />
+    <Compile Include="ViewModels\Aluno\vmDados.cs" />
+    <Compile Include="ViewModels\Bairro\vmDados.cs" />
+    <Compile Include="ViewModels\Cargo\vmDados.cs" />
+    <Compile Include="ViewModels\Cidade\vmDados.cs" />
+    <Compile Include="ViewModels\Corporacao\vmDados.cs" />
+    <Compile Include="ViewModels\CursoAnoLetivo\vmDados.cs" />
+    <Compile Include="ViewModels\Curso\vmDados.cs" />
+    <Compile Include="ViewModels\Disciplina\vmDados.cs" />
+    <Compile Include="ViewModels\Funcionario\vmDados.cs" />
+    <Compile Include="ViewModels\Material\vmDados.cs" />
+    <Compile Include="ViewModels\Matricula\vmDados.cs" />
+    <Compile Include="ViewModels\Mensalidade\vmDados.cs" />
+    <Compile Include="ViewModels\MovimentacaoFinanceira\vmDados.cs" />
+    <Compile Include="ViewModels\NotasAluno\vmDados.cs" />
+    <Compile Include="ViewModels\Relatorios\vmDados.cs" />
+    <Compile Include="ViewModels\Segmento\vmDados.cs" />
+    <Compile Include="ViewModels\TituloTipo\vmDados.cs" />
+    <Compile Include="ViewModels\Titulo\vmDados.cs" />
+    <Compile Include="ViewModels\Turma\vmDados.cs" />
+    <Compile Include="ViewModels\Turno\vmDados.cs" />
+    <Compile Include="ViewModels\UsuarioGrupo\vmDados.cs" />
+    <Compile Include="ViewModels\Usuario\vmDados.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\Microsoft.Web.Optimization.dll" />
+    <Content Include="Content\admin.css" />
+    <Content Include="Content\cupcake\ie7-style.css" />
+    <Content Include="Content\cupcake\images\arrow-down.png" />
+    <Content Include="Content\cupcake\images\button-aqua.png" />
+    <Content Include="Content\cupcake\images\button-blue.png" />
+    <Content Include="Content\cupcake\images\button-gray.png" />
+    <Content Include="Content\cupcake\images\button-green.png" />
+    <Content Include="Content\cupcake\images\button-red.png" />
+    <Content Include="Content\cupcake\images\dashbutton-active.png" />
+    <Content Include="Content\cupcake\images\dashbutton-hover.png" />
+    <Content Include="Content\cupcake\images\dashbutton-normal.png" />
+    <Content Include="Content\cupcake\images\datepicker-bg.png" />
+    <Content Include="Content\cupcake\images\default-button.png" />
+    <Content Include="Content\cupcake\images\default-profile-mini.png" />
+    <Content Include="Content\cupcake\images\error-page-buttonbg.png" />
+    <Content Include="Content\cupcake\images\fullcalendar\boxbg.png" />
+    <Content Include="Content\cupcake\images\icon-button-bg-active.png" />
+    <Content Include="Content\cupcake\images\iconbutton-bg.png" />
+    <Content Include="Content\cupcake\images\icons\16x16\bin_closed.png" />
+    <Content Include="Content\cupcake\images\icons\16x16\chart_bar.png" />
+    <Content Include="Content\cupcake\images\icons\16x16\note.png" />
+    <Content Include="Content\cupcake\images\icons\16x16\page_copy.png" />
+    <Content Include="Content\cupcake\images\icons\16x16\printer.png" />
+    <Content Include="Content\cupcake\images\icons\button\alert.png" />
+    <Content Include="Content\cupcake\images\icons\button\arrow-down.png" />
+    <Content Include="Content\cupcake\images\icons\button\arrow-left.png" />
+    <Content Include="Content\cupcake\images\icons\button\arrow-right.png" />
+    <Content Include="Content\cupcake\images\icons\button\arrow-up.png" />
+    <Content Include="Content\cupcake\images\icons\button\bills-stack.png" />
+    <Content Include="Content\cupcake\images\icons\button\books.png" />
+    <Content Include="Content\cupcake\images\icons\button\brush.png" />
+    <Content Include="Content\cupcake\images\icons\button\bubble.png" />
+    <Content Include="Content\cupcake\images\icons\button\bubbles.png" />
+    <Content Include="Content\cupcake\images\icons\button\buzz.png" />
+    <Content Include="Content\cupcake\images\icons\button\calendar.png" />
+    <Content Include="Content\cupcake\images\icons\button\chart2.png" />
+    <Content Include="Content\cupcake\images\icons\button\clock.png" />
+    <Content Include="Content\cupcake\images\icons\button\clock2.png" />
+    <Content Include="Content\cupcake\images\icons\button\clock3.png" />
+    <Content Include="Content\cupcake\images\icons\button\cog.png" />
+    <Content Include="Content\cupcake\images\icons\button\create.png" />
+    <Content Include="Content\cupcake\images\icons\button\cup.png" />
+    <Content Include="Content\cupcake\images\icons\button\cut.png" />
+    <Content Include="Content\cupcake\images\icons\button\digg.png" />
+    <Content Include="Content\cupcake\images\icons\button\download.png" />
+    <Content Include="Content\cupcake\images\icons\button\downloadtopc.png" />
+    <Content Include="Content\cupcake\images\icons\button\dribble.png" />
+    <Content Include="Content\cupcake\images\icons\button\facebook.png" />
+    <Content Include="Content\cupcake\images\icons\button\female.png" />
+    <Content Include="Content\cupcake\images\icons\button\finish-flag.png" />
+    <Content Include="Content\cupcake\images\icons\button\folder.png" />
+    <Content Include="Content\cupcake\images\icons\button\graph.png" />
+    <Content Include="Content\cupcake\images\icons\button\group.png" />
+    <Content Include="Content\cupcake\images\icons\button\help.png" />
+    <Content Include="Content\cupcake\images\icons\button\home.png" />
+    <Content Include="Content\cupcake\images\icons\button\info.png" />
+    <Content Include="Content\cupcake\images\icons\button\laptop.png" />
+    <Content Include="Content\cupcake\images\icons\button\lastfm.png" />
+    <Content Include="Content\cupcake\images\icons\button\link.png" />
+    <Content Include="Content\cupcake\images\icons\button\lock.png" />
+    <Content Include="Content\cupcake\images\icons\button\mail.png" />
+    <Content Include="Content\cupcake\images\icons\button\male.png" />
+    <Content Include="Content\cupcake\images\icons\button\map.png" />
+    <Content Include="Content\cupcake\images\icons\button\mastercard.png" />
+    <Content Include="Content\cupcake\images\icons\button\megaphone.png" />
+    <Content Include="Content\cupcake\images\icons\button\mic.png" />
+    <Content Include="Content\cupcake\images\icons\button\money.png" />
+    <Content Include="Content\cupcake\images\icons\button\mouse.png" />
+    <Content Include="Content\cupcake\images\icons\button\paypal.png" />
+    <Content Include="Content\cupcake\images\icons\button\personal-folder.png" />
+    <Content Include="Content\cupcake\images\icons\button\phone.png" />
+    <Content Include="Content\cupcake\images\icons\button\phone2.png" />
+    <Content Include="Content\cupcake\images\icons\button\plane-suitcase.png" />
+    <Content Include="Content\cupcake\images\icons\button\power.png" />
+    <Content Include="Content\cupcake\images\icons\button\preview.png" />
+    <Content Include="Content\cupcake\images\icons\button\price-tag.png" />
+    <Content Include="Content\cupcake\images\icons\button\printer.png" />
+    <Content Include="Content\cupcake\images\icons\button\refresh.png" />
+    <Content Include="Content\cupcake\images\icons\button\search.png" />
+    <Content Include="Content\cupcake\images\icons\button\settings.png" />
+    <Content Include="Content\cupcake\images\icons\button\shopping-bag.png" />
+    <Content Include="Content\cupcake\images\icons\button\shopping-basket.png" />
+    <Content Include="Content\cupcake\images\icons\button\shopping-cart.png" />
+    <Content Include="Content\cupcake\images\icons\button\shopping-cart2.png" />
+    <Content Include="Content\cupcake\images\icons\button\shuffle.png" />
+    <Content Include="Content\cupcake\images\icons\button\signal.png" />
+    <Content Include="Content\cupcake\images\icons\button\skype.png" />
+    <Content Include="Content\cupcake\images\icons\button\slide.png" />
+    <Content Include="Content\cupcake\images\icons\button\sound.png" />
+    <Content Include="Content\cupcake\images\icons\button\stand.png" />
+    <Content Include="Content\cupcake\images\icons\button\suitcase.png" />
+    <Content Include="Content\cupcake\images\icons\button\tag.png" />
+    <Content Include="Content\cupcake\images\icons\button\travel-suitcase.png" />
+    <Content Include="Content\cupcake\images\icons\button\trolly.png" />
+    <Content Include="Content\cupcake\images\icons\button\twitter.png" />
+    <Content Include="Content\cupcake\images\icons\button\user-comment.png" />
+    <Content Include="Content\cupcake\images\icons\button\user.png" />
+    <Content Include="Content\cupcake\images\icons\button\users.png" />
+    <Content Include="Content\cupcake\images\icons\button\vimeo.png" />
+    <Content Include="Content\cupcake\images\icons\button\visa.png" />
+    <Content Include="Content\cupcake\images\icons\button\walking-man.png" />
+    <Content Include="Content\cupcake\images\icons\button\world.png" />
+    <Content Include="Content\cupcake\images\icons\button\youtube.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\applications.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\bubble.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\bubbles.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\calendar.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\chemical.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\clock.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\creadit-card.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\documents.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\frames.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\graph.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\group.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\help.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\image.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\inbox.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\info.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\iphone4.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\keyboard.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\lock.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\locked-folder.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\mail.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\map.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\megaphone.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\money.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\paypal.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\pc.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\personal-folder.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\search.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\settings.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\shopping-cart.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\signal.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\sticky-note.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\timer.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\user-comment.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\users.png" />
+    <Content Include="Content\cupcake\images\icons\dashbutton\write.png" />
+    <Content Include="Content\cupcake\images\icons\error\accept.png" />
+    <Content Include="Content\cupcake\images\icons\error\cross.png" />
+    <Content Include="Content\cupcake\images\icons\error\error-red-big.png" />
+    <Content Include="Content\cupcake\images\icons\error\error.png" />
+    <Content Include="Content\cupcake\images\icons\error\help.png" />
+    <Content Include="Content\cupcake\images\icons\error\info-blue-big.png" />
+    <Content Include="Content\cupcake\images\icons\error\success-green-big.png" />
+    <Content Include="Content\cupcake\images\icons\header\dashboard.png" />
+    <Content Include="Content\cupcake\images\icons\header\graph.png" />
+    <Content Include="Content\cupcake\images\icons\header\message.png" />
+    <Content Include="Content\cupcake\images\icons\header\newpost.png" />
+    <Content Include="Content\cupcake\images\icons\header\support.png" />
+    <Content Include="Content\cupcake\images\icons\mini\arrow-down.png" />
+    <Content Include="Content\cupcake\images\icons\mini\arrow.png" />
+    <Content Include="Content\cupcake\images\icons\mini\close-opacity-21.png" />
+    <Content Include="Content\cupcake\images\icons\mini\close-opacity-42.png" />
+    <Content Include="Content\cupcake\images\icons\mini\close-stats-hover.png" />
+    <Content Include="Content\cupcake\images\icons\mini\close-stats.png" />
+    <Content Include="Content\cupcake\images\icons\mini\gallery-icon.png" />
+    <Content Include="Content\cupcake\images\icons\mini\plus.gif" />
+    <Content Include="Content\cupcake\images\icons\mini\stats-arrow-top.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\ballon.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\clock.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\close.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\copy.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\dashboard.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\file.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\folder.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\message.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\plus.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\print.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\question.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\refresh.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\rss.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\search.png" />
+    <Content Include="Content\cupcake\images\icons\shortcut\tags.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\arrow_down.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\arrow_left.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\arrow_up.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\attach.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\badge_rss.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\calculator.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\calendar.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\cd.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\comment.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\comment_add.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\comment_delete.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\comment_edit.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\control_play.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\copy.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\disc.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\download.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\error.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\file.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\file_add.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\file_delete.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\file_edit.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\file_move.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\heart.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\image.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\info.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\ipod.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\key.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\laptop.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\lock.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\lock_open.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\magnify.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\mail.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\photo.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\print.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\star.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\trash.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\trolley.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\unzip.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\upload.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\user.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\user_add.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\user_delete.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\user_edit.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\vcard.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\video.png" />
+    <Content Include="Content\cupcake\images\icons\sidemenu\zip.png" />
+    <Content Include="Content\cupcake\images\load_5.gif" />
+    <Content Include="Content\cupcake\images\login-button.png" />
+    <Content Include="Content\cupcake\images\login-title.png" />
+    <Content Include="Content\cupcake\images\logo.png" />
+    <Content Include="Content\cupcake\images\main-bg.png" />
+    <Content Include="Content\cupcake\images\page-title-minidot.png" />
+    <Content Include="Content\cupcake\images\page-wrap-libg.png" />
+    <Content Include="Content\cupcake\images\pagewrapbg.png" />
+    <Content Include="Content\cupcake\images\password-input.png" />
+    <Content Include="Content\cupcake\images\profileboxbg-hover.png" />
+    <Content Include="Content\cupcake\images\profileboxbg.png" />
+    <Content Include="Content\cupcake\images\qballon.png" />
+    <Content Include="Content\cupcake\images\qbutton.png" />
+    <Content Include="Content\cupcake\images\searchbox-bg.png" />
+    <Content Include="Content\cupcake\images\searchbox-hover.png" />
+    <Content Include="Content\cupcake\images\searchbox.png" />
+    <Content Include="Content\cupcake\images\shortcut-hover.png" />
+    <Content Include="Content\cupcake\images\shortcut-normal.png" />
+    <Content Include="Content\cupcake\images\simple-profile-img.jpg" />
+    <Content Include="Content\cupcake\images\simple-tips-bg.png" />
+    <Content Include="Content\cupcake\images\simplebox-dot.png" />
+    <Content Include="Content\cupcake\images\simplebox-title-bg.png" />
+    <Content Include="Content\cupcake\images\st-forminput-bg.png" />
+    <Content Include="Content\cupcake\images\stats-bg.png" />
+    <Content Include="Content\cupcake\images\tableshorter\asc.gif" />
+    <Content Include="Content\cupcake\images\tableshorter\bg.gif" />
+    <Content Include="Content\cupcake\images\tableshorter\desc.gif" />
+    <Content Include="Content\cupcake\images\tableshorter\titlebg.png" />
+    <Content Include="Content\cupcake\images\toogle-message-bg.png" />
+    <Content Include="Content\cupcake\images\transparent.gif" />
+    <Content Include="Content\cupcake\images\uniform\bg-input-focus.png" />
+    <Content Include="Content\cupcake\images\uniform\bg-input.png" />
+    <Content Include="Content\cupcake\images\uniform\sprite.png" />
+    <Content Include="Content\cupcake\images\username-input.png" />
+    <Content Include="Content\cupcake\reset.css" />
+    <Content Include="Content\cupcake\root.css" />
+    <Content Include="Content\cupcake\tipsy-style.css" />
+    <Content Include="Content\cupcake\typography.css" />
+    <Content Include="Content\cupcake\uniform.default.css" />
+    <Content Include="Content\jquery.ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\jquery.ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\jquery.ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\jquery.ui\jquery.ui.all.css" />
+    <Content Include="Content\notaAzul\logoCliente.png" />
+    <Content Include="Content\notaAzul\logoRelatorio.png" />
+    <Content Include="Content\notaAzul\mediaAritmeticaPonderada.jpg" />
+    <Content Include="Content\notaAzul\mediaAritmeticaSimples.jpg" />
+    <Content Include="Content\notaAzul\mediaGeometrica.jpg" />
+    <Content Include="Content\notaAzul\mediaHarmonica1.jpg" />
+    <Content Include="Content\notaAzul\mediaHarmonica2.jpg" />
+    <Content Include="Content\notaAzul\pagamentoEfetuado.png" />
+    <Content Include="Content\notaAzul\valores.jpg" />
+    <Content Include="Content\prion\bg.jpg" />
+    <Content Include="Content\prion\configuration.png" />
+    <Content Include="Content\prion\delete.png" />
+    <Content Include="Content\prion\edit.png" />
+    <Content Include="Content\prion\key.png" />
+    <Content Include="Content\prion\list\arrow_left.png" />
+    <Content Include="Content\prion\list\arrow_right.png" />
+    <Content Include="Content\prion\list\title-bg.png" />
+    <Content Include="Content\prion\list\titlebg.png" />
+    <Content Include="Content\prion\loading.gif" />
+    <Content Include="Content\notaAzul\splashScreen.jpg" />
+    <Content Include="Content\notaAzul\logoNotaAzul.png" />
+    <Content Include="Content\prion\new.png" />
+    <Content Include="Content\prion\refresh.png" />
+    <Content Include="Content\prion\search.png" />
+    <Content Include="Content\prion\sort.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jQuery\jquery.others.min.js" />
+    <Content Include="Scripts\jQuery\jquery.ui.autocomplete.js" />
+    <Content Include="Scripts\jQuery\jquery.uniform.min.js" />
+    <Content Include="Scripts\Prion\NotaAzul.combobox.js" />
+    <Content Include="Scripts\Prion\Prion.all.min.js" />
+    <Content Include="Scripts\Prion\Prion.Lista.js" />
+    <Content Include="Scripts\Prion\Prion.Login.min.js" />
+    <Content Include="Scripts\Prion\Prion.min.js" />
+    <Content Include="Scripts\Prion\Prion.Telefone.js" />
+    <Content Include="Scripts\Views\Aluno\fichaFinanceiraLista.js" />
+    <Content Include="Scripts\Views\Aluno\lista.js" />
+    <Content Include="Scripts\Views\Aluno\responsavelDados.js" />
+    <Content Include="Scripts\Views\Aluno\responsavelLista.js" />
+    <Content Include="Scripts\jQuery\jquery-ui-1.8.11.custom.min.js" />
+    <Content Include="Scripts\jQuery\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jQuery\jquery.min.js" />
+    <Content Include="Scripts\jQuery\toogle.js" />
+    <Content Include="Scripts\Views\Aluno\dados.js" />
+    <Content Include="Scripts\Views\Bairro\dados.js" />
+    <Content Include="Scripts\Views\Bairro\lista.js" />
+    <Content Include="Scripts\Views\Boletim\dados.js" />
+    <Content Include="Scripts\Views\Boletim\lista.js" />
+    <Content Include="Scripts\Views\Cargo\dados.js" />
+    <Content Include="Scripts\Views\Cargo\lista.js" />
+    <Content Include="Scripts\Views\Cheque\dados.js" />
+    <Content Include="Scripts\Views\Cheque\lista.js" />
+    <Content Include="Scripts\Views\Cidade\dados.js" />
+    <Content Include="Scripts\Views\Cidade\lista.js" />
+    <Content Include="Scripts\Views\ComposicaoNota\dados.js" />
+    <Content Include="Scripts\Views\ComposicaoNota\lista.js" />
+    <Content Include="Scripts\Views\ConfiguracaoDoSistema\configuracao.js" />
+    <Content Include="Scripts\Views\ConfiguracoesNotas\configuracao.js" />
+    <Content Include="Scripts\Views\ContasPagar\dados.js" />
+    <Content Include="Scripts\Views\ContasReceber\mensalidadesPagas.js" />
+    <Content Include="Scripts\Views\DisciplinaTurma\dados.js" />
+    <Content Include="Scripts\Views\DisciplinaTurma\lista.js" />
+    <Content Include="Scripts\Views\NotasAluno\dados.js" />
+    <Content Include="Scripts\Views\NotasAluno\listaAlunos.js" />
+    <Content Include="Scripts\Views\ProfessorConfiguracao\configuracao.js" />
+    <Content Include="Scripts\Views\Professor\dados.js" />
+    <Content Include="Scripts\Views\Professor\lista.js" />
+    <Content Include="Scripts\Views\Relatorios\contasAPagar.js" />
+    <Content Include="Scripts\Views\Relatorios\contasRecebidas.js" />
+    <Content Include="Scripts\Views\Relatorios\contasAReceber.js" />
+    <Content Include="Scripts\Views\Relatorios\alunosMatriculados.js" />
+    <Content Include="Scripts\Views\Relatorios\contasPagas.js" />
+    <Content Include="Scripts\Views\Relatorios\alunosInadimplentes.js" />
+    <Content Include="Scripts\Views\Relatorios\alunosIsentos.js" />
+    <Content Include="Scripts\Views\Relatorios\alunosBolsistas.js" />
+    <Content Include="Scripts\Views\Relatorios\mensalidadesAdiantadas.js" />
+    <Content Include="Scripts\Views\Relatorios\selecionarFiltro.js" />
+    <Content Include="Scripts\Views\Relatorios\movimentacaoFinanceiraResponsavel.js" />
+    <Content Include="Scripts\Views\Relatorios\mensalidadesAtrasadas.js" />
+    <Content Include="Scripts\Views\Relatorios\movimentacaoFinanceira.js" />
+    <Content Include="Scripts\Views\Relatorios\dados.js" />
+    <Content Include="Scripts\Views\Shared\formaPagamento.js" />
+    <Content Include="Scripts\Views\ContasPagar\lista.js" />
+    <Content Include="Scripts\Views\ContasPagar\pagamento.js" />
+    <Content Include="Scripts\Views\ContasReceber\pagamento.js" />
+    <Content Include="Scripts\Views\ContasReceber\lista.js" />
+    <Content Include="Scripts\Views\Corporacao\dados.js" />
+    <Content Include="Scripts\Views\CursoAnoLetivo\dados.js" />
+    <Content Include="Scripts\Views\CursoAnoLetivo\lista.js" />
+    <Content Include="Scripts\Views\Curso\dados.js" />
+    <Content Include="Scripts\Views\Curso\lista.js" />
+    <Content Include="Scripts\Views\Disciplina\dados.js" />
+    <Content Include="Scripts\Views\Disciplina\lista.js" />
+    <Content Include="Scripts\Views\ChequeEstado\dados.js" />
+    <Content Include="Scripts\Views\ChequeEstado\lista.js" />
+    <Content Include="Scripts\Views\Funcionario\dados.js" />
+    <Content Include="Scripts\Views\Funcionario\lista.js" />
+    <Content Include="Scripts\Views\GrupoDesconto\dados.js" />
+    <Content Include="Scripts\Views\GrupoDesconto\lista.js" />
+    <Content Include="Scripts\Views\Material\dados.js" />
+    <Content Include="Scripts\Views\Material\lista.js" />
+    <Content Include="Scripts\Views\Matricula\dados.js" />
+    <Content Include="Scripts\Views\Matricula\lista.js" />
+    <Content Include="Scripts\Views\Segmento\dados.js" />
+    <Content Include="Scripts\Views\Segmento\lista.js" />
+    <Content Include="Scripts\Views\TituloTipo\dados.js" />
+    <Content Include="Scripts\Views\TituloTipo\lista.js" />
+    <Content Include="Scripts\Views\Titulo\dados.js" />
+    <Content Include="Scripts\Views\Titulo\lista.js" />
+    <Content Include="Scripts\Views\Turma\dados.js" />
+    <Content Include="Scripts\Views\Turma\lista.js" />
+    <Content Include="Scripts\Views\Turno\dados.js" />
+    <Content Include="Scripts\Views\Turno\lista.js" />
+    <Content Include="Scripts\Views\UsuarioGrupo\dados.js" />
+    <Content Include="Scripts\Views\UsuarioGrupo\lista.js" />
+    <Content Include="Scripts\Views\UsuarioGrupo\permissoes.js" />
+    <Content Include="Scripts\Views\Usuario\dados.js" />
+    <Content Include="Scripts\Views\Usuario\lista.js" />
+    <Content Include="Views\ContasReceber\MensalidadesPagas.cshtml" />
+    <Content Include="Views\ConfiguracaoSistema\ConfiguracaoDoSistema.cshtml" />
+    <Content Include="Views\ConfiguracoesNotas\ConfiguracoesNotas.cshtml" />
+    <Content Include="Views\ComposicaoNota\Dados.cshtml" />
+    <Content Include="Views\ComposicaoNota\Lista.cshtml" />
+    <Content Include="Views\Boletim\Dados.cshtml" />
+    <Content Include="Views\Boletim\Lista.cshtml" />
+    <Content Include="Views\Boletim\BoletimImpressao.cshtml" />
+    <Content Include="AppSettings.config" />
+    <Content Include="AppSettingsDesenvolvimento.config" />
+    <None Include="Views\ContasReceber\Recibo.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Relatorios\FiltroPeriodo.cshtml" />
+    <Content Include="Views\Relatorios\Relatorio.cshtml" />
+    <Content Include="Views\Relatorios\FiltroSituacao.cshtml" />
+    <Content Include="Views\Relatorios\FiltroAluno.cshtml" />
+    <Content Include="Views\Relatorios\FiltroTurma.cshtml" />
+    <Content Include="Views\Relatorios\FiltroCurso.cshtml" />
+    <Content Include="Views\Relatorios\SelecionarFiltro.cshtml" />
+    <Content Include="Views\Relatorios\FiltroCursoTurma.cshtml" />
+    <Content Include="Views\DisciplinaTurma\Dados.cshtml" />
+    <Content Include="Views\DisciplinaTurma\Lista.cshtml" />
+    <Content Include="Views\Professor\Dados.cshtml" />
+    <Content Include="Views\Professor\Lista.cshtml" />
+    <Content Include="Views\ProfessorConfiguracao\ProfessorConfiguracao.cshtml" />
+    <Content Include="Views\NotasAluno\Lista.cshtml" />
+    <Content Include="Views\NotasAluno\Dados.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Home\ProfileBox.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\UsuarioGrupo\Dados.cshtml" />
+    <Content Include="Views\Usuario\Dados.cshtml" />
+    <Content Include="Views\Usuario\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="documentos\matricula\" />
+    <Folder Include="documentos\phantomjs\" />
+    <Folder Include="documentos\relatórios\" />
+    <Folder Include="documentos\temp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Turno\Dados.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Turno\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Turma\Dados.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Turma\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Segmento\Dados.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Segmento\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Curso\Dados.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Curso\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UsuarioGrupo\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Bairro\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cidade\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Bairro\Dados.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cidade\Dados.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cargo\Dados.cshtml" />
+    <Content Include="Views\Cargo\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Funcionario\Lista.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Funcionario\Dados.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Prion.Data.dll.refresh" />
+    <None Include="bin\Prion.Generic.dll.refresh" />
+    <None Include="bin\Prion.Tools.dll.refresh" />
+    <Content Include="Views\Aluno\Dados.cshtml" />
+    <Content Include="Views\Aluno\Lista.cshtml" />
+    <Content Include="Views\Disciplina\Dados.cshtml" />
+    <Content Include="Views\Disciplina\Lista.cshtml" />
+    <Content Include="Views\Corporacao\Dados.cshtml" />
+    <Content Include="Views\UsuarioGrupo\Permissoes.cshtml" />
+    <Content Include="Views\Material\Dados.cshtml" />
+    <Content Include="Views\Material\Lista.cshtml" />
+    <Content Include="Views\Aluno\Responsavel.cshtml" />
+    <Content Include="Views\Matricula\Dados.cshtml" />
+    <Content Include="Views\Matricula\Lista.cshtml" />
+    <Content Include="Views\CursoAnoLetivo\Dados.cshtml" />
+    <Content Include="Views\CursoAnoLetivo\Lista.cshtml" />
+    <Content Include="Scripts\Prion\NotaAzul.admin.settings.js" />
+    <Content Include="Views\Aluno\FichaFinanceira.cshtml" />
+    <Content Include="Views\Matricula\Ficha.cshtml" />
+    <Content Include="Views\Shared\RelatorioCabecalho.cshtml" />
+    <Content Include="Views\Matricula\CarneMensalidade.cshtml" />
+    <Content Include="Views\GrupoDesconto\Lista.cshtml" />
+    <Content Include="Views\GrupoDesconto\Dados.cshtml" />
+    <Content Include="Views\Shared\Telefone.cshtml" />
+    <Content Include="Views\Cheque\Lista.cshtml" />
+    <Content Include="Views\Cheque\Dados.cshtml" />
+    <Content Include="Views\ChequeEstado\Dados.cshtml" />
+    <Content Include="Views\ChequeEstado\Lista.cshtml" />
+    <Content Include="Views\TituloTipo\Dados.cshtml" />
+    <Content Include="Views\TituloTipo\Lista.cshtml" />
+    <Content Include="Views\Titulo\Dados.cshtml" />
+    <Content Include="Views\Titulo\Lista.cshtml" />
+    <Content Include="Views\ContasPagar\Dados.cshtml" />
+    <Content Include="Views\ContasPagar\Lista.cshtml" />
+    <Content Include="Views\MovimentacaoFinanceira\Dados.cshtml" />
+    <Content Include="Views\MovimentacaoFinanceira\Lista.cshtml" />
+    <Content Include="Views\ContasPagar\Pagamento.cshtml" />
+    <Content Include="Views\Shared\FormasPagamento.cshtml" />
+    <Content Include="Views\ContasReceber\Lista.cshtml" />
+    <Content Include="Views\ContasReceber\Pagamento.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5261</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/NotaAzul</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

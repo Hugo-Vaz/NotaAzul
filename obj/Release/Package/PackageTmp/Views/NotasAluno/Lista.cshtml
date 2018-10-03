@@ -1,0 +1,66 @@
+<script language="javascript" type="text/javascript">
+    var divisaoAnoLetivo = '@ViewData["DivisaoAnoLetivo"]';
+    var formaConceito = '@ViewData["FormaDeConceito"]';
+    
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/NotasAluno/listaAlunos.js"
+    ]);
+</script>
+
+<div style="margin-bottom: 50px;" >
+    <label class="st-labeltext" for="ListaTurma" style="margin-left: 5px; width:70px;">Turmas: </label>
+    <select id="ListaTurma" name="Turma.Id" class="uniform"></select>
+
+    <label class="st-labeltext" for="ListaDisciplina" style="margin-left: 30px; width:70px;">Disciplinas: </label>
+    <select id="ListaDisciplina" name="Disciplina.Id" class="uniform"></select>
+
+     <div  style="display:none;" id="bimestral">
+            <label class="st-labeltext" for="Bimestre" style="width:60px;margin-left: 20px;">Bimestre : </label>
+            <select class="uniform" id="ListaBimestral" name="DivisaoAno">       
+                <option></option>
+                <option value="1">1º Bimestre</option>
+                <option value="2">2º Bimestre</option>
+                <option value="3">3º Bimestre</option>
+                <option value="4">4º Bimestre</option>
+            </select>
+            <div class="clear"></div>
+    </div>
+        
+    <div  style="display:none;" id="trimestral">
+        <label class="st-labeltext" for="Trimestre" style="width:60px;margin-left: 20px;">Trimestre : </label>
+        <select class="uniform" id="ListaTrimestral" name="DivisaoAno" mandatory="true">
+            <option></option>
+            <option value="1">1º Trimestre</option>
+            <option value="2">2º Trimestre</option>
+            <option value="3">3º Trimestre</option>            
+        </select>
+        <div class="clear"></div>
+    </div>        
+
+    <div style="display:none;" id="semestral">
+        <label class="st-labeltext" for="Semestre" style="width:60px;margin-left: 20px;">Trimestre : </label>
+        <select class="uniform" id="ListaSemestral" name="DivisaoAno" mandatory="true">
+            <option></option>
+            <option value="1">1º Semestre</option>
+            <option value="2">2º Semestre</option>                        
+        </select>
+        <div class="clear"></div>
+    </div>        
+
+    <div class="clear"></div>
+    <div style="margin-top:5px;">
+        <label class="st-labeltext" for="ListaFormasDeAvaliacao" style="margin-left: 5px;width: 140px;">Formas de Avaliação: </label>
+        <select id="ListaFormasDeAvaliacao" name="FormasDeAvaliacao.Id" class="uniform"></select>
+
+        <div id="divValorTotal" style="display:none;">
+            <label class="st-labeltext" for="ValorTotal" style="margin-left: 30px;width: 70px;">Valor Total: </label>
+            <p class="st-labeltext" id="ValorTotal" name="ValorTotal" class="uniform"></p>
+        </div>
+
+        <input id="btnSalvar" type="button" value="Salvar Notas" class="button-green" style="margin-left: 30px;"/>    
+    </div>
+</div>
+
+<div id="listaAlunos" class="list"></div>
+
+

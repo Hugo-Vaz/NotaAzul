@@ -1,0 +1,72 @@
+﻿@model NotaAzul.ViewModels.Funcionario.vmDados
+           
+@{
+    ViewBag.Title = "Funcionário :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Funcionario/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+
+    <form id="frmFuncionario" name="frmFuncionario" action="" method="post">
+        <input type="hidden" id="Funcionario_Id" name="Funcionario.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Funcionario_Nome">Nome</label>
+            <input type="text" class="st-forminput" id="Funcionario_Nome" name="Funcionario.Nome" maxlength="255" style="width:380px;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext">Cargo</label>
+            <select id="comboboxCargo" name="Funcionario.IdCargo" class="uniform" mandatory="true" message="É necessário escolher um Cargo"></select>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Funcionario_Cpf">CPF</label>
+
+            <div style="float: left;">
+                <input type="text" class="st-forminput" id="Funcionario_Cpf" name="Funcionario.Cpf" maxlength="11" style="float: left; width:130px;" mask="cpf" mandatory="true" message="O CPF não pode ser vazio" />
+
+                &nbsp;&nbsp;<label class="st-labeltext" for="Funcionario_Rg" style="width: 20px; margin-left: 16px;">RG</label>
+                <input type="text" class="st-forminput" id="Funcionario_Rg" name="Funcionario.Rg" maxlength="20" style="width:180px;" mandatory="true" message="O RG não pode ser vazio" />
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Funcionario_GrupoSanguineo">Grupo Sanguíneo</label>
+            <input type="text" class="st-forminput" id="Funcionario_GrupoSanguineo" name="Funcionario.GrupoSanguineo" maxlength="5" style="width:50px;" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">	
+            <label class="st-labeltext">Sexo</label>
+            <label style="margin-right:10px"><span>@Html.RadioButtonFor(x => x.Funcionario.Sexo, "M", new { @class = "uniform", @style = "opacity:0;"})</span>Masculino</label> 
+            <label style="margin-right:10px"><span>@Html.RadioButtonFor(x => x.Funcionario.Sexo, "F", new { @class = "uniform", @style = "opacity:0;"})</span>Feminino</label>
+            <div class="clear"></div> 
+        </div>
+                                                 
+        <div class="st-form-line">
+            <label class="st-labeltext">Situação</label>
+
+            @foreach (var y in Model.Situacoes)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.Funcionario.IdSituacao, y.Id, y.Padrao, y.Nome, new { @class = "uniform", @style = "opacity:0;" })
+                </label>
+            }
+            <div class="clear"></div>   
+            </div>  
+    </form>
+    <!--telefone-->
+    <div> @{ Html.RenderPartial("../Shared/Telefone");} </div>
+
+    <!--telefone-->
+</div>

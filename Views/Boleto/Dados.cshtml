@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Boleto :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Boleto/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+    <form id="frmBoleto" name="frmBoleto" action="" method="post">      
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="listaDadosImagens"style="width: 99px;">Anexo</label>
+            <input type="file" class="st-forminput" id="Boleto_Anexo" name="upload" maxlength="255" style="width:302px;"/>            
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>

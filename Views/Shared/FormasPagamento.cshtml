@@ -1,0 +1,77 @@
+@model NotaAzul.ViewModels.ContasPagar.vmDados          
+
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Shared/formaPagamento.js"
+    ]);
+</script>
+
+<div class="body">
+    <div id="tabsFormasPagamento" class="ui-tabs" style="float: left;position: relative;">
+        <ul id="ulTabs" class="ulTabs" >             
+            <li><a href="#tabCartao">Cartão</a></li>
+            <li><a href="#tabCheque">Cheque</a></li>
+            <li><a href="#tabEspecie">Espécie</a></li>
+        </ul>
+       
+
+        <div id="tabCartao" >
+            <form id="frmCartao" name="frmCartao" action="" style="height:300px;width:750px">
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="cartaoBandeiraLista" style="width: 75px;">Bandeira</label>
+                    <select id="cartaoBandeiraLista" name="Cartao.Bandeira"  class="uniform" mandatory="True" message="A bandeira não pode ser vazia" ></select>
+                    <div class="clear"></div> 
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Cartao_Valor" style="width: 75px;">Valor</label>
+                    <input  type="text" class="st-forminput" id="Cartao_Valor" name="Cartao.Valor" mask="money" mandatory="True" message="O valor não pode ser vazio" />
+                    <div class="clear"></div> 
+                </div>
+                
+                <div class="button-boxP">
+                    <input id="btnAdicionarCartao" type="button" value="Pagar com cartão" class="button-green" style="top: 138px;position: relative;"/>
+                </div>           
+            </form>   
+        </div>
+
+        <div id="tabCheque"  >
+            @{ Html.RenderPartial("../Cheque/Dados"); }   
+            
+            <div class="button-boxP">
+                <input id="btnAdicionarCheque" type="button" value="Pagar com cheque" class="button-green" />
+            </div>                 
+        </div>
+       
+        <div id="tabEspecie" >
+            <form id="frmEspecie" name="frmEspecie" action="" style="height:300px;width:750px">
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Especie_Valor" style="width: 75px;">Valor</label>
+                    <input  type="text" class="st-forminput" id="Especie_Valor" name="Especie.Valor" mask="money" mandatory="True" message="O valor não pode ser vazio" />
+                    <div class="clear"></div>   
+                </div> 
+                
+                <div class="button-boxP">
+                    <input id="btnAdicionarBoleto" type="button" value="Pagar em Espécie" class="button-green" style="top: 182px;position: relative;" />
+                </div>           
+            </form>   
+        </div>
+    </div>
+    <div style="width: 220px;display: flex;flex-direction: column;">
+        <div style="" >
+            <div class="st-form-line">
+                 <h4>Total</h4>
+                 <label class="st-labeltext" id="Valor_Total" style="width: 75px;" mask="money" ></label>
+
+                 <div style="position: relative;bottom: 18px;">
+                    <h4>Sendo pago</h4>
+                    <label class="st-labeltext" id="Valor_Pago" style="width: 75px;" mask="money" >0</label>
+                 </div>
+                <div class="clear"></div>   
+            </div>     
+        </div>
+
+        <div id="ListaFormasDePagamento" class="list"></div>
+    </div>
+</div>  

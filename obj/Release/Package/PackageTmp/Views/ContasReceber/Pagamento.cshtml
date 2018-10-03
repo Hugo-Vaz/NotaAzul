@@ -1,0 +1,28 @@
+@{
+    ViewBag.Title = "Mensalidades à receber :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/ContasReceber/pagamento.js"
+    ]);
+</script>
+
+<div class="body">
+    <form id="frmPagarMensalidade" name="frmPagarMensalidade" action="" method="post">
+        <div class="st-form-line">
+            <label class="st-labeltext" for="DataOperacao" style="width: 100px;">Data de Operação</label>           
+                <input type="text" class="st-forminput" id="DataOperacao" name="DataOperacao" mask="dd/mm/aaaa hh:mm" style="width:100px;" mandatory="True" message="A data não pode ser vazia" />            
+            <div class="clear"></div>
+        </div>
+        <div id="ListaMensalidadesAbertas" class="list" ></div>   
+
+
+        <div class="button-boxP" style="position: relative;">
+          <input id="btnPagarMensalidade" type="button" value="Pagar mensalidade(s)" class="button-green" />
+        </div>
+
+        <div id="ListaTitulosAPagar" class="list" style="position: relative;"></div>  
+        
+    </form>
+</div>

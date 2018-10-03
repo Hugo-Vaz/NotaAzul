@@ -1,0 +1,37 @@
+﻿@model NotaAzul.ViewModels.Corporacao.vmDados
+
+@{
+    ViewBag.Title = "Corporação :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Corporacao/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+
+    <form id="frmCorporacao" name="frmCorporacao" action="" method="post">
+        <input type="hidden" id="Corporacao_Id" name="Corporacao.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Corporacao_Nome">Nome</label>
+            <input type="text" class="st-forminput" id="Corporacao_Nome" name="Corporacao.Nome" maxlength="255" style="width:510px;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Corporacao_RazaoSocial">Razão Social</label>
+            <input type="text" class="st-forminput" id="Corporacao_RazaoSocial" name="Corporacao.RazaoSocial" maxlength="255" style="width:510px;" mandatory="true" message="A razão social não pode ser vazia" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Corporacao_CNPJ">CNPJ</label>
+            <input type="text" class="st-forminput" id="Corporacao_CNPJ" name="Corporacao.CNPJ" maxlength="255" style="width:510px;" mandatory="true" message="O CNPJ não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>

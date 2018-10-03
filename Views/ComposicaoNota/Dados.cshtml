@@ -1,0 +1,94 @@
+<script language="javascript" type="text/javascript">
+    var divisaoAnoLetivo = '@ViewData["DivisaoAnoLetivo"]';
+    var formaConceito = '@ViewData["FormaDeConceito"]';
+
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/ComposicaoNota/dados.js"
+    ]);
+</script>
+
+<div class="body">
+    <form id="frmComposicaoNota" name="frmComposicaoNota" action="" method="post">
+        <input type="hidden" id="ProfessorDisciplina_Id" name="ProfessorDisciplina.Id" primary-key="true" />
+        <input type="hidden" id="ProfessorDisciplina_IdTurma" name="ProfessorDisciplina.IdTurma" primary-key="true" />
+        <input type="hidden" id="ComposicaoNota_Id" name="ComposicaoNota.Id" primary-key="true" />
+        
+        <div class="st-form-line" style="display:none;" id="bimestral">
+            <label class="st-labeltext" for="Bimestre" style="width:95px;">Bimestre : </label>
+            <select class="uniform" id="listaBimestre" name="DivisaoAno">       
+                <option value="1">1º Bimestre</option>
+                <option value="2">2º Bimestre</option>
+                <option value="3">3º Bimestre</option>
+                <option value="4">4º Bimestre</option>
+            </select>
+            <div class="clear"></div>
+        </div>
+        
+        <div class="st-form-line" style="display:none;" id="trimestral">
+            <label class="st-labeltext" for="Trimestre">Trimestre : </label>
+            <select class="uniform" id="listaTrimestre" name="DivisaoAno" mandatory="true">
+                <option value="1">1º Trimestre</option>
+                <option value="2">2º Trimestre</option>
+                <option value="3">3º Trimestre</option>            
+            </select>
+            <div class="clear"></div>
+        </div>        
+
+        <div class="st-form-line" style="display:none;" id="semestral">
+            <label class="st-labeltext" for="Semestre">Trimestre : </label>
+            <select class="uniform" id="listaSemestre" name="DivisaoAno" mandatory="true">
+                <option value="1">1º Semestre</option>
+                <option value="2">2º Semestre</option>                        
+            </select>
+            <div class="clear"></div>
+        </div>        
+
+        <div class="st-form-line">
+           <div id="tabsNotas" class="prionTabs">
+                 <ul id="ulTabs" class="ulTabs" style="width: 520px !important; margin-left: 30px; margin-top: 10px;">
+                    <li><a data="Nota1">Nota 1</a></li>
+                    <a href="#" id="addTab"   data="{'original-title':'Adicionar uma nova tab'}" original-title="Adicionar uma nova tab" style="float: left; position: relative; top: 5px; padding: 4px 10px !important;">
+                    <img src="Content/prion/new.png" alt="Nova Nota"/></a>  
+                 </ul>  
+
+                 <div id="Nota1" class="div hide" style="height: 306px !important; width: 520px !important;" data="TabNota">                   
+                    <input type="hidden" id="Id_Nota1" name="Nota.Id" primary-key="true" />
+                    <label class="st-labeltext" for="peso" style="margin-left: 10px;width: 70px;">Peso: </label>
+                    <input type="text" id ="Nota1_Peso" name="Peso" style="width: 45px;" class="st-forminput" mask="integer"/>   
+                        
+                    <a href="#" id="deleteTab" class="buttons"  data="{'original-title':'Deletar nota'}" original-title="Deletar nota" style="float: right;padding: 4px 10px 0px 10px;border: 1px solid #CDDCEA;border-bottom: 1px solid #B8C6D2;"  onclick="NotaAzul.ComposicaoNota.Dados.DeletarNota(this);">
+                    <img src="Content/prion/delete.png" alt="Deletar Nota"/></a>  
+
+                    <div id="Nota1_DivFormaAvaliacao" style="border: 1px solid #DFDFDF;height: 240px;margin-top: 10px;">
+                        <div id="Nota1_FormaAvaliacao0" name="divFormaAvaliacao" style="margin-top:15px;">
+                           <input type="hidden" id="Nota1_FormaAvaliacao_Id0" name="FormaAvaliacao.Id" primary-key="true" mudar="true"/>
+                            <div style="margin-left: 20px;">
+                                <select class="uniform" id="Nota1_ListaFormaDeAvaliacao0" name="listaFormaDeAvaliacao" mandatory="true" mudar="true" >   
+                                    <option name="formaAvaliacao" value="Avaliacao" >Avaliação</option>
+                                    <option name="formaAvaliacao" value="Trabalho" >Trabalho</option>                                            
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="st-labeltext" for="Valor" style="margin-left: 10px;width: 30px;">Valor: </label>
+                                <input type="text" id="Nota1_Valor0" name="valor" style="width: 40px;float: left;" class="st-forminput" mask="integer" mudar="true"  />   
+                                
+                                <label class="st-labeltext" for="dataAvaliacao" style="margin-left: 10px;width: 31px;float: left;">Data: </label>
+                                <input type="date" class="st-forminput" id="Nota1_DataAvaliacao0" name="dataAvaliacao" maxlength="12" style="float:left;position:relative;width:120px;" mandatory="true"  message="A data não pode ser vazia" mudar="true" />
+                                                            
+                            </div>                          
+                                              
+                        </div> 
+                    </div> 
+
+                    <div style="height: 18px;margin-top: 5px;">                        
+                        <div style="border: 1px solid #DFDFDF;height:18px;margin-left: 268px;margin-right: 190px;" >
+                            <p style="text-align:center;font-weight:bold;" id="Nota1_ValorTotal"></p>
+                        </div>
+                    </div>          
+
+                 </div>  
+           </div>
+        </div>
+    </form>
+</div>

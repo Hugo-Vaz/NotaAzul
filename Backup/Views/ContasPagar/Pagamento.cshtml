@@ -1,0 +1,35 @@
+@{
+    ViewBag.Title = "Contas à pagar :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/ContasPagar/pagamento.js"
+    ]);
+</script>
+
+<div class="body">
+    <form id="frmPagarTitulos" name="frmPagarTitulos" action="" method="post">
+        <input type="hidden" id="Titulo_Id" name="Titulo.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Titulo_Descricao" style="width: 100px;">Descrição</label>
+            <ul>
+                 <input type="text" class="st-forminput" id="Titulo_Descricao" name="Titulo.Descricao" maxlength="255" style="width:450px;" placeholder="Busque um Título por sua descrição" />
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Titulo_DataOperacao" style="width: 100px;">Data de Operação</label>           
+                <input type="text" class="st-forminput" id="Titulo_DataOperacao" name="Titulo.DataOperacao" mask="dd/mm/aaaa hh:mm" style="width:100px;" mandatory="True" message="A data não pode ser vazia" />            
+            <div class="clear"></div>
+        </div>
+
+        <div class="button-boxP">
+            <input id="btnPagarTitulolSalvar" type="button" value="Adicionar Título" class="button-green" />        
+        </div>
+    </form>
+
+    <div id="ListaTitulosAPagar" class="list"></div>    
+</div>  

@@ -1,0 +1,64 @@
+<script language="javascript" type="text/javascript">
+    var divisaoAnoLetivo = '@ViewData["DivisaoAnoLetivo"]';
+    var formaConceito = '@ViewData["FormaDeConceito"]';
+    var tipoMedia = '@ViewData["TipoMedia"]';
+
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/NotasAluno/dados.js"
+    ]);
+</script>
+
+<div class="body">
+    <form id="frmMatriculaNotaMedia" name="frmMatriculaNotaMedia" action="" method="post">
+        <input type="hidden" id="Matricula_Id" name="Matricula.Id" primary-key="true" />      
+        <input type="hidden" id="ComposicaoNotaPeriodo_Id" name="ComposicaoNotaPeriodo.Id" primary-key="true" />        
+        <input type="hidden" id="Media_Id" name="Media.Id" primary-key="true" />   
+
+        <div class="st-form-line">
+           <div id="tabsNotas" class="prionTabs">
+                 <ul id="ulTabs" class="ulTabs" style="width: 520px !important; margin-left: 30px; margin-top: 30px;">
+                    <li><a data="Nota1">Nota 1</a></li>                     
+                 </ul>  
+
+                 <div id="Nota1" class="div hide" style="height: 355px !important; width: 520px !important;margin-top: 20px;" data="TabNota">                   
+                    <input type="hidden" id="Id_Nota1" name="Nota.Id" primary-key="true" />
+                    <input type="hidden" id="Id_MatriculaNota1" name="MatriculaNota.Id" primary-key="true" />
+                    <label class="st-labeltext" for="peso" style="margin-left: 10px;width: 70px;">Peso: </label>
+                    <p  class="st-labeltext" id ="Peso_Nota1" name="Peso" ></p>                       
+                   
+
+                    <div id="Nota1_DivFormaAvaliacao" style="border: 1px solid #DFDFDF;height: 240px;margin-top: 30px;">
+                        <div id="Nota1_FormaAvaliacao0" name="divFormaAvaliacao" style="margin-top:15px;">
+                           <input type="hidden" id="Nota1_FormaAvaliacao_Id0" name="FormaAvaliacao.Id" primary-key="true" mudar="true"/>
+                            <div style="margin-left: 20px;">
+                                <p class="st-labeltext" id="Nota1_FormaAvaliacao_Nome0" style="float:left;position:relative;width:120px;" mudar="true"></p>
+                            </div>
+
+                            <div>
+                                <p class="st-labeltext" for="Valor" style="margin-left: 10px;width: 30px;">Valor: </label>
+                                <p class="st-labeltext" id="Nota1_FormaAvaliacao_ValorAlcancado0" name="valorAlcancado" style="float:left;position:relative;width:10px;"  mudar="true"></p>  
+                                <p class="st-labeltext" id="Nota1_FormaAvaliacao_ValorTotal0" style="float:left;position:relative;width:40px;"  mudar="true"></p>                                 
+                            </div>                          
+                            
+                            <label class="st-labeltext" for="dataAvaliacao" style="margin-left: 10px;width: 31px;float: left;">Data: </label>
+                            <label class="st-labeltext" id="Nota1_FormaAvaliacao_DataAvaliacao0" name="dataAvaliacao" style="float:left;position:relative;width:120px;" mudar="true" />                  
+                        </div> 
+                    </div> 
+
+                    <div style="height: 18px;margin-top: 5px;margin-left: 260px;">
+                        <label  class="st-labeltext" style="width: 100px;position: relative;float: left;margin-bottom: 10px;">Valor alcançado: </label>
+                        <p  class="st-labeltext" style="text-align:center;font-weight:bold;float: left;margin-bottom: 10px;width: 20px;" id="Nota1_ValorTotalAlcancado"></p>
+
+                        <div class="clear"></div>
+
+                        <label class="st-labeltext" for="valorTotalFinal" style="width: 96px;">Valor final: </label>
+                        <input type="text" id="Nota1_ValorTotalFinal" name="valorTotalFinal" style="width: 40px;float: left;" class="st-forminput" />                          
+                    </div>
+                 </div>  
+           </div>
+        </div>
+
+        <label class="st-labeltext" for="Media" style="text-align:center;font-weight:bold;margin-left: 292px;width: 70px;margin-top: 50px;">Média :</label>
+        <p type="text" id="Media" name="Media" style="width: 40px;float: left;margin-top: 50px;" class="st-labeltext"></p>
+    </form>
+</div>

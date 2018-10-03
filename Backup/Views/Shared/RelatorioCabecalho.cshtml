@@ -1,0 +1,35 @@
+﻿@model NotaAzul.ViewModels.Corporacao.vmDados
+
+@{
+    string imgPathNotaAzul = @Url.Content("~/Content/notaAzul");
+}
+
+<header>
+    <div style="line-height:120%;position:relative;">
+	    <h2 style="position:relative;">
+            @Model.Corporacao.Nome
+            <br />
+            @Model.Corporacao.Descricao
+        </h2>
+        
+        <div style="clear:both;">
+            <p style="position:relative;bottom:15px;">@Model.Corporacao.Observacao</p>
+        </div>
+
+	    <div style="clear:both;position: relative;bottom: 25px;">
+            <label>@Model.Corporacao.DadosEndereco Nº:@Model.Corporacao.Numero - Bairro: @Model.Corporacao.Bairro.Nome - @Model.Corporacao.Cidade.Nome - @Model.Corporacao.Estado.UF</label>
+        </div>
+
+        <img src="@imgPathNotaAzul/logoRelatorio.png" style="position: absolute;float: right;right: 10px;height: 68px;top: 15px;" alt="Logo do Cliente"/>
+
+        <div style="clear:both;position: relative;bottom: 25px;">
+		    <label>Telefone: @Model.Corporacao.Telefone1</label>	
+		    <label style="left: 50px;position: relative;">CNPJ: @Model.Corporacao.CNPJ</label>
+        </div>
+    
+        <div style="clear:both;position: relative;bottom: 25px;">
+            <label>E-Mail: @Model.Corporacao.Email</label>	
+            <label style="left: 50px;position: relative;">Site: @Model.Corporacao.Site</label>	
+        </div>
+    </div>
+</header>

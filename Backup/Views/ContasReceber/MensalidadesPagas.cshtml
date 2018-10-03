@@ -1,0 +1,20 @@
+@{string imgPathPrion = @Url.Content("~/Content/prion");}
+
+<script language="javascript" type="text/javascript">
+    document.title = "Contas à receber - " + nomeProjeto;
+
+    Prion.Loader.Carregar([rootDir + "Scripts/Views/ContasReceber/mensalidadesPagas.js"]);
+</script>
+ <div  style="margin-left: 30px;margin-top: 10px;">
+     <form id="frmFiltro" action="" style="margin-bottom: 30px;">
+        <label class="st-labeltext" for="Filtro" style="margin-left: 5px; width:102px;">Aluno: </label>
+        <input type="hidden" id="Filtro" name="Filtro" />                               
+        <ul>
+            <input type="text" class="st-forminput" id="Filtro_Nome" name="Filtro.Nome" maxlength="255" style="width:465PX;" placeholder="Digite o nome de um aluno" mandatory="true" message="O Aluno não pode ser vazio" />
+            <a id="btnAplicarFiltro" class="icon-button tips cursor" original-title="Aplicar Filtro" style="position:relative; top:0px; left:4px;">
+                <img src="@imgPathPrion/search.png" height="18" width="18" alt="icon" />
+            </a>
+        </ul>    
+    </form>  
+</div>
+<div id="listaMensalidadesPagas" class="list" style="position: relative;padding-left:25px;"></div>

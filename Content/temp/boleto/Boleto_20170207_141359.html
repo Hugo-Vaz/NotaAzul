@@ -1,0 +1,584 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8"/>
+<head>    <title>Boleto.Net</title>
+<style>
+body {
+	color: #000000;
+	background-color: #ffffff;
+	margin-top: 0;
+	margin-right: 0;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+table {
+	border: 0;
+	border-collapse: collapse;
+	padding: 0;
+}
+
+img {
+	border: 0;
+}
+
+.cp {
+	font: bold 10px arial;
+	color: black;
+}
+
+.ti {
+	font: 9px arial, helvetica, sans-serif;
+}
+
+.ld {
+	font: bold 15px arial;
+	color: #000000;
+}
+
+.ct {
+	font: 9px "arial narrow";
+	color: #000033;
+}
+
+.cn {
+	font: 9px arial;
+	color: black;
+}
+
+.bc {
+	font: bold 20px arial;
+	color: #000000;
+}
+
+.cut {
+	width: 665px;
+	height: 1px;
+	border-top: dashed 1px #000;
+}
+
+.Ac {
+	text-align: center;
+}
+
+.Ar {
+	text-align: right;
+}
+
+.Al {
+	text-align: left;
+}
+
+.At {
+	vertical-align: top;
+}
+
+.Ab {
+	vertical-align: bottom;
+}
+
+.ct td, .cp td {
+	padding-left: 6px;
+	border-left: solid 1px #000;
+}
+
+.cpN {
+	font: bold 10px arial;
+	color: black;
+}
+
+.ctN {
+	font: 9px "arial narrow";
+	color: #000033;
+}
+
+.pL0 {
+	padding-left: 0px;
+}
+
+.pL6 {
+	padding-left: 6px;
+}
+
+.pL10 {
+	padding-left: 10px;
+}
+
+.imgLogo {
+	width: 150px;
+}
+
+	.imgLogo img {
+		width: 150px;
+		height: 40px;
+	}
+
+.barra {
+	width: 3px;
+	height: 22px;
+	vertical-align: bottom;
+}
+
+	.barra img {
+		width: 2px;
+		height: 22px;
+	}
+
+.rBb td {
+	border-bottom: solid 1px #000;
+}
+
+.BB {
+	border-bottom: solid 1px #000;
+}
+
+.BL {
+	border-left: solid 1px #000;
+}
+
+.BR {
+	border-right: solid 1px #000;
+}
+
+.BT1 {
+	border-top: dashed 1px #000;
+}
+
+.BT2 {
+	border-top: solid 2px #000;
+}
+
+.h1 {
+	height: 1px;
+}
+
+.h13 {
+	height: 13px;
+}
+
+.h12 {
+	height: 12px;
+}
+
+.h13 td {
+	vertical-align: top;
+}
+
+.h12 td {
+	vertical-align: top;
+}
+
+.w6 {
+	width: 6px;
+}
+
+.w7 {
+	width: 7px;
+}
+
+.w34 {
+	width: 34px;
+}
+
+.w45 {
+	width: 45px;
+}
+
+.w53 {
+	width: 53px;
+}
+
+.w62 {
+	width: 62px;
+}
+
+.w65 {
+	width: 65px;
+}
+
+.w72 {
+	width: 72px;
+}
+
+.w83 {
+	width: 83px;
+}
+
+.w88 {
+	width: 88px;
+}
+
+.w104 {
+	width: 104px;
+}
+
+.w105 {
+	width: 105px;
+}
+
+.w106 {
+	width: 106px;
+}
+
+.w113 {
+	width: 113px;
+}
+
+.w112 {
+	width: 112px;
+}
+
+.w123 {
+	width: 123px;
+}
+
+.w126 {
+	width: 126px;
+}
+
+.w128 {
+	width: 128px;
+}
+
+.w132 {
+	width: 132px;
+}
+
+.w134 {
+	width: 134px;
+}
+
+.w150 {
+	width: 150px;
+}
+
+.w163 {
+	width: 163px;
+}
+
+.w164 {
+	width: 164px;
+}
+
+.w180 {
+	width: 180px;
+}
+
+.w182 {
+	width: 182px;
+}
+
+.w186 {
+	width: 186px;
+}
+
+.w192 {
+	width: 192px;
+}
+
+.w250 {
+	width: 250px;
+}
+
+.w298 {
+	width: 298px;
+}
+
+.w409 {
+	width: 409px;
+}
+
+.w472 {
+	width: 472px;
+}
+
+.w478 {
+	width: 478px;
+}
+
+.w500 {
+	width: 500px;
+}
+
+.w544 {
+	width: 544px;
+}
+
+.w564 {
+	width: 564px;
+}
+
+.w659 {
+	width: 659px;
+}
+
+.w666 {
+	width: 666px;
+}
+
+.w667 {
+	width: 667px;
+}
+
+.BHead td {
+	border-bottom: solid 2px #000;
+}
+
+.EcdBar {
+	height: 50px;
+	vertical-align: bottom;
+}
+
+.rc6 td {
+	vertical-align: top;
+	border-bottom: solid 1px #000;
+	border-left: solid 1px #000;
+}
+
+.rc6 div {
+	padding-left: 6px;
+}
+
+.rc6 .t {
+	font: 9px "arial narrow";
+	color: #000033;
+	height: 13px;
+}
+
+.rc6 .c {
+	font: bold 10px arial;
+	color: black;
+	height: 12px;
+}
+
+.mt23 {
+	margin-top: 23px;
+}
+
+.pb4 {
+	padding-bottom: 14px;
+}
+
+.ebc {
+	width: 4px;
+	height: 440px;
+	border-right: dotted 1px #000000;
+	margin-right: 4px;
+}
+</style>
+     </head>
+<body>
+<table class="w666">
+				<tr class="cpN">
+						<td class="At Ac">Instruções de Impressão</td>
+				</tr>
+				<tr class="ti">
+						<td class="At Ac">Imprimir em impressora jato de tinta (ink jet) ou laser em qualidade normal. (Não use modo econômico).<br>Utilize folha A4 (210 x 297 mm) ou Carta (216 x 279 mm) - Corte na linha indicada<br></td>
+				</tr>
+		</table><br /><table class="w666">
+				<tr>
+						<td class="ctN cut" />
+				</tr>
+				<tr>
+						<td class="cpN Ar">Recibo do Pagador</td>
+				</tr>
+		</table><br /><table class="w666">
+				<tr class="BHead">
+						<td class="imgLogo Al"><img src="data:image/gif;base64,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" /></td>
+						<td class="barra"><img src="data:image/gif;base64,R0lGODlhAgATAIAAAAAAAP///yH5BAAAAAAALAAAAAACABMAAAIFhI+py1YAOw==" /></td>
+						<td class="w65 Ab bc Ac">237-2</td>
+						<td class="barra"><img src="data:image/gif;base64,R0lGODlhAgATAIAAAAAAAP///yH5BAAAAAAALAAAAAACABMAAAIFhI+py1YAOw==" /></td>
+						<td class="w500 Ar Ab ld">23792.81302 90000.000266 82001.496700 9 71860000044700</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ct h13 At">
+						<td class="w298">Beneficiário</td>
+						<td class="w126">Agência / Código do Beneficiário</td>
+						<td class="w34">Espécie</td>
+						<td class="w45">Quantidade</td>
+						<td class="w128">Carteira / Nosso número</td>
+				</tr>
+				<tr class="cp h12 At rBb">
+						<td>Centro Educacional Ponto de Partida</td>
+						<td>2813-4/0014967-5</td>
+						<td>R$</td>
+						<td></td>
+						<td class="Ar">009/00000002682-7</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ct h13">
+						<td class="w192">Número do documento</td>
+						<td class="w132">CPF/CNPJ</td>
+						<td class="w134">Vencimento</td>
+						<td class="w180">Valor documento</td>
+				</tr>
+				<tr class="cp h12 rBb">
+						<td>00000002682</td>
+						<td>01989143000130</td>
+						<td>10/06/2017</td>
+						<td class="Ar">R$447,00</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ct h13">
+						<td class="w113">(-) Desconto / Abatimentos</td>
+						<td class="w112">(-) Outras deduções</td>
+						<td class="w113">(+) Mora / Multa</td>
+						<td class="w113">(+) Outros acréscimos</td>
+						<td class="w180">(=) Valor cobrado</td>
+				</tr>
+				<tr class="cp h12 rBb Ab">
+						<td>R$97,00</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="Ar">&nbsp;R$350,00</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ct h13">
+						<td class="w659">Pagador</td>
+				</tr>
+				<tr class="cp h12">
+						<td>Edson Vinícius Cerqueira  CPF: 123.501.436-35</td>
+				</tr>
+				<tr class="cp h12 rBb">
+						<td> Jacinto Joaquim Pereira<br />Olaria - Nova Friburgo/RJ - CEP: 28623-690</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ctN h13">
+						<td class="pL6">Instruções</td>
+						<td class="w180 Ar">Autenticação mecânica</td>
+				</tr>
+				<tr class="cpN h12">
+						<td class="pL6 it">O desconto deverá ser aplicado caso o pagamento seja efetuado até o vencimento, após essa data, o mesmo deverá ser efetuado sem desconto e com os devidos juros (1% ao mês) e multas (2% ao mês)</td>
+						<td class="pL6 Ar"></td>
+				</tr>
+		</table><table class="ctN w666">
+				<tr class="h13"><td /></tr>
+				<tr class="h13"><td /></tr>
+				<tr><td class="Ar">Corte na linha pontilhada</td></tr>
+				<tr><td class="cut" /></tr>
+				<tr class="h13"><td /></tr>
+				<tr class="h13"><td /></tr>
+		</table><table class="w666">
+				<tr class="BHead">
+						<td class="imgLogo Al"><img src="data:image/gif;base64,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" /></td>
+						<td class="barra"><img src="data:image/gif;base64,R0lGODlhAgATAIAAAAAAAP///yH5BAAAAAAALAAAAAACABMAAAIFhI+py1YAOw==" /></td>
+						<td class="w65 Ab bc Ac">237-2</td>
+						<td class="barra"><img src="data:image/gif;base64,R0lGODlhAgATAIAAAAAAAP///yH5BAAAAAAALAAAAAACABMAAAIFhI+py1YAOw==" /></td>
+						<td class="w500 Ar ld" valign="bottom">23792.81302 90000.000266 82001.496700 9 71860000044700</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ct h13">
+						<td class="w472">Local de pagamento</td>
+						<td class="w180">Vencimento</td>
+				</tr>
+				<tr class="cp h12 rBb">
+						<td>Até o vencimento, preferencialmente nas agências do Bradesco</td>
+						<td class="Ar">10/06/2017</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ct h13">
+						<td class="w472">Beneficiário</td>
+						<td class="w180">Agência / Código Beneficiário</td>
+				</tr>
+				<tr class="cp h12 rBb">
+						<td>Centro Educacional Ponto de Partida</td>
+						<td class="Ar">2813-4/0014967-5</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ct h13">
+						<td class="w113">Data do documento</td>
+						<td class="w163">N<u>o</u> documento</td>
+						<td class="w62">Espécie doc.</td>
+						<td class="w34">Aceite</td>
+						<td class="w72">Data processamento</td>
+						<td class="w180">Carteira / Nosso número</td>
+				</tr>
+				<tr class="cp h12 rBb">
+						<td>07/02/2017</td>
+						<td>00000002682</td>
+						<td>DS</td>
+						<td>N</td>
+						<td>07/02/2017</td>
+						<td class="Ar">009/00000002682-7</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ct h13">
+						<td class="w113">Uso do banco</td>
+						<td class="w83">Carteira</td>
+						<td class="w53">Espécie</td>
+						<td class="w123">Quantidade</td>
+						<td class="w72">(x) Valor</td>
+						<td class="w180">(=) Valor documento</td>
+				</tr>
+				<tr class="cp h12 rBb">
+						<td>&nbsp;</td>
+						<td class="Al">09</td>
+						<td class="Al">R$</td>
+						<td></td>
+						<td></td>
+						<td class="Ar">R$447,00</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="rc6">
+						<td class="w478">
+								<div class="ctN pL10">Instruções (Texto de responsabilidade do beneficiário)</div>
+                <div class="cpN pL10 it" style="height:105px; overflow:hidden">O desconto deverá ser aplicado caso o pagamento seja efetuado até o vencimento, após essa data, o mesmo deverá ser efetuado sem desconto e com os devidos juros (1% ao mês) e multas (2% ao mês)</div>                
+						</td>
+						<td class="w186">
+								<div class="t">(-) Desconto / Abatimentos</div>
+								<div class="c BB">R$97,00</div>
+								<div class="t">(-) Outras deduções</div>
+								<div class="c BB"></div>
+								<div class="t">(+) Mora / Multa</div>
+								<div class="c BB"></div>
+								<div class="t">(+) Outros acréscimos</div>
+								<div class="c BB"></div>
+								<div class="t">(=) Valor cobrado</div>
+								<div class="c">R$350,00</div>
+						</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="ct h13">
+						<td class="w659">Pagador</td>
+				</tr>
+				<tr class="cp h12">
+						<td class="At">Edson Vinícius Cerqueira  CPF: 123.501.436-35</td>
+				</tr>
+		</table><table class="w666">
+				<tr class="rBb">
+						<td class="w478 BL">
+								<div class="cpN pL6"> Jacinto Joaquim Pereira<br />Olaria - Nova Friburgo/RJ - CEP: 28623-690</div>
+						</td>
+						<td class="Ab BL">
+								<div class="ctN pL6">Cód. baixa</div>
+						</td>
+				</tr>
+		</table><table class="w666 ctN">
+				<tr>
+						<td class="pL6  w409">Sacador / Avalista</td>
+						<td class="w250 Ar">Autenticação mecânica - <b class="cpN">Ficha de Compensação</b></td>
+				</tr>
+				<tr class="h13"><td colspan="3" /></tr>
+		</table><table class="w666">
+				<tr>
+						<td class="EcdBar Al pL10"><img src="data:image/gif;base64,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" alt="Código de Barras" /></td>
+				</tr>
+		</table><table class="ctN w666">
+				<tr class="h13"><td /></tr>
+				<tr><td class="Ar">Corte na linha pontilhada</td></tr>
+				<tr><td class="cut" /></tr>
+		</table>
+		<table class="ctN w666">
+				<tr class="h13"><td /></tr>
+				<tr class="h13"><td /></tr>
+				<tr class="h13"><td /></tr>
+				<tr class="h13"><td /></tr>
+				<tr class="h13"><td /></tr>
+				<tr class="h13"><td /></tr>
+		</table></body>
+</html>

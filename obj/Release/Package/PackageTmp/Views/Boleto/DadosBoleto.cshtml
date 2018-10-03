@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Boleto :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Boleto/dadosBoleto.js"
+    ]);
+</script>
+
+
+<div class="body">
+    <form id="frmBoleto" name="frmBoleto" action="" method="post">      
+
+        <input type="hidden" id="Boleto_Id" name="Boleto.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Boleto_NossoNumero" style="width: 100px;">Número do documento</label>
+            <input type="text" class="st-forminput" id="Boleto_NossoNumero" name="Boleto.NossoNumero" maxlength="255" style="width:362px;" disabled/>
+            <div class="clear"></div>
+        </div>
+        
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Boleto_Valor" style="width: 100px;">Valor</label>
+            <input type="text" class="st-forminput" id="Boleto_Valor" name="Boleto.Valor" mask="money" style="width:100px;float: left;" mandatory="true" message="O valor não pode ser vazio" />
+
+            <label class="st-labeltext" for="Boleto_Desconto" style="width: 120px;margin-left: 50px;">Desconto</label>
+            <input type="text" class="st-forminput" id="Boleto_Desconto" name="Boleto.Desconto" mask="money" style="width: 100px;float: left;" />
+
+            <div class="clear"></div>
+        </div>          
+
+        <div class="st-form-line">
+            <input type="checkbox" id="Replicar_Boletos" name="replicarDados" />
+            <label for="selecionarTodos">Replicar para as próximas mensalidades</label>
+        </div>     
+    </form>
+</div>

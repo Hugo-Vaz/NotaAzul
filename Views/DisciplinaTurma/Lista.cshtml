@@ -1,0 +1,18 @@
+@{    
+    string imgPathPrion = @Url.Content("~/Content/prion");
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([rootDir + "Scripts/Views/DisciplinaTurma/lista.js"]);
+</script>
+
+<div style="margin-bottom:15px;"> 
+    <label class="st-labeltext" for="AnoLetivo" style="position:relative; float:left;margin-left: 5px;width: 102px;">Ano Letivo:</label>
+        <input type="text" class="st-forminput" id="AnoLetivo"  maxlength="4" style="position:relative;float:left;width:50px;" mask="integer" />
+        <a id="btnBuscarTurma" class="icon-button tips cursor" original-title="Busca todas as turmas do ano letivo informado" style="position:relative; top:8px; left:4px;">
+            <img src="@imgPathPrion/search.png" height="18" width="18" alt="icon" />
+        </a>
+    <div class="clear"></div>
+</div>
+
+<div id="listaDisciplinaTurma" class="list"></div>

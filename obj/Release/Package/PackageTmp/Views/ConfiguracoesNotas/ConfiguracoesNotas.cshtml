@@ -1,0 +1,37 @@
+﻿<script language="javascript" type="text/javascript" >
+    var formaDeConceito = '@ViewData["FormaDeConceito"]';
+    var divisaoAnoLetivo = '@ViewData["DivisaoAnoLetivo"]';
+    var mediaMinima = '@ViewData["MediaMinima"]';
+
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/ConfiguracoesNotas/configuracao.js"
+    ]);
+</script>
+
+<div>
+    <form id="frmConfigNota" name="frmConfigNota" action="" method="post">        
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="FormaDeConceito">Estilo de Nota</label>
+            <select class="uniform" id="listaFormaDeConceito" name="FormaDeConceito" mandatory="true" message="A forma de conceito ou estilo de nota não pode ser vazia" />
+            <div class="clear"></div>
+        </div>
+        
+        <div class="st-form-line">
+            <label class="st-labeltext" for="FormaDeDivisaoAnoLetivo">Divisão do ano letivo</label>
+            <select class="uniform" id="listaFormaDeDivisaoAnoLetivo" name="FormaDeDivisaoAnoLetivo" mandatory="true" message="A forma de Divisão do Ano Letivo não pode ser vazia" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="MediaMinima">Média Mínima/Nota de corte</label>
+            <input type="text" class="st-forminput" id="MediaMinima" name="MediaMinima" mask="integer" mandatory="true" message="A nota de corte/média mínima não pode ser vazia" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="button-boxP">
+             <input id="btnSalvarConfig" type="button" value="Salvar Configuração" class="button-green" />
+        </div>
+
+    </form>
+</div>

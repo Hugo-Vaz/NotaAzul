@@ -1,0 +1,57 @@
+@model NotaAzul.ViewModels.Titulo.vmDados
+
+@{
+    ViewBag.Title = "Título :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Titulo/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+    <form id="frmTitulo" name="frmTitulo" action="" method="post">
+        <input type="hidden" id="Titulo_Id" name="Titulo.Id" primary-key="true" />
+        <input type="hidden" id="Titulo_TipoOperacao" name="Titulo.TipoOperacao" value="Debito" /> <!-- inicia o tipo do título como sendo DÉBITO -->
+        <input type="hidden" id="Titulo_IdSituacao" name="Titulo.IdSituacao" value="@Model.Situacao.Id" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Titulo_Numero" style=";width:69px;">Número</label>
+            <input type="text" class="st-forminput" id="Titulo_Numero" name="Titulo.Numero"  maxlength="50" style="width: 225px;float: left;margin-left: 30px;" />
+
+            <label class="st-labeltext" for="Titulo_Valor" style="width: 60px;float:left;margin-left:20px;">Valor</label>
+            <input type="text" class="st-forminput" id="Titulo_Valor" name="Titulo.Valor" mask="money" style="width:122px;float: left;" mandatory="true" message="O valor não pode ser vazio" />
+            <div class="clear"></div>
+        </div>  
+        
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Titulo_Descricao" style="width: 30px;margin-right: 70px;">Descrição</label>
+            <input type="text" class="st-forminput" id="Titulo_Descricao" name="Titulo.Descricao" maxlength="255" style="width:450px;" mandatory="true" message="A descrição não pode ser vazia" />
+            
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Titulo_Observacao" style="width: 30px;margin-right: 70px;">Observação</label>
+            <textarea class="st-forminput" id="Titulo_Observacao" name="Titulo.Observacao" style="width:450px;" rows="4" maxlength="255"></textarea>
+
+            <div class="clear"></div>
+        </div>
+        
+        <div class="st-form-line">
+            <label class="st-labeltext" for="tituloTiposLista" style="width: 75px;margin-right: 21px;">Tipo de Titulo</label>
+            <select id="tituloTiposLista" name="Titulo.IdTituloTipo" class="uniform" mandatory="true" message="O Tipo de Título não pode ser vazio"></select>
+
+            <div class="clear"></div>
+        </div>
+     
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Titulo_DataVencimento" style="width:100px;">Vencimento</label>
+            <input type="text" class="st-forminput" id="Titulo_DataVencimento" name="Titulo.DataVencimento" maxlength="12" style="width:70px;float:left;" mask="dd/mm/aaaa" mandatory="true" message="A data de vencimento não pode ser vazia" />
+
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>

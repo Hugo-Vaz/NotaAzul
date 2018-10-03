@@ -1,0 +1,184 @@
+﻿@model NotaAzul.ViewModels.Aluno.vmDados
+           
+@{
+    ViewBag.Title = "Aluno :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Aluno/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+    <div id="tabsAluno" class="ui-tabs">
+        <ul> 
+            <li><a href="#tabDados">Meus dados</a></li>
+            <li><a href="#tabResponsaveis">Responsáveis</a></li>
+            <li><a href="#tabFichaFinanceira">Ficha Financeira</a></li>
+        </ul>
+
+        <div id="tabDados">
+            <form id="frmAluno" name="frmAluno" action="" method="post">
+                <input type="hidden" id="Aluno_Id" name="Aluno.Id" primary-key="true" />
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_Nome">Nome</label>
+                    <input type="text" class="st-forminput" id="Aluno_Nome" name="Aluno.Nome" maxlength="255" style="width:484px;" mandatory="true" message="O nome não pode ser vazio"  />
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_Cpf">CPF</label>
+
+                    <div style="float: left; width:480px;">
+                        <input type="text" class="st-forminput" id="Aluno_Cpf" name="Aluno.Cpf" maxlength="11" style="float: left; width:130px;" mask="cpf" />
+
+                        &nbsp;&nbsp;<label class="st-labeltext" for="Aluno_Rg" style="width: 20px; margin-left: 16px;">RG</label>
+                        <input type="text" class="st-forminput" id="Aluno_Rg" name="Aluno.Rg" maxlength="20" style="width:180px;" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">	
+                    <label class="st-labeltext">Sexo</label>
+
+                    <div style="float: left; width:500px;">
+                        <label style="color: #3C5868; position:relative; top:6px; margin-right:10px; float:left;"><span>@Html.RadioButtonFor(x => x.Aluno.Sexo, "M", new { @class = "uniform", @style = "opacity:0;" })</span>Masculino</label> 
+                        <label style="color: #3C5868; position:relative; top:6px; margin-right:10px; float:left;"><span>@Html.RadioButtonFor(x => x.Aluno.Sexo, "F", new { @class = "uniform", @style = "opacity:0;" })</span>Feminino</label>
+
+                        <label class="st-labeltext" for="Aluno_DataNascimento" style="margin-left: 10px; width:116px;">Data de Nascimento</label>
+                        <input type="text" class="st-forminput" id="Aluno_DataNascimento" name="Aluno.DataNascimento" maxlength="12" style="position:relative;float:left;width:70px;" mandatory="true" mask="dd/mm/aaaa" message="A data não pode ser vazia" />
+                    </div>
+                    <div class="clear"></div> 
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_GrupoSanguineo">Grupo Sanguíneo</label>
+
+                    <div style="float: left; width:500px;">
+                        <input type="text" class="st-forminput" id="Aluno_GrupoSanguineo" name="Aluno.GrupoSanguineo" maxlength="5" style="width:50px; float:left;" />
+
+                        <label class="st-labeltext" for="Aluno_Nacionalidade" style="width: 90px; margin-left: 20px;">Nacionalidade</label>
+                        <input type="text" class="st-forminput" id="Aluno_Nacionalidade" name="Aluno.Nacionalidade" maxlength="100" style="width:300px;" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_Religiao">Religião</label>
+
+                    <div style="float: left; width:500px;">
+                        <input type="text" class="st-forminput" id="Aluno_Religiao" name="Aluno.Religiao" maxlength="50" style="width:180px; float:left;" />
+
+                        <label class="st-labeltext" for="Aluno_CorRaca" style="width: 70px; margin-left: 20px;">Cor / Raça</label>
+                        <input type="text" class="st-forminput" id="Aluno_CorRaca" name="Aluno.CorRaca" maxlength="50" style="width:190px;" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext">Situação</label>
+                    <div style="float: left; width:500px;">
+                    <div style="float: left;">
+                    @foreach (var y in Model.Situacoes)
+                    {
+                        <label class="radio" style="margin-right:10px">
+                            @Html.RadioButtonFor(x => x.Aluno.IdSituacao, y.Id, y.Padrao, y.Nome, new { @class = "uniform", @style = "opacity:0;float:left;" })
+                        </label>
+                    }
+                    </div>
+                        <label class="st-labeltext" for="Aluno_DiaPagamento" style="width: 105px; margin-left: 90px;float:left">Dia do Pagamento</label>
+                        <input type="text" class="st-forminput" id="Aluno_DiaPagamento" name="Aluno.DiaPagamento" mask="integer" maxlength="50" style="width:40px;float:left" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">
+                   
+                    <label class="st-labeltext" for="Aluno_RegistroDeNascimento">Registro de Nascimento</label>
+                    <input type="text" class="st-forminput" id="Aluno_RegistroDeNascimento" name="Aluno.RegistroDeNascimento" maxlength="50" style="width:484px;"/>
+                   
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_CertidaoListaEstados" style="width: 110px;">Estado do Registro</label>
+                    <div style="position:relative;left:38px;">
+                        <select id="alunoCertidaoListaEstados" name="Aluno.IdEstadoRegistroNascimento" class="uniform"></select>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_CertidaoListaCidades" style="width: 110px;">Cidade do Registro</label>
+                    <div style="position:relative;left:38px;">
+                        <select id="alunoCertidaoListaCidades" name="Aluno.IdCidadeRegistroNascimento" class="uniform"></select>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_NumeroOrdem">Nº Ordem</label>
+                    <div style="float: left; width:500px;">
+                        <input type="text" class="st-forminput" id="Aluno_NumeroOrdem" name="Aluno.NumeroOrdem" maxlength="10" style="position: relative;left: -202px;" />
+                       
+                        <label class="st-labeltext" for="Aluno_Folhas" style="width: 90px;position: relative;left: 177px;;">Folhas</label>
+                        <input type="text" class="st-forminput" id="Aluno_Folhas" name="Aluno.Folhas" maxlength="10" style="width: 50px;position: relative;left: -99px;" />
+
+                        <label class="st-labeltext" for="Aluno_NumeroLivro" style="width: 90px;position: relative;left: 255px;">Livro Nº</label>
+                        <input type="text" class="st-forminput" id="Aluno_NumeroLivro" name="Aluno.NumeroLivro" maxlength="10" style="width: 70px;position: relative;" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+               
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_DataRegistro">Data do Registro</label>   
+                    <input type="text" class="st-forminput" id="Aluno_DataRegistro" name="Aluno.DataRegistroNascimento" maxlength="12" style="width:158px;position:Relative;left:-159px" mask="dd/mm/aaaa" />
+
+                    <label class="st-labeltext" for="Aluno_NIS" style="position:relative;left:200px">NIS</label>                   
+                    <input type="text" class="st-forminput" id="Aluno_NIS" name="Aluno.NIS" maxlength="15" style="width:147px;position:Relative;left:-86px;"/>
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_ObservacaoSaude">Problemas de Saúde?</label>
+                    <input type="text" class="st-forminput" id="Aluno_ObservacaoSaude" name="Aluno.ObservacaoSaude" maxlength="255" style="width:484px;"/>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext" for="Aluno_ObservacaoMedicacao">Medicação Controlada?</label>
+                    <input type="text" class="st-forminput" id="Aluno_ObservacaoMedicacao" name="Aluno.ObservacaoMedicacao" maxlength="255" style="width:484px;"/>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class="st-form-line">
+                    <label class="st-labeltext">Gerar boleto?</label>
+
+                    <div style="float: left; width:500px;">
+                        <label style="color: #3C5868; position:relative; top:6px; margin-right:10px; float:left;"><span>
+                            <input class="uniform" id="Aluno_GeraBoleto_Nao" name="Aluno.GeraBoleto" style="opacity:0;" type="radio" value="false">
+                            </span>Não</label>
+                        <label style="color: #3C5868; position:relative; top:6px; margin-right:10px; float:left;"><span>
+                            <input class="uniform" id="Aluno_GeraBoleto_Sim" name="Aluno.GeraBoleto" style="opacity:0;" type="radio" value="true">                            
+                            </span>Sim</label>
+                                               
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </form>
+        </div>
+
+        <div id="tabResponsaveis" >
+            @{ Html.RenderPartial("Responsavel"); }
+        </div>
+
+        <div id="tabFichaFinanceira">
+            @{ Html.RenderPartial("FichaFinanceira"); }
+        </div>
+
+    </div>
+</div>

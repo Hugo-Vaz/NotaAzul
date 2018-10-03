@@ -1,0 +1,65 @@
+﻿@model NotaAzul.ViewModels.CursoAnoLetivo.vmDados
+
+@{
+    ViewBag.Title = "Cursos de um ano letivo :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/CursoAnoLetivo/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+
+    <form id="frmCursoAnoLetivo" name="frmCursoAnoLetivo" action="" method="post">
+        <input type="hidden" id="CursoAnoLetivo_Id" name="CursoAnoLetivo.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="CursoAnoLetivo_AnoLetivo">Ano Letivo</label>
+            <input type="text" class="st-forminput" id="CursoAnoLetivo_AnoLetivo" name="CursoAnoLetivo.AnoLetivo" maxlength="4" style="width:50px;" mask="integer" mandatory="true" message="O ano letivo tem que ser informado" />
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="listaCursos">Curso</label>
+            <select id="comboboxCurso" name="CursoAnoLetivo.IdCurso" class="uniform" mandatory="true" message="É necessário escolher um Curso"></select>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="CursoAnoLetivo_ValorMatricula">Valor da matrícula</label>
+
+            <div style="width:390px; float:left;">
+                <input type="text" class="st-forminput" id="CursoAnoLetivo_ValorMatricula" name="CursoAnoLetivo.ValorMatricula" style="position:relative;float:left;width:100px;" mask="money" mandatory="true" />
+
+                <label class="st-labeltext2" for="CursoAnoLetivo_ValorMensalidade" style="position:relative; float:left;">Valor da mensalidade:</label>
+                <input type="text" class="st-forminput" id="CursoAnoLetivo_ValorMensalidade" name="CursoAnoLetivo.ValorMensalidade" style="position:relative;float:left;width:100px;" mask="money" mandatory="true" message="O valor da mensalidade tem que ser informado" />
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="CursoAnoLetivo_QuantidadeMensalidades">Qtd de Mensalidades</label>
+            <input type="text" class="st-forminput" id="CursoAnoLetivo_QuantidadeMensalidades" name="CursoAnoLetivo.QuantidadeMensalidades" maxlength="3" style="width:50px" mask="integer" mandatory="true" message="A quantidade de mensalidades tem que ser informada" />
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext">Situação</label>
+                    
+            @foreach(var y in Model.Situacoes)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.CursoAnoLetivo.IdSituacao, y.Id, y.Padrao, y.Nome, new {@class = "uniform", @style = "opacity:0;" })
+                </label>
+            }
+            <div class="clear"></div>
+        </div>
+    </form>
+
+</div>

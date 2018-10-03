@@ -1,0 +1,31 @@
+﻿@model NotaAzul.ViewModels.Bairro.vmDados
+
+@{
+    ViewBag.Title = "Bairro :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Bairro/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+    <form id="frmBairro" name="frmBairro" action="" method="post">
+        <input type="hidden" id="Bairro_Id" name="Bairro.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Bairro_Nome" style="width: 100px;">Nome</label>
+            <input type="text" class="st-forminput" id="Bairro_Nome" name="Bairro.Nome" maxlength="255" style="width:362px;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="bairroListaCidades" style="width: 100px;">Cidade</label>
+
+            <select id="bairroListaCidades" name="Bairro.IdCidade" class="uniform" mandatory="true" message="É necessário escolher uma Cidade"></select>
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" content="" />
+    <title>@ViewBag.NomeProjeto</title>
+
+    <script language="javascript" type="text/javascript">
+        var rootDir = '@Url.Content("~/")';
+        var buildSistema = '@ViewBag.BuildSistema';
+        var imgPathTheme = '@Url.Content("~/Content/cupcake/images")';
+        var imgPathPrion = '@Url.Content("~/Content/prion")';
+        var objConfiguracaoSistema = {};
+        var NotaAzul = {};
+    </script>
+
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jQuery/jquery.min.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jQuery/jquery-ui-1.8.11.custom.min.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jQuery/jquery.others.min.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Prion/NotaAzul.admin.settings.js?")@ViewBag.BuildSistema'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Prion/Prion.min.js?")@ViewBag.BuildSistema'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/Prion/Prion.Login.min.js?")@ViewBag.BuildSistema'></script>
+    <link rel="stylesheet" type="text/css" href='@Url.Content("~/Content/cupcake/reset.css?")@ViewBag.BuildSistema'/>
+    <link rel="stylesheet" type="text/css" href='@Url.Content("~/Content/cupcake/root.css?")@ViewBag.BuildSistema'/>
+    <link rel="stylesheet" type="text/css" href='@Url.Content("~/Content/admin.css?")@ViewBag.BuildSistema'/>
+</head>
+
+<body>
+               
+    @{
+        string imgPathPrion = Url.Content("~/Content/prion");
+        string imgPathNotaAzul = Url.Content("~/Content/notaAzul");
+    }
+
+    <img id="logoSplashScreen" src='@imgPathNotaAzul/splashScreen.jpg' alt="Nota Azul" width="500" height="281" />
+
+    <div id="divMensagem" style="display:none; ">
+        <div style="margin-left: -180px; left: 50%; position: fixed; width: 360px; top: 14px; z-index: 100;">
+            <div class="albox" style="z-index:9999;">
+                <span></span>
+                <a href="#" class="close tips" original-title="fechar">fechar</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="loginForm" class="loginform" style="display:none;">
+        <div class="title">
+            <img src='@imgPathNotaAzul/logoNotaAzul.png' alt="@ViewBag.NomeProjeto" width="302" height="62" style="top: -15px; position: relative;" />
+        </div>
+
+        <div class="body">
+            <form id="frmLogin" name="frmLogin" action="" method="post">
+                <label class="log-lab" for="Login">Login</label>
+                <input type="text" value="Login" class="login-input-user" id="Login" />
+
+                <label class="log-lab" for="Senha">Senha</label>
+                <input type="password" value="Password" class="login-input-pass" id="Senha" mandatory="True" />
+
+                <input type="button" value="Efetuar login" id="btnLogar" class="button" />
+            </form>
+        </div>
+    </div>
+
+    <div class="mask"></div>
+    <div id="loadingMsg" class="loadingMsg" style="height:34px;display:none;position:fixed !important; z-index:20001;">
+        <div style="width:250px; font-size:13px; font-weight:bold; text-align:center;">
+            <img alt="" title="" src='@Url.Content("~/Content/prion/loading.gif")' /><span>Aguarde por favor...</span>
+        </div>
+    </div>
+
+    <div id="sobrePrion">
+        <span>Desenvolvido por <a href="http://www.prion.com.br" target="_blank">Prion - www.prion.com.br</a> - (22) 2523-1398 - contato@prion.com.br</span>
+        <div class="versaoSistema">versão 1.0</div>
+    </div>
+
+
+    <script type="text/javascript" language="javascript">
+        $("#loginForm").fadeOut();
+
+        $("#logoSplashScreen").delay(1000).fadeIn("slow", function () {
+            $("#logoSplashScreen").delay(500).fadeOut("slow", function () {
+                $("#loginForm").fadeIn("slow");
+            });
+        });
+    </script>
+
+</body>
+</html>

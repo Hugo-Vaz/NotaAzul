@@ -1,0 +1,107 @@
+﻿@model NotaAzul.ViewModels.Usuario.vmDados
+
+@{
+    ViewBag.Title = "Usuário :: " + @ViewBag.NomeProjeto;
+}
+
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Usuario/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+
+    <form id="frmUsuario" name="frmUsuario" action="" method="post">
+        <input type="hidden" id="Usuario_Id" name="Usuario.Id" primary-key="true" />
+        <input type="hidden" id="Usuario_IdImagem" name="Usuario.IdImagem" />
+        <input type="hidden" id="Usuario_SenhaAtual" />
+           
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Usuario_Nome">Nome</label>
+            <input type="text" class="st-forminput" id="Usuario_Nome" name="Usuario.Nome" maxlength="50" style="width:360px;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+                                  
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Usuario_Sobrenome">Sobrenome</label>
+            <input type="text" class="st-forminput" id="Usuario_Sobrenome" name="Usuario.Sobrenome" maxlength="50" style="width:360px;" mandatory="true" message="O sobrenome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Usuario_Login">Login</label>
+            <input type="text" class="st-forminput" id="Usuario_Login" name="Usuario.Login" maxlength="50" style="width:210px;" mandatory="true" message="O login não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div id="divUsuarioSenha1" class="st-form-line">
+            <label class="st-labeltext" for="Usuario_Senha">Senha</label>
+            <input type="password" class="st-forminput" id="Usuario_Senha" name="Usuario.Senha" maxlength="255" style="width:210px;" set-automatic="false" mandatory="true" message="A senha não pode ser vazia" />
+            <div class="clear"></div>
+        </div>
+
+        <div id="divUsuarioSenha2" class="st-form-line">
+            <label class="st-labeltext" for="Usuario_Confirmacao">Confirmação</label>
+            <input type="password" class="st-forminput" id="Usuario_Confirmacao" name="Usuario.Confirmacao" style="width:210px;" compare="Usuario_Senha" set-automatic="false" mandatory="true" message="A senha precisa ser confirmada" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Usuario_Email">Email</label>
+            <input type="text" class="st-forminput" id="Usuario_Email" name="Usuario.Email" maxlength="100" style="width:360px;" fieldtype="email" mandatory="true" message="O email não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div id="divComboBoxUsuarioGrupo" class="st-form-line">
+            <label class="st-labeltext">Grupos de Usuários</label>
+
+            <select id="comboboxUsuarioGrupo" name="Usuario.Grupos[0].Id" class="uniform"></select>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line" style="display:none;">
+            <label class="st-labeltext">Grupos de Usuários</label>
+            <label id="nomeGrupoUsuario" class="st-labeltext"></label>
+            <div class="clear"></div>
+        </div>
+
+        <div id="divComboBoxFuncionario" class="st-form-line">
+            <label class="st-labeltext">Funcionário</label>
+
+            <select id="listaProfessores" name="Usuario.IdFuncionario" class="uniform"></select>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">	
+            <label class="st-labeltext">Sexo</label>
+
+            <label style="margin-right:10px; position:relative; top:6px;">
+                @Html.RadioButtonFor(x => x.Usuario.Sexo, "M", new { @class = "uniform", @style = "opacity:0;" })
+                Masculino
+            </label> 
+
+            <label style="margin-right:10px; position:relative; top:6px;">
+                @Html.RadioButtonFor(x => x.Usuario.Sexo, "F", new { @class = "uniform", @style = "opacity:0;" })
+                Feminino
+            </label>
+
+            <div class="clear"></div> 
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext">Situação</label>
+                    
+            @foreach(var y in Model.Situacoes)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.Usuario.IdSituacao , y.Id, y.Padrao, y.Nome, new {@class = "uniform", @style = "opacity:0;" })
+                </label>
+            }
+            <div class="clear"></div> 
+        </div>
+
+    </form>
+</div>

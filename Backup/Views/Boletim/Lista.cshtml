@@ -1,0 +1,18 @@
+<script language="javascript" type="text/javascript">    
+    var divisaoAnoLetivo = '@ViewData["DivisaoAnoLetivo"]';
+    var mediaMinima = '@ViewData["MediaMinima"]';
+
+    Prion.Loader.Carregar([rootDir + "Scripts/Views/Boletim/lista.js"]);
+</script>
+
+<div class="st-form-line" style="margin-bottom: 30px;">
+    <form id="frmFiltroAluno" action="" style="margin-bottom: 30px;"> 
+        <label class="st-labeltext" for="Filtro_Aluno" style="margin-left: 5px; width:102px;">Aluno: </label>
+        <input type="hidden" id="Filtro_Aluno" name="Filtro.Aluno" />                               
+        <ul>
+            <input type="text" class="st-forminput" id="Filtro_NomeAluno" name="Filtro.NomeAluno" maxlength="255" style="width:530px;" placeholder="Digite o nome de um aluno" mandatory="true" message="O Aluno não pode ser vazio" />
+        </ul>
+    </form>
+</div> 
+
+<div id="listaAlunos" class="list"></div>

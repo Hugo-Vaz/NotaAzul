@@ -1,0 +1,69 @@
+﻿<div id="Recibo_Pagamento" >
+<div id="Conteudo_Recibo">
+<div style="position:relative;width:100%;margin-top:40px;line-height:120%;border:1px solid">
+    <div id="CabeçalhoRelatotio" style="margin:10px;">
+        @{ Html.RenderPartial("../Shared/RelatorioCabecalho");}    
+    </div>
+
+    <div id="FolhaA" style="margin:10px;" >
+	    <div style="margin:10px;">
+            <div style="position:relative;">
+	   
+            <div style="width:63%;">
+	            <label>Nome:</label>
+                <label id="Nome_Aluno" ></label>               
+	        </div>
+
+            <div style="clear:both;padding-bottom:3px;"></div>	
+
+            <div  style="width:45%;" >
+		        <label>Data Pagamento:</label>
+                <label id="Data_Pagamento"></label>	
+	        </div>
+
+            <div style="clear:both;padding-bottom:3px;"></div>	
+	        <div  style="width:45%;position:relative;float:left" >
+		        <label>Turno:</label>
+                <label id="Nome_Turno"></label>	
+	        </div>
+
+	        <div  style="width:45%;position:relative;float:left;margin-left:20px;" >
+		        <label>Série:</label>
+                <label id="Nome_Curso"></label>	
+	        </div>
+	        <div style="clear:both;padding-bottom:3px;"></div>
+	
+	        <div  style="position:relative;float:left;width:45%;" >
+	            <label>Valor Total:</label>
+                <label id="Recibo_ValorTotal" mask="money"></label>	
+	        </div>
+
+	        <div  style="position:relative;float:left;width:45%;margin-left:20px;"  >
+	            <label>Valor Pago:</label>
+                <label id="Recibo_ValorPago" mask="money"></label>	
+	        </div>
+            <div style="clear:both;padding-bottom:3px;"></div>
+
+            <div  style="position:relative;">
+	            <label>Referente à:</label>
+                <label id="Vencimento_Mensalidade" ></label>	
+	        </div>		
+            <div style="clear:both;padding-bottom:3px;"></div>
+	
+	        <div style="position: relative;" >
+	            <label >Rúbrica:</label>
+                <label></label>	
+	        </div>
+            <div style="clear:both;padding-bottom:3px;"></div>
+
+            </div>
+	    </div>
+    </div>	
+</div>
+</div>
+<hr style="border-top: dotted 1px;margin-top:30px;" />
+</div>
+
+	
+
+

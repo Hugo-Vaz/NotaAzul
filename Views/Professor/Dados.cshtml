@@ -1,0 +1,28 @@
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([rootDir + "Scripts/Views/Professor/dados.js"]);
+</script>
+
+<div class="body">
+    <form id="frmProfessor" name="frmProfessor" action="" method="post">
+        <input type="hidden" id="Funcionario_Id" name="Funcionario.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <p class="st-labeltext" style="margin-right: 20px;width:80px;">Nome : </p>                                       
+            <p class="st-labeltext" id="Funcionario_Nome" name="Funcionario.Nome"  maxlength="50" style="width:190px;"></p>
+            <div class="clear"></div>
+        </div>          
+       
+        <div class="st-form-line">
+            <label class="st-labeltext" for="listaTurma" style="float:left; width:80px;">Turma :</label>
+            <select id="listaTurma" name="Turma.Id" class="uniform"></select>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line"> 
+            <h4 style="margin-right: 20px;width:80px;">Disciplinas</h4>
+            <input type="checkbox" id="selecionarTodos" name="selecionarTodos" />  
+            <label for="selecionarTodos">Selecionar todos</label>                                  
+            <div id="checkBoxGrp"></div>
+        </div>
+    </form>
+</div>

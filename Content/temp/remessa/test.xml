@@ -1,0 +1,63 @@
+<?xml version=\"1.0\"?><soapenv:Envelope xmlns:ns=\"http://www.openapplications.org/oagis/10\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"><soapenv:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">
+<mesha:Messaging xmlns:soapenv=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:mesha=\"http://ciscoB2BService.com/xsd\" soapenv:mustUnderstand=\"true\" mesha:schemaLocation=\"http://www.w3.org/2001/XMLSchema-instance http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/ebms-header-3_0-200704.xsd\">
+<eb:UserMessage xmlns:eb=\"http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/ns/core/200704/\">
+<eb:MessageInfo>
+<eb:Timestamp>2011-05-30T16:13:17</eb:Timestamp>
+<eb:MessageId>Q21FY1511_11210SEPT12211_Acquire1_05@ESTClient.partner.com</eb:MessageId>
+</eb:MessageInfo>
+<eb:PartyInfo>
+<eb:From>
+<eb:PartyId>ESTClient.partner.com</eb:PartyId>
+<eb:Role>http://example.org/roles/Buyer</eb:Role>
+</eb:From>
+<eb:To>
+<eb:PartyId>ESTAcquireEstimateService.cisco.com</eb:PartyId>
+<eb:Role>http://example.org/roles/Seller</eb:Role>
+</eb:To>
+</eb:PartyInfo>
+<eb:CollaborationInfo/>
+<eb:MessageProperties/>
+<eb:PayloadInfo>
+<eb:PartInfo href=\"Create_Attach.xml\">
+<eb:Schema version=\"2.0\" location=\"http://www.cisco.com/assets/wsx_xsd/B2BEST/B2BQuoteBod.xsd\"/>
+<eb:PartProperties>
+<eb:Property name=\"Description\">ITV's CiscoService test by QA</eb:Property>
+<eb:Property name=\"MimeType\">application/xml</eb:Property>
+</eb:PartProperties>
+</eb:PartInfo>
+</eb:PayloadInfo>
+</eb:UserMessage>
+</mesha:Messaging>
+</soapenv:Header>
+<soapenv:Body>
+<ProcessQuote xsi:schemaLocation=\"http://www.openapplications.org/oagis/10\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.openapplications.org/oagis/10\" languageCode=\"en-US\" systemEnvironmentCode=\"Test/Production\" versionID=\"1.0\" releaseID=\"2014\">
+<ApplicationArea>
+<Sender>
+<LogicalID schemeAgencyID=\"Cisco\">847291911</LogicalID>
+<ComponentID schemeAgencyID=\"Cisco\">B2B-3.0</ComponentID>
+<ReferenceID schemeAgencyID=\"Cisco\">Cisco Systems Inc.</ReferenceID>
+</Sender>
+<Receiver>
+<LogicalID schemeAgencyID=\"Cisco\">12</LogicalID>
+<ID schemeAgencyID=\"Cisco\">Cisco Systems</ID>
+</Receiver>
+<CreationDateTime>token</CreationDateTime>
+<BODID schemeAgencyID=\"Cisco\">string</BODID>
+<Extension>
+<Code typeCode=\"Estimate\">Estimate</Code>
+</Extension>
+</ApplicationArea>
+<DataArea>
+<Quote typeCode=\"token\" actionCode=\"Modified\">
+<QuoteHeader>
+<ID typeCode=\"Estimate ID\">WO50314533PK</ID>
+<Extension>
+<ID typeCode=\"PriceListShortName\"/>
+<ValueText typeCode=\"AccessKey\" formatCode=\"token\">7OCOM4CI</ValueText>
+</Extension>
+</QuoteHeader>
+</Quote>
+</DataArea>
+</ProcessQuote>
+</soapenv:Body>
+</soapenv:Envelope>

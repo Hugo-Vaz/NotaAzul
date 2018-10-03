@@ -1,0 +1,48 @@
+<script language="javascript" type="text/javascript">
+    var tipoRelatorio = '@ViewData["TipoRelatorio"]';
+    var filtros = ('@ViewData["Filtro"].ToString()').split(',');
+    var booleanRadio = '@ViewData["SelecionarFiltro"].ToString()';
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Relatorios/dados.js"
+    ]);
+</script>
+
+
+<div>
+    <div id="Filtro" style="margin-bottom:5%;">
+            @{
+                // pega o nome dos filtros, separa por vírgula e carrega o respectivo html
+                var filtros = ViewData["Filtro"].ToString().Split(',');
+                var booleanRadio = ViewData["SelecionarFiltro"].ToString();
+                var filtroInclusoNoRadio = ( booleanRadio.ToLower() == "true") 
+                    ? ViewData["PrimeiroFiltroDoRadio"].ToString()
+                    :""; 
+                foreach(var filtro in filtros)
+                {
+                    if ( booleanRadio == "True" && ("Filtro"+filtro)==filtroInclusoNoRadio){
+                        Html.RenderPartial("SelecionarFiltro");
+                    }
+                    Html.RenderPartial("Filtro"+filtro);
+                    <div class="clear"></div>
+                }
+            }
+        <div class="button-boxP" style="margin-top: 20px;">
+            <input id="btnAplicarFiltro" type="button" value="Aplicar Filtro" class="button-green"/>
+            <input id="btnGerarPdf" type="button" value="Gerar PDF" class="st-clear" />
+            <input id="btnAbrirPdf" type="button" value="Abrir PDF" class="st-clear" style="display:none;"/>
+        </div>           
+    </div>
+
+    <div class="clear"></div>
+    <div id="Relatorio" class="list" style="position:relative;">
+    <div id="Relatorio_Impressao" style="display:none;">
+        <div style="position:relative;width: 100%;">
+             <div id="CabecalhoRelatotio" style="margin:10px;">
+                    @{ Html.RenderPartial("../Shared/RelatorioCabecalho");}    
+             </div>
+        </div>
+        <div class="clear"></div>
+        <h4 id="Titulo_Relatorio" style="margin-left:40%;"></h4>
+        <table id="CorpoRelatorio" border="1" cellspacing="0" style="position:relative;margin-left:5px;width: 100%;font-size: 16px;"></table>
+    </div>    
+</div>

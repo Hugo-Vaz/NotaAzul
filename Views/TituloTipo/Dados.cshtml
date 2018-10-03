@@ -1,0 +1,41 @@
+@model NotaAzul.ViewModels.TituloTipo.vmDados
+
+@{
+    ViewBag.Title = "Tipos de Título :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/TituloTipo/dados.js"
+    ]);
+</script>
+
+<div class="body">
+    <form id="frmTituloTipo" name="frmTituloTipo" action="" method="post">
+        <input type="hidden" id="TituloTipo_Id" name="TituloTipo.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="TituloTipo_Nome" style="width: 100px;">Nome</label>
+            <input type="text" class="st-forminput" id="TituloTipo_Nome" name="TituloTipo.Nome" maxlength="50" style="width:310px;float:left;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="TituloTipo_Descricao" style="width: 100px;">Descrição</label>
+            <input type="text" class="st-forminput" id="TituloTipo_Descricao" name="TituloTipo.Descricao" maxlength="100" style="width:310px;float:left;" />
+            <div class="clear"></div>
+        </div>
+        
+        <div class="st-form-line">
+            <label class="st-labeltext" for="TituloTipo_Situacao" style="width:100px;">Situação</label>
+               @foreach (var y in Model.Situacoes)
+                    {
+                        <label class="radio" style="margin-right:10px">
+                            @Html.RadioButtonFor(x => x.TituloTipo.IdSituacao, y.Id, y.Padrao, y.Nome, new { @class = "uniform", @style = "opacity:0;" })
+                        </label>
+                    }
+            <div class="clear"></div>
+        </div>
+
+    </form>
+</div>

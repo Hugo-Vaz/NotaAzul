@@ -1,0 +1,126 @@
+﻿@model NotaAzul.ViewModels.Matricula.vmDados
+           
+@{
+    ViewBag.Title = "Matricular Aluno :: " + @ViewBag.NomeProjeto;
+    string imgPathPrion = @Url.Content("~/Content/prion");
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Matricula/dados.js",
+        rootDir + "Scripts/Views/Aluno/lista.js"
+    ]);
+</script>
+
+
+<div class="body">
+    <form id="frmMatricula" name="frmMatricula" action="" method="post">
+        <input type="hidden"id="Matricula_Id" name="Matricula.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext2" for="Matricula_NumeroMatricula" style="float:left; width:80px;">Número de Matrícula</label>
+            
+            <div style="width:530px; float:left;">
+                <input type="text" class="st-forminput" id="Matricula_NumeroMatricula" name="Matricula.NumeroMatricula" maxlength="12" style="position:relative;float:left;width:150px;" />
+                <label class="st-labeltext2" for="Matricula_DataCadastro" style="float:left; width:35px;">Data</label>
+                <input type="text" class="st-forminput" id="Matricula_DataCadastro" name="Matricula.DataCadastro" maxlength="12" style="position:relative;float:left;width:70px;" mandatory="true" mask="dd/mm/aaaa" message="A data não pode ser vazia" />
+
+                <label class="st-labeltext2" for="Matricula_CursoAnoLetivo_AnoLetivo" style="position:relative; float:left;">Ano Letivo</label>
+                <input type="text" class="st-forminput" id="Matricula_CursoAnoLetivo_AnoLetivo" name="Matricula.CursoAnoLetivo.AnoLetivo" maxlength="4" style="position:relative;float:left;width:50px;" mandatory="true" mask="integer" message="O ano não pode ser vazio" />
+
+                <a id="btnBuscarCursos" class="icon-button tips cursor" original-title="Busca todos os cursos do ano letivo informado" style="position:relative; top:8px; left:4px;">
+                    <img src="@imgPathPrion/search.png" height="18" width="18" alt="icon" />
+                </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext2" for="Matricula_NomeAluno" style="float:left; width:80px;">Aluno</label>
+
+            <div style="width:582px; float:left;">
+                <a style="display:none;" id="btnBuscarAluno" class="icon-button tips cursor" original-title="Abre uma lista para selecionar um aluno">
+                    <img src="@imgPathPrion/search.png" height="18" width="18" alt="icon" />
+                </a> 
+                
+                <input type="hidden" id="Matricula_IdAluno" name="Matricula.IdAluno" />                               
+                <ul>
+                    <input type="text" class="st-forminput" id="Matricula_NomeAluno" name="Matricula.NomeAluno" maxlength="255" style="width:530px;" placeholder="Digite o nome de um aluno" mandatory="true" message="O Aluno não pode ser vazio" />
+                </ul>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+            
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Matricula_AlunoFilantropia" style="width: 80px;margin-left: 10px;">Bolsista</label>
+            <input type="hidden" id="Matricula_idAlunoFilantropia" name="Matricula.IdAlunoFilantropia" />
+            <label class="radio" style="margin-right:10px">Não
+                <input type="radio" class="uniform" id="BolsistaNao" name="BolsistaValor" value="0"/>
+            </label> 
+
+            <label class="radio" style="margin-right:10px">Parcial(50%)
+                <input type="radio" class="uniform" id="BolsistaParcial"  name="BolsistaValor" value="50"/>
+            </label>
+
+            <label class="radio" style="margin-right:10px">Integral(100%)
+                <input type="radio" class="uniform" id="BolsistaIntegral"  name="BolsistaValor" value="100"/>
+            </label>
+            
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext2" for="listaCursoAnoLetivo" style="float:left; width:80px;">Curso</label>
+            
+            <div style="width:500px; float:left;">
+                <select id="matriculaListaCursoAnoLetivo" name="Matricula.IdCursoAnoLetivo" class="uniform"></select>
+            </div>
+
+
+            <div style="width:590px; float:left; left:94px; position:relative;">
+                <label class="st-labeltext2" style="float:left; font-weight:bold; padding-right:0px !important;">Valor da Matrícula:</label>
+                <label id="CursoAnoLetivo_ValorMatricula" class="st-labeltext2" style="float:left;" mask="money">R$ 0.00</label>
+
+                <label class="st-labeltext2" style="float:left; font-weight:bold; padding-right:0px !important;">Valor da Mensalidade:</label>
+                <label id="CursoAnoLetivo_ValorMensalidade" class="st-labeltext2" style="float:left;" mask="money">R$ 0.00</label>
+
+                <label class="st-labeltext2" style="float:left; font-weight:bold; padding-right:0px !important;">Qtd de Mensalidades:</label>
+                <label id="CursoAnoLetivo_QtdMensalidade" class="st-labeltext2" style="float:left;">0</label>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext2" for="listaGrupoDesconto" style="float:left; width:80px;">Grupo de Desconto</label>
+
+            <select id="matriculaListaGrupoDesconto" name="Matricula.IdGrupoDesconto" class="uniform" style="width:300px;"></select>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext2" for="listaTurmaAnoLetivo" style="float:left; width:80px;">Turma</label>
+
+            <select id="matriculaListaTurmaAnoLetivo" name="Matricula.IdTurma" class="uniform"></select>
+            <div class="clear"></div>
+        </div>
+                                              
+        <div class="st-form-line">
+            <label class="st-labeltext2" style="float:left; width:80px;">Situação</label>
+                    
+            @foreach(var y in Model.Situacoes)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.Matricula.IdSituacao, y.Id, y.Padrao, y.Nome, new {@class = "uniform", @style = "opacity:0;" })
+                </label>
+            }
+            <div class="clear"></div> 
+        </div>
+
+        <div id="tabsMensalidades" class="prionTabs">
+            <ul id="ulTabs" class="ulTabs" style="width: 687px !important; margin-left: 36px; margin-top: 10px;"></ul> 
+
+        </div>        
+    </form>   
+</div>

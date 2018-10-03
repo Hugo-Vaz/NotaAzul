@@ -1,0 +1,112 @@
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using System;
+using GenericHelpers = Prion.Generic.Helpers;
+
+namespace NotaAzul.Controllers
+{
+    public class CursoAnoLetivoController : BaseController
+    {
+        #region "Views"
+
+        /// <summary>
+        /// Retorna a view Lista, com os registros de CursoAnoLetivo
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ViewLista()
+        {
+            return View("Lista");
+        }
+
+        /// <summary>
+        /// Retorna a view Dados, utilizada para Cadastrar/Alterar os registros de um objeto CursoAnoLetivo
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ViewDados()
+        {
+            ViewModels.CursoAnoLetivo.vmDados vm = new ViewModels.CursoAnoLetivo.vmDados();
+            Business.Situacao buSituacao = new Business.Situacao();
+
+            vm.Situacoes = buSituacao.CarregarSituacoesPeloTipo("CursoAnoLetivo");
+
+            return View("Dados", vm);
+        }
+
+        #endregion "Views"
+
+
+        #region "Requisições"
+
+        /// <summary>
+        /// Carrega um registro do tipo Models.CursoAnoLetivo atráves do seu ID
+        /// </summary>
+        /// <param name="id">id do CursoAnoLetivo</param>
+        /// <returns></returns>
+        public ActionResult Carregar(Int32 id)
+        {
+            Prion.Tools.Request.ProcessarRequest request = new Prion.Tools.Request.ProcessarRequest();
+            Prion.Tools.Request.ParametrosRequest parametros = request.Processar(Sistema.Lista, Request);
+
+            Business.CursoAnoLetivo biCursoAnoLetivo = new Business.CursoAnoLetivo();
+            Models.CursoAnoLetivo cursoAnoLetivo = (Models.CursoAnoLetivo)biCursoAnoLetivo.Carregar(parametros,id).Get(0);
+
+            return Json(new { success = true, obj = cursoAnoLetivo }, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Exclui um CursoAnoLetivo pelo ID
+        /// </summary>
+        /// <param name="id">id do CursoAnoLetivo</param>
+        /// <returns>retorno no formato JSON</returns>
+        public ActionResult Excluir()
+        {
+            Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
+            Business.Turno biTurno = new Business.Turno();
+            GenericHelpers.Retorno retorno = biTurno.Excluir(Prion.Tools.Conversor.ToInt(Request.Form["id"]));
+
+            mensagem.Tipo = (retorno.Sucesso) ? GenericHelpers.TipoMensagem.Sucesso : GenericHelpers.TipoMensagem.Erro;
+            mensagem.TextoMensagem = (retorno.Sucesso) ? "Curso do ano letivo excluído com sucesso" : retorno.Mensagem;
+            mensagem.Sucesso = retorno.Sucesso;
+            
+            return Json(new { success = mensagem.Sucesso, mensagem = mensagem });
+        }
+
+        /// <summary>
+        /// Insere ou Atualiza os dados de um CursoAnoLetivo
+        /// </summary>
+        /// <param name="vModel"></param>
+        /// <returns></returns>
+        public ActionResult Salvar(ViewModels.CursoAnoLetivo.vmDados vModel)
+        {
+            Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
+            Business.CursoAnoLetivo biCursoAnoLetivo = new Business.CursoAnoLetivo();
+            GenericHelpers.Retorno retorno = biCursoAnoLetivo.Salvar(vModel.CursoAnoLetivo);
+
+            mensagem.EstadoObjeto = retorno.EstadoObjeto;
+            mensagem.UltimoId = retorno.UltimoId;
+            mensagem.Tipo = (retorno.Sucesso) ? GenericHelpers.TipoMensagem.Sucesso : GenericHelpers.TipoMensagem.Erro;
+            mensagem.TextoMensagem = retorno.Mensagem;
+            mensagem.Sucesso = retorno.Sucesso;
+
+            return Json(new { success = mensagem.Sucesso, mensagem = mensagem });
+        }
+
+        /// <summary>
+        /// Retorna uma lista no formato JSON de objetos do tipo Models.CursoAnoLetivo
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetLista()
+        {
+            Prion.Tools.Request.ProcessarRequest request = new Prion.Tools.Request.ProcessarRequest();
+            Prion.Tools.Request.ParametrosRequest parametros = request.Processar(Sistema.Lista, Request);
+            Business.CursoAnoLetivo biCursoAnoLetivo = new Business.CursoAnoLetivo();
+
+            Prion.Generic.Models.Lista lista = biCursoAnoLetivo.ListaCursoAnoLetivo(parametros);
+            String rowsStr = Prion.Tools.Conversor.ToJson(lista.DataTable);
+
+            return Json(new { success = true, page = parametros.Inicio, total = lista.Count, rows = rowsStr }, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+    }
+}

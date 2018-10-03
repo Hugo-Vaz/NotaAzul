@@ -1,0 +1,37 @@
+﻿@model NotaAzul.ViewModels.Segmento.vmDados
+
+@{
+    ViewBag.Title = "Segmento :: " + @ViewBag.NomeProjeto;
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Segmento/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+
+    <form id="frmSegmento" name="frmSegmento" action="" method="post">
+        <input type="hidden" id="Segmento_Id" name="Segmento.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Segmento_Nome" style="width: 100px;">Nome</label>
+            <input type="text" class="st-forminput" id="Segmento_Nome" name="Segmento.Nome" maxlength="255" style="width:362px;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" style="width: 100px;">Situação</label>
+                    
+            @foreach(var y in Model.Situacoes)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.Segmento.IdSituacao , y.Id, y.Padrao, y.Nome, new {@class = "uniform", @style = "opacity:0;" })
+                </label>
+            }
+            <div class="clear"></div> 
+        </div>
+    </form>
+</div>

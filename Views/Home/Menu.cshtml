@@ -1,0 +1,5 @@
+﻿@model List<Prion.Generic.Models.Menu>
+
+<div id="sidemenu">
+    @{ Html.RenderAction("MenuHTML", "Home", new { menu = this.Model }); }
+</div>

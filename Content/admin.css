@@ -1,0 +1,326 @@
+﻿/**************************************************************************************************
+ * ---- LEIAME ----
+ * por Thiago Motta Zappaterra 
+ * data: 05/06/2013
+ * COLOCAR AQUI APENAS CSS QUE FOR GENÉRICO DO FRAMEWORK
+ * EXISTE UM ARQUIVO CSS PARA CADA PROJETO. COLOCAR DENTRO DELE O QUE FOR PARTICULAR
+ **************************************************************************************************/
+
+
+body { background-image:url('prion/bg.jpg'); background-repeat:repeat; }
+.logo img { top: -10px; position: relative; }
+
+
+.logoCliente { position:relative; top:30px; text-align: center; float: center; }
+#logoSplashScreen { -moz-box-shadow: 0px 0px 8px 2px black; -webkit-box-shadow: 0px 0px 8px 2px black; box-shadow: 0px 0px 8px 2px black; margin-left: -250px;top: 50%; position: absolute;left: 50%;margin-top: -140px; }
+#logoSplashScreen:hover { -webkit-box-shadow: 0px 0px 8px 4px black; -webkit-box-shadow:  0px 0px 8px 4px black; box-shadow: 0px 0px 8px 4px black; }
+.loginform { top: 50%; width: 360px; left: 50%; position: absolute; margin-left: -180px; margin-top: -180px; /*box-shadow: 0px 0px 30px #999;*/ }
+
+
+#sobrePrion { cursor:default; width: 100%; bottom: 0px; position: fixed; background-color: #F1F1F1; height: 24px; opacity: 0.8; border-top: 1px solid #A1A1A1; }
+#sobrePrion span { top: 4px; position: relative; left: 10px; font-family: Verdana; font-size: 12px; }
+#sobrePrion .versaoSistema { font-family: Verdana; bottom: 6px; right: 6px; position: fixed; font-size: 12px;font-weight: bold; cursor: default; }
+
+.pageTitleRefresh { cursor:pointer; }
+
+
+
+/** MODIFICAÇÃO NO DEFAULT DO jQuery: jquery.ui.tabs.css **/
+.ui-corner-all { border: none; }
+.ui-tabs { margin: 10px; }
+.ui-tabs .ui-tabs-panel { padding:0px; }
+.ui-state-hide, .ui-widget-content .ui-state-hide, .ui-widget-header .ui-state-hide { display:none; }
+/** FIM **/
+
+
+/** PARA A BARRA DE ROLAGEM jQuery.scroll **/
+.scrollable{outline:none}
+.jspContainer{overflow:hidden; position:relative}
+.jspPane{position:absolute}
+.jspVerticalBar{position:absolute; top:0; right:0; width:10px; height:100%}
+.jspHorizontalBar{position:absolute; bottom:0; left:0; width:100%; height:16px}
+.jspVerticalBar *, 
+.jspHorizontalBar *{margin:0; padding:0}
+.jspCap{display:none}
+.jspHorizontalBar .jspCap{float:left}
+.jspTrack{background:#d9d9d9; position:relative; /*-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px*/}
+.jspDrag{background:#b8b8b8; position:relative; top:0; left:0; cursor:pointer; /*-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px*/}
+.jspHorizontalBar .jspTrack, 
+.jspHorizontalBar .jspDrag{float:left; height:100%}
+.jspArrow{background:#50506d; text-indent:-20000px; display:block; cursor:pointer}
+.jspArrow.jspDisabled{cursor:default; background:#80808d}
+.jspVerticalBar .jspArrow{height:16px}
+.jspHorizontalBar .jspArrow{width:16px; float:left; height:100%}
+.jspVerticalBar .jspArrow:focus{outline:none}
+.jspCorner{background:#eeeef4; float:left; height:100%}
+/** FIM **/
+
+
+/** MENU **/
+.subtitle .configuracao { display:none; width:24px; height:24px; float:right; position:absolute; top:8px; right:10px; background-image: url('prion/configuration.png'); }
+/** FIM: MENU **/
+
+
+/*.arrowRed { background-repeat:no-repeat; height:32px; width:32px; background-image:url('Content/prion/arrowRed.png'); padding-top:6px; position:absolute; left:-18px; }*/
+.unselectable { -webkit-user-select:none; -moz-user-select:none; -khtml-user-select:none; }
+.draggable { border: 1px solid #EEEEEE; width: 324px; height: 305px; position: absolute; }
+.handlerDrag { width: 100px; color: #BBBBBB; background-color: #EEEEEE; text-align: center; line-height: 2em; cursor: move; top: -32px; left: -4px; }
+.cursor { cursor:pointer !important; }
+
+.mask { display: none; opacity: 0.8; background-color: #F1F1F1; position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; filter: alpha(opacity=80); }
+.loadingMsg { cursor:default; color:black; background-color:white; border:1px solid #C9C9C9; padding:10px; width:250px; font-size:13px; font-weight:bold; text-align:center; -webkit-box-shadow:1px 1px 10px 0px rgba(224, 224, 224, 0.6); box-shadow:1px 1px 10px 0px rgba(224, 224, 224, 0.6);}
+.loadingMsg:hover { -webkit-box-shadow: 0px 0px 8px 2px rgba(190, 190, 190, 0.5); box-shadow: 0px 0px 8px 2px rgba(190, 190, 190, 0.5); }
+.loadingMsg img { float:left; position:relative; }
+.loadingMsg span { top:10px; position:relative; }
+
+#loading { margin-left: -150px; height: 40px; width:300px; font-size: 17px; z-index: 1000; display: none; position: fixed; top: 0px; left: 50%; background-color: #DEE8F0; -moz-border-radius-topleft: 0px; -moz-border-radius-topright: 0px; -moz-border-radius-bottomright: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-radius: 0px 0px 6px 6px; border-radius: 0px 0px 6px 6px; -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5); box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5); }
+#loading p { text-align: center; padding: 10px 10px 0px 10px; color: Black; }
+
+.arrowDown{ height:16px !important; width:16px !important; background:url('prion/sort.png') no-repeat top left; background-position:0 0; } 
+.arrowUp{ height:16px !important; width:16px !important; background:url('prion/sort.png') no-repeat top left; background-position:-18px 0; } 
+
+.buttonDisabled { cursor: default !important; -webkit-filter: grayscale(90%); -moz-filter: grayscale(90%); -ms-filter: grayscale(90%); -o-filter: grayscale(90%); -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60); filter: alpha(opacity=60); -moz-opacity: 0.6; -khtml-opacity: 0.6; opacity: 0.6; }
+
+/** INICIO: POPUP **/
+.popupWindowMask { display: none; opacity: 0.8; filter: alpha(opacity=80); background-color: #F1F1F1; position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; }
+.popupWindow:hover { -webkit-box-shadow: 0px 0px 6px 2px rgba(190, 190, 190, 0.5); -webkit-box-shadow: 0px 0px 6px 2px rgba(190, 190, 190, 0.5); box-shadow: 0px 0px 6px 2px rgba(190, 190, 190, 0.5); }
+.popupWindow .maskInternal { opacity: 0.6; filter: alpha(opacity=60); background-color:#F2F2F2; width:100%; height:100%; z-index:1000; position:absolute; top:2px; left:1px; }
+.popupWindow .maskInternal:hover { -webkit-box-shadow: 0px 0px 8px 2px rgba(190, 190, 190, 0.5); box-shadow: 0px 0px 8px 2px rgba(190, 190, 190, 0.5); }
+.popupWindow .maskInternalMsg { margin-top: -23px; margin-left: -121px; left: 50%; top: 50%; moz-opacity:.80; opacity: 0.8; filter: alpha(opacity=80); padding-top:15px; text-align:center; border:1px solid #C9C9C9; height:30px; width:240px; background-color:white; color:black; -webkit-box-shadow:#A2A2A2 0px 0px 2px 0px; box-shadow:#A2A2A2 0px 0px 2px 0px; }
+.popupWindow .maskInternalMsg:hover { -webkit-box-shadow: 0px 0px 8px 2px rgba(190, 190, 190, 0.5); box-shadow: 0px 0px 8px 2px rgba(190, 190, 190, 0.5); }
+.popupWindow .maskInternalMsg label { color: #225983; font-weight: bold; font-size:14px; left:6px; position:relative; top:-2px; letter-spacing:1px; }
+
+.popupWindow .title {
+	position: relative;
+	width: 100%;
+	background-color: #F4F4F4;
+	text-align: left;
+	color: black;
+	font-size: 10pt;
+	font-family: Verdana;
+	padding-top: 2px;
+	z-index: 2;
+	cursor: default;
+	left: 1px;
+	border-bottom: 1px solid #CBDAE8;
+	height: 40px;
+}
+
+.popupWindow .fechar {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    z-index: 10;
+    font-size: 2em;
+    width: 30px;
+    text-align: center;
+    color: #225983;
+}
+
+    .popupWindow .fechar:hover {
+        color: rgb(218, 71, 71);
+    }
+
+.popupWindow .backgroundTitle {
+    background: url(cupcake/images/simplebox-title-bg.png) repeat-x bottom;
+}
+
+
+.popupWindow .sombra { z-index:1000; -webkit-box-shadow: 0px 12px 12px -12px rgba(165, 165, 165, 1); -moz-box-shadow: 0px 12px 12px -12px rgba(165, 165, 165, 1); box-shadow: 0px 12px 12px -12px rgba(165, 165, 165, 1); }
+.popupWindow .internal { border: 1px solid rgba(0, 0, 0, .333); background-color: white; -webkit-box-shadow: 0 4px 16px rgba(0,0,0,.2); -moz-box-shadow: 0 4px 16px rgba(0,0,0,.2); box-shadow: 0 4px 16px rgba(0,0,0,.2); }
+/*.popupWindow .close { position:absolute; top:0px; right:0px; }
+.popupWindow .close a { z-index:1000; right:10px; position:absolute; top:10px; }
+.popupWindow .close img { height:25px; width:25px;}*/
+.popupWindow .bodyWindow { border-top:none; color:#748897; }
+.popupWindow .bodyWindow .button-boxP { padding-top: 8px; height: 38px; text-align: center; }
+.popupWindow .bottom { background:url(cupcake/images/simplebox-title-bg.png) repeat-x bottom; left:1px; bottom:-3px; position:absolute; width:100%;z-index:1 }
+.popupWindow .bottom-box, .bottom-box { text-align: center; border-top: 1px solid #ADADAD; background: #EBEBEB url(cupcake/images/simplebox-dot.png) repeat-x top; padding: 8px 0px; }
+.popupWindow .bottom-boxP { text-align:center; border-top:1px solid #E6EDF4; background:#FDFDFD url(cupcake/images/simplebox-dot.png) repeat-x top; padding:8px 0px; }
+.popupWindowTitleH3 { font-size: 14px; color: #225983; padding: 13px 0 0 15px; }
+/** FIM: POPUP */
+
+
+/** PAGINACAO :: LISTA PRION **/
+.textTD { padding: 4px 4px 4px 5px; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; white-space:nowrap; }
+.paging { height: 40px; }
+.paging span { padding: 4px; }
+.pagingInternal { height:32px; padding:4px 4px 2px 6px; text-align:center; position:relative; border:1px solid #CBDAE8; border-top:none; background:url(prion/list/title-bg.png) repeat-x bottom; border-bottom-right-radius:3px; border-bottom-left-radius:3px; }
+
+.pagingButton { padding:4px; cursor:pointer; margin:0px 2px 0px 2px; min-width:20px; border:1px solid #D6D6D6; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:url(prion/list/title-bg.png) repeat-x bottom; box-shadow:0px 1px 1px #EDEDED; }
+.pagingRefresh, .pagingFirst, .pagingPrevious, .pagingNext, .pagingLast { padding: 4px; cursor:pointer; height:16px; min-width: 24px; }
+.pagingRefresh:hover, .pagingFirst:hover, .pagingPrevious:hover, .pagingNext:hover, .pagingLast:hover { background-color:#F2F2F2; color:black; }
+
+.pagingRefresh { background:url(prion/refresh.png) no-repeat; background-size: 19px auto; background-position: 7px 2px; }
+.pagingFirst { background:url(prion/list/arrow_left.png) no-repeat; background-position: 7px 3px; }
+.pagingPrevious { background:url(prion/list/arrow_left.png) no-repeat; background-position: 7px 3px; }
+.pagingNext { background:url(prion/list/arrow_right.png) no-repeat; background-position: 9px 3px; }
+.pagingLast { background:url(prion/list/arrow_right.png) no-repeat; background-position: 9px 3px; }
+
+.listTitleH3 { font-size: 14px; color: #225983; text-shadow: #F2F2F2 1px 1px 1px; position: relative; top: 12px; left: 16px; }
+.list { cursor:default; -webkit-user-select:none; -moz-user-select:none; -khtml-user-select:none; /*height: auto !important; overflow: hidden;*/ }
+.list .title { border: 1px solid #CBDAE8; background: url(prion/list/title-bg.png) repeat-x bottom; height: 40px; border-top-right-radius: 3px; border-top-left-radius: 3px; position: relative; }
+.list .search { position: relative; float: right; top: 7px; right: 10px; }
+.list table { font-family:arial; margin:0px 0pt 0px; font-size:12px; width:100%; text-align:left; }
+.list table .headerSort { cursor:pointer; }
+.list table .headerSort:hover { cursor:pointer; }
+/*.list table thead, .list table tfoot, .list table tbody { display: block; }*/
+.list table thead tr .header { height:20px; background-image:url(prion/list/sort_bg.gif); background-repeat:no-repeat; background-position:center right; cursor:pointer; color:#333; }
+.list table thead th .text { top: 10px; position: absolute; padding-left:4px; /** COMENTADO em 17/10/2012. DESCOMENTAR caso necessário float:left; position:relative; top:25%; height:40px;*/ }
+.list table thead th .sort { display:none; right:4px; position:relative; height:40px; text-align:center; padding-right:2px; width:26px; float:right; vertical-align:text-bottom; }
+.list table thead tr th { background:#EFF3F8 url(prion/list/titlebg.png) repeat-x bottom; border-left: 1px solid #CBDAE8; border-top:none; /*font-size:8pt;*/ white-space: nowrap; }
+.list table thead tr th:first-child { border-left: none; }
+.list table thead tr th:last-child { border-right: none; }
+.list table tbody td { padding-top:10px; height:30px; vertical-align:top; border:1px solid #CBDAE8; }
+.list table tbody td:first-child { border-left: none; }
+.list table tbody td:last-child { border-right: none; }
+.list table tbody tr { border-bottom:1px solid #D8E4E9; }
+/*.list table tbody tr td .odd { background-color:black; }*/
+.list table tbody tr:hover { background-color: rgb(230, 230, 230); }
+.list table tbody tr:hover .divLnkBotoes { visibility: visible; }
+.list table tbody tr:nth-child(odd) { background: rgb(234, 238, 241); }
+.list table tbody tr:nth-child(odd):hover { background: rgb(230, 230, 230); }
+
+.list div.header { border-bottom: 1px solid #CBDAE8; background: #EFF3F8 url(prion/list/titlebg.png) repeat-x bottom;  }
+
+.list input[type=checkbox] { cursor:pointer; }
+.list input[type=checkbox].cbDisabled { cursor: default !important; }
+.list .shortcuts-icons { position: relative; display: block; text-align: right; right: 10px; top: 8px; }
+.list .maskList { moz-opacity:.60; opacity:0.6; filter: alpha(opacity=60); background-color:#F2F2F2; position:absolute; z-index:1000; }
+.list .maskListMsg { moz-opacity:.80; opacity: 0.8; filter: alpha(opacity=80); padding-top:15px; text-align:center; border:1px solid #C9C9C9; height:34px; width:280px; background-color:white; color:black; -webkit-box-shadow:#A2A2A2 0px 0px 2px 0px; box-shadow:#A2A2A2 0px 0px 2px 0px; }
+.list .maskListMsg:hover { -webkit-box-shadow: 0px 0px 8px 2px rgba(190, 190, 190, 0.5); box-shadow: 0px 0px 8px 2px rgba(190, 190, 190, 0.5); }
+.list .maskListMsg img { left: -10px; top: -8px; position: relative; }
+.list .maskListMsg label { color: #225983; font-weight: bold; font-size:14px; left:6px; position:relative; top:-18px; letter-spacing:1px; }
+
+.list .buttons { margin-left:6px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; padding:4px 10px 0px 10px; border:1px solid #CDDCEA; border-bottom:1px solid #B8C6D2; }
+.list .divTable { border-left: 1px solid #D8E4E9; border-right: 1px solid #D8E4E9; border-bottom: 1px solid #D8E4E9; }
+.list .lineSelected { background-color:#E7EFE0 !important; }
+.list .trHover { background:#F8FAFB; }
+.list .listFieldsSearch  
+{
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    left: 10px;
+    top: 30px;
+    border: 1px solid rgb(209, 209, 209);
+    -webkit-transition: 0.2s; 
+    -moz-transition: 0.2s; 
+    -o-transition: 0.2s; 
+    -ms-transition: 0.2s; 
+    transition: 0.2s;
+    opacity: 0;
+    width: 160px;
+}
+.list .listFieldsSearch ul 
+{
+    line-height: 16px;
+    font-size: 1.1em;
+}
+.list .listFieldsSearch li
+{
+    padding: 4px;
+    border-bottom: 1px solid rgb(235, 230, 230);
+    cursor: pointer;
+}
+.list .listFieldsSearch li:hover 
+{
+    background-color: #F6F6F6;
+    color: rgb(68, 108, 168);
+}
+/** PAGINACAO :: LISTA PRION **/
+
+
+/** tooltip **/
+.tooltip:before, .tooltip:after { display:none; /*top: -8px;*/ bottom:0; position:absolute; opacity:1; z-index: 10000; }
+.tooltip:before { content: ""; }
+
+.tooltip:after {
+    font-size: 12px;
+    text-align: center;
+    min-width: 100%;
+    /*height:100%;*/
+    background-color:rgba(71, 118, 170, 0.8);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    color:#ffffff;
+    content: attr(tooltip-message); /** attr(data-errorType) ": \A" attr(data-error);**/
+    left:0;
+    padding: 6px 15px;
+    white-space:pre-wrap;
+}
+
+.tooltip:hover:after, .tooltip:hover:before { display:block; }
+
+.tooltipLeft:after {
+    margin-left: 140px;
+}
+.tooltipLeft:before {
+    margin-top: 50%;
+    margin-left: 98px;
+    margin-bottom: 10px;
+    border-bottom: 6px solid transparent;
+    border-top: 6px solid transparent;
+    border-right: 8px solid rgba(71, 118, 170, 0.8);
+}
+/** /tooltip **/
+
+
+/** outros **/
+.tituloDiv { text-transform: capitalize; left: 8px; top: -14px; text-align: left; background-color: rgb(255, 255, 255); width: 200px; height: 24px; position: relative; cursor: default; border: 1px solid #999; font-size: 14px; padding: 2px 0px 0px 10px; }
+
+/** TABS **/
+.prionTabs .div { 
+    line-height:20px; 
+    padding:10px 10px 14px 10px; 
+    position:relative; 
+    float:left; 
+    top:45px; 
+    border-right:1px solid #DFDFDF; 
+    border-bottom:1px solid #DFDFDF; 
+    border-left:1px solid #DFDFDF; 
+}
+
+.prionTabs ul { 
+    position:absolute; 
+    border-bottom:1px solid #CCC; 
+    padding-bottom:0; 
+}
+
+.prionTabs li {
+    height:20px;
+    cursor: pointer;
+    list-style:none; 
+    float:left; 
+    position:relative; 
+    overflow:hidden;
+    border-style: solid;
+    border-color: #DFDFDF #DFDFDF white;
+    border-width: 1px 1px 0;
+    color: #AAA;
+    /*font-size: 1.6em;*/
+    line-height: 16px;
+    display: inline-block;
+    padding:8px 14px 6px;
+    text-decoration: none;
+    margin: 0 6px -1px 0;
+    text-shadow: white 0 1px 0;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -o-transition: 0.4s;
+    -ms-transition: 0.4s;
+    transition: 0.4s;
+    top:6px;
+}
+.prionTabs ul li:first-child { margin-left:-30px !important; }
+.prionTabs li a { font-size: 1.2em; }
+.prionTabs li:hover { background-color:#F9F9F9; }
+.prionTabs .active { top: 0px !important; background-color: #E9E9E9; }
+.prionTabs .hide { display:none !important; }
+.prionTabs .selected { background-color:#F9F9F9; }
+/** /TABS **/

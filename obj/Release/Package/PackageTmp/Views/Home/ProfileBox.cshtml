@@ -1,0 +1,17 @@
+﻿@model NotaAzul.Models.Usuario
+
+<div id="profilebox">
+    @{ string imgPath = Url.Content("~/Content/cupcake/images"); }
+
+    <a href="#" class="display">
+        <img src="@Url.Content((Model.Imagem.Caminho != null) ? Model.Imagem.Caminho : @imgPath + "/default-profile-mini.png")" width="33" height="33" alt="Perfil"/>
+        <b> Bem vindo, </b> <span> @Model.Nome </span>
+    </a>
+
+    <div id="profilemenu" class="profilemenu">
+        <ul>
+            <li style="display:none;"><a href="#" rel="Usuario/ViewMeusDados/">Meus dados</a></li>
+            <li>@Html.ActionLink("Logout", "LogOff", "Home")</li>
+        </ul>
+    </div>
+</div>

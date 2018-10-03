@@ -1,0 +1,15 @@
+<script language="javascript" type="text/javascript">
+    document.title = "Lista de Disciplinas - " + nomeProjeto;
+
+    Prion.Loader.Carregar([rootDir + "Scripts/Views/ComposicaoNota/lista.js"]);
+</script>
+
+<div class="st-form-line" style="margin-bottom: 30px;">
+    <label class="st-labeltext" for="listaTurma" style="float:left; width:80px;">Turma :</label>
+    <select id="listaTurma" name="Turma.Id" class="uniform"></select>
+
+    <input id="btnAplicarFiltro" type="button" value="Aplicar Filtro" class="button-green" style="margin-left: 20px;"/>
+    <div class="clear"></div>
+</div> 
+
+<div id="listaDisciplinas" class="list"></div>

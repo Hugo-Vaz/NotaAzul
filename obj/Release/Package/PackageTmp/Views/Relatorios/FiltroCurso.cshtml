@@ -1,0 +1,15 @@
+@{    
+    string imgPathPrion = @Url.Content("~/Content/prion");
+}
+
+<form id="frmFiltroCurso" action="" style="margin-bottom: 30px;">
+    <input type="hidden" name="Filtro.Tipo" value="Turma" />
+    <label class="st-labeltext" for="AnoLetivo" style="position:relative; float:left;margin-left: 5px;width: 70px;">Ano Letivo:</label>
+        <input type="text" class="st-forminput" id="AnoLetivo"  maxlength="4" style="position:relative;float:left;width:50px;" mask="integer" />
+        <a id="btnBuscarCursos" class="icon-button tips cursor" original-title="Busca todos os cursos do ano letivo informado" style="position:relative; top:8px; left:4px;">
+           <img src="@imgPathPrion/search.png" height="18" width="18" alt="icon" />
+        </a>
+    <div class="clear"></div>
+    <label class="st-labeltext" for="Filtro_Curso" style="margin-left: 5px; width:60px;">Curso: </label>
+    <select id="ListaCurso" name="Filtro.Curso" class="uniform"></select>
+</form>

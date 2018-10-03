@@ -1,0 +1,83 @@
+﻿@model NotaAzul.ViewModels.Turma.vmDados
+
+@{
+    ViewBag.Title = "Turma :: " + @ViewBag.NomeProjeto;
+    string imgPathPrion = @Url.Content("~/Content/prion");
+}
+
+<script language="javascript" type="text/javascript">
+    Prion.Loader.Carregar([
+        rootDir + "Scripts/Views/Turma/dados.js"
+    ]);
+</script>
+
+
+<div class="body">
+
+    <form id="frmTurma" name="frmTurma" action="" method="post">
+        <input type="hidden" id="Turma_Id" name="Turma.Id" primary-key="true" />
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Turma_Nome" style="width:126px">Nome</label>
+            <input type="text" class="st-forminput" id="Turma_Nome" name="Turma.Nome" maxlength="100" style="width:400px;" mandatory="true" message="O nome não pode ser vazio" />
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Turma_AnoLetivo" style="width:126px">Ano Letivo</label>
+
+            <div style="width:200px; float:left;">
+                <input type="text" class="st-forminput" id="Turma_AnoLetivo" name="Turma.AnoLetivo" maxlength="4" style="width:50px;" mask="integer" mandatory="true" message="O ano letivo tem que ser informado" />
+                <a id="btnBuscarCursoAnoLetivo" class="icon-button tips cursor" original-title="Busca todos os cursos para este ano letivo"><img src="@imgPathPrion/search.png" height="18" width="18" alt="icon" /></a>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="listaCursoAnoLetivo" style="width:126px">Curso</label>
+
+            <div style="width:500px; float:left;">
+                <select id="comboboxCursoAnoLetivo" name="Turma.IdCursoAnoLetivo" class="uniform" mandatory="true" message="É necessário escolher um Curso"></select>
+            </div>
+
+            <div style="width:500px; float:left; left:128px; position:relative;">
+                <label class="st-labeltext2" style="float:left; font-weight:bold; padding-right:0px !important;">Matrícula:</label>
+                <label id="CursoAnoLetivo_ValorMatricula" class="st-labeltext2" style="float:left;">R$ 0.00</label>
+
+                <label class="st-labeltext2" style="float:left; font-weight:bold; padding-right:0px !important;">Mensalidade:</label>
+                <label id="CursoAnoLetivo_ValorMensalidade" class="st-labeltext2" style="float:left;">R$ 0.00</label>
+
+                <label class="st-labeltext2" style="float:left; font-weight:bold; padding-right:0px !important;" title="Quantidade de mensalidades que este curso possui">Qtd de Mensalidades:</label>
+                <label id="CursoAnoLetivo_QtdMensalidade" class="st-labeltext2" style="float:left;">0</label>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="listaTurnos" style="width:126px">Turno</label>
+            <select id="comboboxTurno" name="Turma.IdTurno" class="uniform" mandatory="true" message="É necessário escolher um Turno"></select>
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" for="Turma_QuantidadeVagas" style="width:126px" title="Quantidade máxima de vagas que esta turma poderá ter">Quantidade de vagas</label>
+            <input type="text" class="st-forminput" id="Turma_QuantidadeVagas" name="Turma.QuantidadeVagas" maxlength="4" style="width:50px;" mask="integer" mandatory="true" message="A quantidade de vagas tem que ser informada" />
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="st-form-line">
+            <label class="st-labeltext" style="width:126px">Situação</label>
+                    
+            @foreach(var y in Model.Situacoes)
+            {
+                <label class="radio" style="margin-right:10px">
+                    @Html.RadioButtonFor(x => x.Turma.IdSituacao , y.Id, y.Padrao, y.Nome, new {@class = "uniform", @style = "opacity:0;" })
+                </label>
+            }
+            <div class="clear"></div> 
+        </div>
+    </form>
+</div>
