@@ -31,6 +31,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,12 +56,17 @@
       <HintPath>packages\Boleto.Net.2.1.0.303\lib\Boleto.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.0.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DllsPrion\Prion.Framework\itextsharp.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.8.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlAgilityPack.1.8.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xmlworker, Version=5.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,9 +76,8 @@
     <Reference Include="Microsoft.Web.Optimization">
       <HintPath>packages\Microsoft.Web.Optimization.0.1\lib\net40\Microsoft.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="NReco.PdfGenerator, Version=1.1.12.0, Culture=neutral, PublicKeyToken=231663d50a41b451, processorArchitecture=MSIL">
-      <HintPath>packages\Boleto.Net.2.1.0.303\lib\NReco.PdfGenerator.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="NReco.PdfGenerator, Version=1.1.15.0, Culture=neutral, PublicKeyToken=231663d50a41b451, processorArchitecture=MSIL">
+      <HintPath>packages\NReco.PdfGenerator.1.1.15\lib\net20\NReco.PdfGenerator.dll</HintPath>
     </Reference>
     <Reference Include="Prion.Boleto">
       <HintPath>..\MixVarejo-Contrato\bin\Prion.Boleto.dll</HintPath>
@@ -95,7 +100,6 @@
     <Reference Include="Prion.Tools4">
       <HintPath>..\DllsPrion\Prion.Framework\Prion.Tools4.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
@@ -227,6 +231,7 @@
     <Compile Include="Models\AlunoResponsavelGrauResponsabilidade.cs" />
     <Compile Include="Models\AlunoResponsavelTelefone.cs" />
     <Compile Include="Models\Boleto.cs" />
+    <Compile Include="Models\BoletoQuitado.cs" />
     <Compile Include="Models\ComposicaoNotaPeriodo.cs" />
     <Compile Include="Models\ContasPagar.cs" />
     <Compile Include="Models\Curso.cs" />
@@ -242,7 +247,6 @@
     <Compile Include="Models\MatriculaMedia.cs" />
     <Compile Include="Models\MatriculaNota.cs" />
     <Compile Include="Models\Mensalidade.cs" />
-    <Compile Include="Models\MensalidadeTitulo.cs" />
     <Compile Include="Models\MovimentacaoFinanceira.cs" />
     <Compile Include="Models\ComposicaoNota.cs" />
     <Compile Include="Models\Observacao.cs" />

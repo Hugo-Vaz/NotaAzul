@@ -33,3 +33,5 @@ C:\Desenvolvimento\NotaAzul\bin\System.Web.WebPages.Deployment.dll
 C:\Desenvolvimento\NotaAzul\bin\System.Web.WebPages.dll
 C:\Desenvolvimento\NotaAzul\bin\System.Web.Razor.dll
 C:\Desenvolvimento\NotaAzul\obj\Debug\NotaAzul.csprojResolveAssemblyReference.cache
+D:\Desenvolvimento\NotaAzul\obj\Debug\NotaAzul.csprojAssemblyReference.cache
+D:\Desenvolvimento\NotaAzul\obj\Debug\NotaAzul.csproj.CoreCompileInputs.cache

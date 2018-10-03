@@ -30,7 +30,6 @@ namespace NotaAzul.Controllers
             return View("Dados");
         }
 
-
         /// <summary>
         /// Retorna a view Dados, com os registros de Boleto
         /// </summary>
@@ -43,146 +42,9 @@ namespace NotaAzul.Controllers
         public ActionResult ViewDadosBoleto()
         {
             return View("DadosBoleto");
-        }
+        }       
 
-
-        /// <summary>
-        /// Gera o html e salva o objeto de um boleto
-        /// </summary>
-        /// <param name="vModel"></param>
-        /// <returns></returns>
-        public ActionResult GerarBoleto(Int32 idBoleto)
-        {
-            try
-            {
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                Business.Boleto biBoleto = new Business.Boleto();
-
-                Models.Boleto boleto = (Models.Boleto)biBoleto.Carregar(false,idBoleto).Get(0);
-                String enderecoBoleto = biBoleto.GerarHtmlBoleto(boleto, Server.MapPath("~/Content/temp/boleto/"));
-
-                return Json(new { success = true, enderecoBoleto = enderecoBoleto }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                String msg = Helpers.Log.Salvar(e, "Erro ao gerar boleto", Request);
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                mensagem.TextoMensagem = e.Message;
-                mensagem.Sucesso = false;
-
-                return Json(new { success = false, mensagem = mensagem }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        /// <summary>
-        /// Gera o html e salva o objeto de um boleto
-        /// </summary>
-        /// <param name="vModel"></param>
-        /// <returns></returns>
-        public ActionResult ImprimirBoletoPorAluno()
-        {
-            try
-            {
-                Int32 idAluno = Convert.ToInt32(Request.Form["IdAluno"]);
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                Business.Boleto biBoleto = new Business.Boleto();
-                List<string> enderecos = new List<string>();
-
-                List<Models.Boleto> boletos = ListTo.CollectionToList<Models.Boleto>(biBoleto.CarregarPorAluno(idAluno).ListaObjetos);
-                foreach (Models.Boleto boleto in boletos)
-                {
-                   enderecos.Add(biBoleto.GerarHtmlBoleto(boleto, Server.MapPath("~/Content/temp/boleto/")));
-                }
-                return Json(new { success = true, enderecos = enderecos.ToArray() }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                String msg = Helpers.Log.Salvar(e, "Erro ao gerar boleto", Request);
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                mensagem.TextoMensagem = e.Message;
-                mensagem.Sucesso = false;
-
-                return Json(new { success = false, mensagem = mensagem }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        /// <summary>
-        /// Gera o html e salva o objeto de um boleto
-        /// </summary>
-        /// <param name="vModel"></param>
-        /// <returns></returns>
-        public ActionResult GerarArquivoRem(string idsStr)
-        {
-            try
-            {
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                Business.Boleto biBoleto = new Business.Boleto();
-                List<int> ids = new List<int>();
-                string[] arr = idsStr.Split(',');
-                for(int i=0; i < arr.Length; i++)
-                {
-                    ids.Add(Convert.ToInt32(arr[i]));
-                }
-                Prion.Generic.Models.Lista boletos = biBoleto.Carregar(true,ids.ToArray());
-                if (boletos.Count < 1)
-                {
-                    Prion.Generic.Helpers.Mensagem erro = new Prion.Generic.Helpers.Mensagem();
-                    erro.TextoMensagem = "O arquivo remessa já havia sido gerado para os boletos selecionados";
-                    erro.Sucesso = false;
-
-                    return Json(new { success = false, mensagem = erro }, JsonRequestBehavior.AllowGet);
-                }
-                String enderecoBoleto = biBoleto.GerarRemBoleto(boletos, Server.MapPath("~/Content/temp/remessa/"));
-
-                return Json(new { success = true, enderecoBoleto = enderecoBoleto }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                String msg = Helpers.Log.Salvar(e, "Erro ao gerar boleto", Request);
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                mensagem.TextoMensagem = msg;
-                mensagem.Sucesso = false;
-
-                return Json(new { success = false, mensagem = mensagem }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        /// <summary>
-        /// Gera o html e salva o objeto de um boleto
-        /// </summary>
-        /// <param name="vModel"></param>
-        /// <returns></returns>
-        public ActionResult GerarArquivoMes(int mes)
-        {
-            try
-            {
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                Business.Boleto biBoleto = new Business.Boleto();
-               
-                Prion.Generic.Models.Lista boletos = biBoleto.BoletosMensal(mes,true);
-                if (boletos.Count < 1)
-                {
-                    Prion.Generic.Helpers.Mensagem erro = new Prion.Generic.Helpers.Mensagem();
-                    erro.TextoMensagem = "O arquivo remessa já havia sido gerado para os boletos selecionados";
-                    erro.Sucesso = false;
-
-                    return Json(new { success = false, mensagem = erro }, JsonRequestBehavior.AllowGet);
-                }
-
-                String nomeArquivo = biBoleto.GerarRemBoleto(boletos, Server.MapPath("~/Content/temp/remessa/"));
-
-                return Json(new { success = true, nomeArquivo = nomeArquivo }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                String msg = Helpers.Log.Salvar(e, "Erro ao gerar boleto", Request);
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                mensagem.TextoMensagem = msg;
-                mensagem.Sucesso = false;
-
-                return Json(new { success = false, mensagem = mensagem }, JsonRequestBehavior.AllowGet);
-            }
-        }
+       
 
         public FileResult Download(string fileName)
         {
@@ -190,22 +52,6 @@ namespace NotaAzul.Controllers
             Byte[] file = System.IO.File.ReadAllBytes(endereco + fileName);
 
             return File(file, "application/x-msdownload",fileName);
-        }
-
-        /// <summary>
-        /// Retornar uma lista no formato JSON do tipo Models.Aluno
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult GetLista()
-        {
-            Prion.Tools.Request.ProcessarRequest request = new Prion.Tools.Request.ProcessarRequest();
-            Prion.Tools.Request.ParametrosRequest parametros = request.Processar(Sistema.Lista, Request);
-            Business.Boleto biBoleto = new Business.Boleto();
-            parametros = JsonFiltro(Request.Form["Query"], parametros);
-            Prion.Generic.Models.Lista lista = biBoleto.Lista(parametros);
-            String rowsStr = Prion.Tools.Conversor.ToJson(lista.DataTable);
-
-            return Json(new { success = true, page = parametros.Inicio, total = lista.Count, rows = rowsStr }, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
@@ -220,7 +66,6 @@ namespace NotaAzul.Controllers
 
             return Json(new { success = true, obj = boleto }, JsonRequestBehavior.AllowGet);
         }
-
 
         /// <summary>
         /// Faz o upload do arquivo de retorno
@@ -277,35 +122,7 @@ namespace NotaAzul.Controllers
 
                 return Json(new { success = false, mensagem = mensagem }, JsonRequestBehavior.AllowGet);
             }
-        }
-
-        public ActionResult CancelarBoletosManualmente(string idsStr)
-        {
-            try
-            {
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                Business.Boleto biBoleto = new Business.Boleto();
-                List<int> ids = new List<int>();
-                string[] arr = idsStr.Split(',');
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    ids.Add(Convert.ToInt32(arr[i]));
-                }
-
-                biBoleto.CancelarManualmente(ids.ToArray());
-
-                return Json(new { success = true, mensagem = ids.Count.ToString() + " boleto(s) quitado(s) manualmente" }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                String msg = Helpers.Log.Salvar(e, "Erro ao gerar boleto", Request);
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                mensagem.TextoMensagem = msg;
-                mensagem.Sucesso = false;
-
-                return Json(new { success = false, mensagem = mensagem }, JsonRequestBehavior.AllowGet);
-            }
-        }
+        }       
 
         /// <summary>
         /// Transforma um JSON contendo os filtros para montar o relatório em Request.Filtro
