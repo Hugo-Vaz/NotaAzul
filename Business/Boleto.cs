@@ -236,7 +236,6 @@ namespace NotaAzul.Business
             try
             {
                 Repository.Boleto repBoleto = new Repository.Boleto(ref this.Conexao);
-                GenericRepository.Situacao repSituacao = new GenericRepository.Situacao(ref this.Conexao);
                 GenericHelpers.Retorno retorno = new GenericHelpers.Retorno();
 
                 if (repBoleto.VerificarSeArquivoFoiLido(upload.FileName))
@@ -255,17 +254,17 @@ namespace NotaAzul.Business
                 HtmlDocument document = new HtmlDocument();
                 document.LoadHtml(htmlString);
 
-                List<Models.BoletoQuitado> boletosOperacao = this.PegarBoletosDoArquivoRemessa(document);
+                List<Models.BoletoQuitado> boletosOperacao = this.PegarBoletosDoArquivoRemessa(document);              
 
-                Int32 mensalidadeQuitadaStatus = repSituacao.BuscarPelaSituacao("Mensalidade","Quitada").Id,
-                    mensalidadeAbertaStatus = repSituacao.BuscarPelaSituacao("Mensalidade", "Aberta").Id,
-                    boletosPagos = 0;
-              
-                
+                Int32 boletosPagos = 0;
+                foreach(Models.BoletoQuitado operacao in boletosOperacao)
+                {
+                    boletosPagos++;
+                    repBoleto.QuitarBoleto(operacao);
+                }               
 
-                retorno.Mensagem = (boletosPagos > 0) ? "O pagamento foi efetuado" : "Nenhum pagamento foi efetuado";
+                retorno.Mensagem = (boletosPagos > 0) ? boletosPagos.ToString() +" operações foram processadas." : "Nenhum pagamento foi processado.";
                 retorno.Sucesso = (boletosPagos > 0) ? true : false;
-
 
                 return retorno;
             }
@@ -282,6 +281,7 @@ namespace NotaAzul.Business
         private List<Models.BoletoQuitado> PegarBoletosDoArquivoRemessa(HtmlDocument document)
         {
             List<Models.BoletoQuitado> boletos = new List<Models.BoletoQuitado>();
+            DateTime dataOperacao = DateTime.Now;
 
             var tables = document.DocumentNode.SelectNodes("//*[contains(@class,'pdf2xl')]");
 

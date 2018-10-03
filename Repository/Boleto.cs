@@ -447,6 +447,72 @@ namespace NotaAzul.Repository
 
         }
 
+
+        /// <summary>
+        /// Altera a situação de Boleto 
+        /// </summary>        
+        /// <returns></returns>
+        public void QuitarBoleto(Models.BoletoQuitado operacao)
+        {
+            Int32[] boletos = this.PegarBoletosASeremQuitados(operacao);
+            string ids = String.Join(",", boletos);
+
+            Int32 situacaoTitulo, situacaoMensalidade;
+            Prion.Generic.Repository.Situacao repSituacao = new Prion.Generic.Repository.Situacao(ref this._conexao);
+
+
+            List<DbParameter> parametros = new List<DbParameter>();
+            string statusBoleto = (operacao.ValorPago + operacao.ValorDesconto >= operacao.ValorTitulo)
+                ? "Quitado"
+                : "Aberto";
+
+            if (statusBoleto.Equals("Quitado"))
+            {
+                situacaoTitulo = repSituacao.BuscarPelaSituacao("Titulo", "Quitado").Id;
+                situacaoMensalidade = repSituacao.BuscarPelaSituacao("Mensalidade", "Quitada").Id;
+            }
+            else
+            {
+                situacaoTitulo = repSituacao.BuscarPelaSituacao("Titulo", "Aberto").Id;
+                situacaoMensalidade = repSituacao.BuscarPelaSituacao("Mensalidade", "Aberta").Id;
+            }
+
+            String sql =@" UPDATE Boleto SET  StatusBoleto=@StatusBoleto, ValorPago=@ValorPago, DataPagamento=@DataPagamento 
+                            WHERE IdBoleto IN (@ids)";
+
+            parametros.Add(this.Conexao.CriarParametro("@ValorPago", DbType.Decimal, operacao.ValorPago));
+            parametros.Add(this.Conexao.CriarParametro("@DataPagamento", DbType.DateTime, operacao.DataLeitura));
+            parametros.Add(this.Conexao.CriarParametro("@StatusBoleto", DbType.String, statusBoleto));
+            parametros.Add(this.Conexao.CriarParametro("@ids", DbType.String, ids));
+
+
+            this.Conexao.Update(sql, parametros);
+
+            parametros = new List<DbParameter>();
+            parametros.Add(this.Conexao.CriarParametro("@Situacao", DbType.Int32, situacaoTitulo));
+            parametros.Add(this.Conexao.CriarParametro("@ids", DbType.String, ids));
+
+            sql = " UPDATE Titulo SET IdSituacao=@Situacao,ValorPago=@ValorPago,DataOperacao=@DataPagamento WHERE Id IN " +
+                " (SELECT Titulo.Id FROM Titulo INNER JOIN BoletoTitulo ON BoletoTitulo.IdTitulo = Titulo.Id " +
+                " INNER JOIN Boleto ON Boleto.Id = BoletoTitulo.IdBoleto " +
+                " WHERE Boleto.NossoNumero = @NossoNumero)";
+
+            this.Conexao.Update(sql, parametros);
+
+            parametros = new List<DbParameter>();
+            parametros.Add(this.Conexao.CriarParametro("@Situacao", DbType.Int32, situacaoMensalidade));
+            parametros.Add(this.Conexao.CriarParametro("@ids", DbType.String, ids));
+
+            sql = " UPDATE Mensalidade SET IdSituacao=@Situacao WHERE Id IN" +
+              " (SELECT Mensalidade.Id FROM Mensalidade INNER JOIN MensalidadeTitulo ON MensalidadeTitulo.IdMensalidade=Mensalidade.Id " +
+              " INNER JOIN BoletoTitulo ON BoletoTitulo.IdTitulo = MensalidadeTitulo.IdTitulo " +
+              " INNER JOIN Boleto ON Boleto.Id = BoletoTitulo.IdBoleto " +
+              " WHERE Boleto.NossoNumero = @NossoNumero)";
+
+            this.Conexao.Update(sql, parametros);
+
+        }
+
         /// <summary>
         /// Grava o log de Boleto
         /// </summary>
@@ -557,6 +623,34 @@ namespace NotaAzul.Repository
 
             List<DbParameter> parametros = new List<DbParameter>();
             parametros.Add(this.Conexao.CriarParametro("@IdBoleto", DbType.Int32, idBoleto));
+
+            Prion.Generic.Models.Lista lista = this.Select(sql, parametros);
+            List<Int32> ids = new List<int>();
+
+            for (int i = 0, len = lista.DataTable.Rows.Count; i < len; i++)
+            {
+                ids.Add(Convert.ToInt32(lista.DataTable.Rows[0][0].ToString()));
+            }
+
+            return ids.ToArray();
+        }
+
+        public Int32[] PegarBoletosASeremQuitados(Models.BoletoQuitado operacao)
+        {
+            string sql = @"Select distinct Boleto.Id from Boleto
+                            INNER JOIN BoletoTitulo ON Boleto.Id = BoletoTitulo.IdBoleto
+                            INNER JOIN MensalidadeTitulo ON MensalidadeTitulo.IdTitulo = BoletoTitulo.IdTitulo
+                            INNER JOIN Mensalidade ON Mensalidade.Id = MensalidadeTitulo.IdMensalidade
+                            INNER JOIN MatriculaCurso ON Mensalidade.IdMatriculaCurso = MatriculaCurso.Id
+                            INNER JOIN Turma ON Turma.Id = MatriculaCurso.IdTurma
+                            INNER JOIN CursoAnoLetivo ON CursoAnoLetivo.Id = Turma.IdCursoAnoLetivo
+                            INNER JOIN Matricula ON MatriculaCurso.IdMatricula = Matricula.Id
+                            INNER JOIN Aluno ON Aluno.Id = Matricula.IdAluno
+                            Where Matricula.NumeroMatricula like @Matricula AND Boleto.DataVencimento = @DataVencimento";
+
+            List<DbParameter> parametros = new List<DbParameter>();
+            parametros.Add(this.Conexao.CriarParametro("@Matricula", DbType.String, operacao.Matricula));
+            parametros.Add(this.Conexao.CriarParametro("@DataVencimento", DbType.DateTime, operacao.DataVencimento));
 
             Prion.Generic.Models.Lista lista = this.Select(sql, parametros);
             List<Int32> ids = new List<int>();

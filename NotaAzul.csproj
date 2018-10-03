@@ -83,19 +83,19 @@
       <HintPath>..\MixVarejo-Contrato\bin\Prion.Boleto.dll</HintPath>
     </Reference>
     <Reference Include="Prion.Data">
-      <HintPath>..\DllsPrion\Prion.Framework\Prion.Data.dll</HintPath>
+      <HintPath>..\DLLsPrion\Prion.Data.dll</HintPath>
     </Reference>
     <Reference Include="Prion.Generic">
-      <HintPath>..\DllsPrion\Prion.Framework\Prion.Generic.dll</HintPath>
+      <HintPath>..\DLLsPrion\Prion.Generic.dll</HintPath>
     </Reference>
     <Reference Include="Prion.Interface">
-      <HintPath>..\DllsPrion\Prion.Framework\Prion.Interface.dll</HintPath>
+      <HintPath>..\DLLsPrion\Prion.Interface.dll</HintPath>
     </Reference>
     <Reference Include="Prion.Pdf">
       <HintPath>..\DllsPrion\Prion.Framework\Prion.Pdf.dll</HintPath>
     </Reference>
     <Reference Include="Prion.Tools">
-      <HintPath>..\DllsPrion\Prion.Framework\Prion.Tools.dll</HintPath>
+      <HintPath>..\DLLsPrion\Prion.Tools.dll</HintPath>
     </Reference>
     <Reference Include="Prion.Tools4">
       <HintPath>..\DllsPrion\Prion.Framework\Prion.Tools4.dll</HintPath>
@@ -843,9 +843,6 @@
     <Content Include="Views\Funcionario\Dados.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Prion.Data.dll.refresh" />
-    <None Include="bin\Prion.Generic.dll.refresh" />
-    <None Include="bin\Prion.Tools.dll.refresh" />
     <Content Include="Views\Aluno\Dados.cshtml" />
     <Content Include="Views\Aluno\Lista.cshtml" />
     <Content Include="Views\Disciplina\Dados.cshtml" />

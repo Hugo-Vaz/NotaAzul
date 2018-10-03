@@ -7,10 +7,20 @@ namespace NotaAzul.Models
 {
     public class BoletoQuitado
     {
-        public string Identificador { get; set; }
+        public string Pagador { get; set; }
+        public string SeuNumero { get; set; }
+        public string NossoNumero { get; set; }
+        public string Matricula {
+            get {
+                return string.IsNullOrEmpty(this.SeuNumero) ? "" : this.SeuNumero.Split('/').FirstOrDefault();
+            }
+        } 
+        public decimal ValorTitulo { get; set; }
         public decimal ValorPago { get; set; }
-        public DateTime DataOperacao { get; set; }
-        public string NomeAluno { get; set; }
-        public string NomeResponsavel { get; set; }
+        public decimal ValorDesconto { get; set; }
+        public DateTime DataVencimento { get; set; }
+        public string Tipo { get; set; }
+        public string NomeArquivo { get; set; }
+        public DateTime DataLeitura { get; set; }
     }
 }
