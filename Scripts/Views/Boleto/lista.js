@@ -341,48 +341,14 @@ $(window).ready(function (window, document) {
                     { header: "Vencimento", nameJson: "DataVencimento", type: "date", width: "110px" },
                     { header: "Remessa?", nameJson: "RemessaGeradoStr" }
                 ]
-            });
-
-            // adiciona um botão à lista de Contratos
-            _grid.addButton({
-                click: function () {
-                    var objSelecionado = NotaAzul.Boleto.Lista.Grid().getSelected();
-
-                    if (objSelecionado == null) {
-                        window.alert("Nenhum registro foi selecionado");
-                        return false;
-                    }
-                    var ids = [];
-
-                    for (var i = 0, len = objSelecionado.length; i < len; i++) {
-                        ids.push(objSelecionado[i].object.Id);
-                    }
-
-                    NotaAzul.Boleto.Lista.GerarArquivoRemessa(ids);
-                },
-                title: "Gerar Arquivo Remessa",
-                tooltip: "Gera o arquivo de remessa"
-            });
+            });           
 
             // adiciona um botão à lista de Contratos
             _grid.addButton({
                 click: _abrirBaixa,
                 title: "Ler arquivo RET",
                 tooltip: "Lê o arquivo de retorno"
-            });
-
-            // adiciona um botão à lista de Contratos
-            _grid.addButton({
-                click: _abrirRem,
-                title: "Gerar arquivo REM mensal",
-                tooltip: "Gera o arquivo de Remessa de um mês"
-            });
-
-            _grid.addButton({
-                click: _abrirUpdate,
-                title: "Atualizar Boleto",
-                tooltip: "Atualiza os valores de um boleto"
-            });
+            });         
 
 
             _grid.addButton({

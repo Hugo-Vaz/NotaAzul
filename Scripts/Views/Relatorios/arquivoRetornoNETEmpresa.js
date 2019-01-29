@@ -13,7 +13,7 @@ $(window).ready(function (window, document) {
         NotaAzul.Relatorios = {};
     }
 
-    NotaAzul.Relatorios.BoletoPagamento = function () {
+    NotaAzul.Relatorios.OperacaoNetEmpresa = function () {
         /******************************************************************************************
      ** PRIVATE
      ******************************************************************************************/
@@ -24,13 +24,13 @@ $(window).ready(function (window, document) {
         /**
         * @descrição: Responsável por desenhar o controle
         **/
-        var _desenharControleAluno = function (chart) {
+        var _desenharControle = function (chart) {
             //Cria o controle de busca do fornecedor
-            var controleAluno = new google.visualization.ControlWrapper({
+            var controleArquivo = new google.visualization.ControlWrapper({
                 'controlType': 'StringFilter', //Filtro por string
-                'containerId': 'ControleAluno', //Id do elemento
+                'containerId': 'ControleArquivo', //Id do elemento
                 'options': {
-                    'filterColumnLabel': 'Aluno', //Coluna do datatable que será sobre a qual o filtro atuará                    
+                    'filterColumnLabel': 'Arquivo', //Coluna do datatable que será sobre a qual o filtro atuará                    
                     'ui': {
                         'labelStacking': 'vertical'//A label será aplicada acima do input
                     }
@@ -47,29 +47,15 @@ $(window).ready(function (window, document) {
                         'labelStacking': 'vertical'//A label será aplicada acima do input
                     }
                 }
-            });           
-
-            //Cria o controle de data do contrato
-            var controleBuscaPeriodo = new google.visualization.ControlWrapper({
-                'controlType': 'DateRangeFilter', //Filtro por Datetime
-                'containerId': 'ControleVencimento', //Id do elemento
-                'options': {
-                    'filterColumnLabel': 'Vencimento', //Coluna do datatable que será sobre a qual o filtro atuará                    
-                    'ui': {
-                        'labelStacking': 'vertical', //A label será aplicada acima do input
-                        'format': {
-                            'pattern': "dd/MM/yyyy"
-                        }
-                    }
-                }
             });
 
+
             //Cria o controle de data do contrato
-            var controleBuscaPagamento = new google.visualization.ControlWrapper({
+            var controleOperacao = new google.visualization.ControlWrapper({
                 'controlType': 'DateRangeFilter', //Filtro por Datetime
-                'containerId': 'ControlePagamento', //Id do elemento
+                'containerId': 'ControleOperacao', //Id do elemento
                 'options': {
-                    'filterColumnLabel': 'Pagamento', //Coluna do datatable que será sobre a qual o filtro atuará                    
+                    'filterColumnLabel': 'Data Operação', //Coluna do datatable que será sobre a qual o filtro atuará                    
                     'ui': {
                         'labelStacking': 'vertical', //A label será aplicada acima do input
                         'format': {
@@ -80,10 +66,9 @@ $(window).ready(function (window, document) {
             });
 
             //Cria o vinculo entre o filtro e o gráfico
-            _dashboard.bind(controleAluno, chart);
+            _dashboard.bind(controleArquivo, chart);
             _dashboard.bind(controleDocumento, chart);
-            _dashboard.bind(controleBuscaPeriodo, chart);
-            _dashboard.bind(controleBuscaPagamento, chart);
+            _dashboard.bind(controleOperacao, chart);
 
             //O objeto _dashboard é responsável por desenhar o gráfico
             _dashboard.draw(_dataTable);
@@ -94,43 +79,46 @@ $(window).ready(function (window, document) {
         **/
         var _desenharGrafico = function (jsonObj) {
             _dataTable = new google.visualization.DataTable();
-            _dataTable.addColumn('string', 'Matrícula');
-            _dataTable.addColumn('string', 'Aluno');
+            _dataTable.addColumn('string', 'Tipo');
             _dataTable.addColumn('string', 'Documento');
+            _dataTable.addColumn('string', 'Pagador');
             _dataTable.addColumn('number', 'Valor');
-            _dataTable.addColumn('date', 'Vencimento');
-            _dataTable.addColumn('date', 'Pagamento');
+            _dataTable.addColumn('number', 'Valor Pago');
+            _dataTable.addColumn('number', 'Oscilação');
+            _dataTable.addColumn('date', 'Data Operação');
+            _dataTable.addColumn('date', 'Data Vencimento');
+            _dataTable.addColumn('string', 'Arquivo');
 
 
-            _definirAcoesBotoes();
             if (jsonObj != null) {
                 var len = jsonObj.length,
                     rows = [];
                 for (var i = 0; i < len; i++) {
-                    try {
-                        rows.push([
-                            jsonObj[i].NumeroMatricula,
-                            jsonObj[i].NomeAluno,
-                            jsonObj[i].NossoNumero,
-                            { v: parseFloat(jsonObj[i].Valor), f: Prion.Mascara2(jsonObj[i].Valor, "money") },
-                            jsonObj[i].Vencimento.toDate("dd-mm-yyyy", "yyyy-mm-dd"),
-                            jsonObj[i].Pagamento.toDate("dd-mm-yyyy", "yyyy-mm-dd")
-                        ]);
-                    } catch{ }
+                    rows.push([
+                        jsonObj[i].Tipo,
+                        jsonObj[i].Documento,
+                        jsonObj[i].Pagador,
+                        { v: parseFloat(jsonObj[i].Valor), f: Prion.Mascara2(jsonObj[i].Valor, "money") },
+                        { v: parseFloat(jsonObj[i].ValorPago), f: Prion.Mascara2(jsonObj[i].ValorPago, "money") },
+                        { v: parseFloat(jsonObj[i].Oscilacao), f: Prion.Mascara2(jsonObj[i].Oscilacao, "money") },
+                        jsonObj[i].DataOperacao.toDate("dd-mm-yyyy", "yyyy-mm-dd"),
+                        jsonObj[i].Vencimento.toDate("dd-mm-yyyy", "yyyy-mm-dd"),
+                        jsonObj[i].Arquivo
+                    ]);
                 }
                 console.log(rows);
                 _dataTable.addRows(rows);
 
             } else {
                 //caso a busca não retorne nada,um array composto por valores nulos,será criado com o intuito de inicializar o gráfico
-                _dataTable.addRows([[null, null, null, null, null]]);
+                _dataTable.addRows([[null, null, null, null]]);
             }
 
             var chart = new google.visualization.ChartWrapper({
                 'chartType': 'Table',
                 'containerId': 'Grafico',
                 'options': {
-                    'title': 'Mensalidades Pagas',
+                    'title': 'Arquivo de Retorno',
                     /*'page': 'enable',
                     'pageSize': 20,*/
                     'width': '100%',
@@ -141,7 +129,7 @@ $(window).ready(function (window, document) {
                 }
             });
 
-            _desenharControleAluno(chart);
+            _desenharControle(chart);
         };
 
         /**
@@ -188,9 +176,10 @@ $(window).ready(function (window, document) {
             _rows = [];          
             _dashboard = new google.visualization.Dashboard("Dashboard".getDom());
             "loading".getDom().style.display = "inline";
+            _definirAcoesBotoes();
 
             Prion.Request({
-                url: rootDir + "Relatorios/GerarBoletosQuitados",
+                url: rootDir + "Relatorios/GerarRelatorioNetEmpresa",
                 success: function (retorno) {
                     "loading".getDom().style.display = "none";
                     if (retorno != null && retorno.rows != null) {
@@ -213,5 +202,5 @@ $(window).ready(function (window, document) {
             Iniciar: _iniciar
         };
     } ();
-    NotaAzul.Relatorios.BoletoPagamento.Iniciar();
+    NotaAzul.Relatorios.OperacaoNetEmpresa.Iniciar();
 } (window, document));

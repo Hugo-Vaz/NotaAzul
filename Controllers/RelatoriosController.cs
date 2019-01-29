@@ -190,6 +190,17 @@ namespace NotaAzul.Controllers
             return View("RelatorioArquivoRetorno", vmDadosCorporacao);
         }
 
+        public ActionResult ViewNetEmpresa()
+        {
+            //Para se criar a página de filtro, é necessário passar pela ViewData, os filtros(Ex:Periodo,Aluno) na ordem desejada,o tipo de relatório
+            //(Ex:ContasPagas,MovimentaçãoFinanceira),um booleano para se criar os radio buttons, caso esse booleano seja true é necessário
+            // passar as opções dos radio        
+
+            ViewModels.Corporacao.vmDados vmDadosCorporacao = new ViewModels.Corporacao.vmDados();
+            vmDadosCorporacao.Corporacao = carregarCorporacao();
+            return View("RelatorioNetEmpresa", vmDadosCorporacao);
+        }
+
 
 
         /// <summary>
@@ -529,6 +540,23 @@ namespace NotaAzul.Controllers
 
             Business.Relatorio biRelatorio = new Business.Relatorio();
             Prion.Generic.Models.Lista lista = biRelatorio.GerarRelatorioArquivoRet(parametros);
+            String rowsStr = Prion.Tools.Conversor.ToJson(lista.DataTable);
+
+            return Json(new { success = true, page = parametros.Inicio, total = lista.Count, rows = rowsStr }, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Retorna uma lista no formato JSON com os dados para o relatório de Movimentações Financeiras/Responsável
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GerarRelatorioNetEmpresa()
+        {
+            GenericTools.Request.ProcessarRequest request = new Prion.Tools.Request.ProcessarRequest();
+            GenericTools.Request.ParametrosRequest parametros = new GenericTools.Request.ParametrosRequest();
+            parametros.Paginar = false;
+
+            Business.Relatorio biRelatorio = new Business.Relatorio();
+            Prion.Generic.Models.Lista lista = biRelatorio.GerarRelatorioNetEmpresa(parametros);
             String rowsStr = Prion.Tools.Conversor.ToJson(lista.DataTable);
 
             return Json(new { success = true, page = parametros.Inicio, total = lista.Count, rows = rowsStr }, JsonRequestBehavior.AllowGet);

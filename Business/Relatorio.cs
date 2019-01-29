@@ -207,5 +207,13 @@ namespace NotaAzul.Business
 
             return repRelatorio.GerarRelatorioArquivoRetorno(parametro);
         }
+
+        public Prion.Generic.Models.Lista GerarRelatorioNetEmpresa(Prion.Tools.Request.ParametrosRequest parametro = null)
+        {
+            Repository.Relatorio repRelatorio = new Repository.Relatorio(ref this.Conexao);
+            repRelatorio.Entidades.Adicionar(parametro.Entidades);
+
+            return repRelatorio.GerarRelatorioNetEmpresa(parametro);
+        }
     }
 }

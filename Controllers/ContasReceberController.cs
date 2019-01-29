@@ -142,34 +142,6 @@ namespace NotaAzul.Controllers
         }
 
         /// <summary>
-        /// Gera o html e salva o objeto de um boleto
-        /// </summary>
-        /// <param name="vModel"></param>
-        /// <returns></returns>
-        public ActionResult GerarBoleto(Int32 idBoleto)
-        {
-            try
-            {
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                Business.Boleto biBoleto = new Business.Boleto();
-
-                Models.Boleto boleto = (Models.Boleto)biBoleto.Carregar(false,idBoleto).Get(0);
-                String enderecoBoleto = biBoleto.GerarHtmlBoleto(boleto, Server.MapPath("~/Content/temp/boleto/"));
-
-                return Json(new { success = true, enderecoBoleto = enderecoBoleto });
-            }
-            catch (Exception e)
-            {
-                String msg = Helpers.Log.Salvar(e, "Erro ao gerar boleto", Request);
-                Prion.Generic.Helpers.Mensagem mensagem = new Prion.Generic.Helpers.Mensagem();
-                mensagem.TextoMensagem = msg;
-                mensagem.Sucesso = false;
-
-                return Json(new { success = false, mensagem = mensagem });
-            }
-        }
-
-        /// <summary>
         /// Salva os dados de uma ContasReceber
         /// </summary>
         /// <param name="vModel"></param>

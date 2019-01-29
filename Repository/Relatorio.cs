@@ -525,5 +525,22 @@ namespace NotaAzul.Repository
             return this.Select(sql.ToString(), parametro);
         }
 
+        /// <summary>
+        /// Retorna um objeto do tipo Lista contendo um datatable e o total de registros referentes ao relatório de alunos inadimplentes em determinado período de tempo
+        /// </summary>
+        /// <returns>DataTable</returns>
+        public Prion.Generic.Models.Lista GerarRelatorioNetEmpresa(Prion.Tools.Request.ParametrosRequest parametro = null)
+        {
+            // IMPORTANTE quando houver um JOIN, colocar o nome da tabela junto do nome do campo
+            StringBuilder sql = new StringBuilder();
+            sql.Append(" SELECT OperacaoNetEmpresa.Tipo as Tipo, OperacaoNetEmpresa.Pagador as Pagador, ");
+            sql.Append(" OperacaoNetEmpresa.SeuNumero as Documento,OperacaoNetEmpresa.DataLeitura as DataOperacao, OperacaoNetEmpresa.ValorTitulo as Valor, OperacaoNetEmpresa.ValorPago as ValorPago, ");
+            sql.Append(" OperacaoNetEmpresa.ValorOscilacao as Oscilacao, OperacaoNetEmpresa.DataVencimento as Vencimento, OperacaoNetEmpresa.NomeArquivo as Arquivo");
+
+            sql.Append(" FROM OperacaoNetEmpresa ");
+
+            return this.Select(sql.ToString(), parametro);
+        }
+
     }
 }

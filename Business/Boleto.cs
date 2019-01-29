@@ -14,6 +14,7 @@ using System.Data;
 using System.Globalization;
 using BoletoNet;
 using HtmlAgilityPack;
+using NotaAzul.Helpers;
 
 namespace NotaAzul.Business
 {
@@ -254,12 +255,14 @@ namespace NotaAzul.Business
                 HtmlDocument document = new HtmlDocument();
                 document.LoadHtml(htmlString);
 
-                List<Models.BoletoQuitado> boletosOperacao = this.PegarBoletosDoArquivoRemessa(document);              
+                List<Models.OperacaoNetEmpresa> boletosOperacao = this.PegarBoletosDoArquivoRemessa(document,upload.FileName);              
 
                 Int32 boletosPagos = 0;
-                foreach(Models.BoletoQuitado operacao in boletosOperacao)
+                foreach(Models.OperacaoNetEmpresa operacao in boletosOperacao)
                 {
                     boletosPagos++;
+                    repBoleto.SalvarOperacaoNetEmpresa(operacao);
+                    Int32[] boletos = repBoleto.PegarBoletosASeremQuitados(operacao);
                     repBoleto.QuitarBoleto(operacao);
                 }               
 
@@ -278,17 +281,36 @@ namespace NotaAzul.Business
             }
         }
 
-        private List<Models.BoletoQuitado> PegarBoletosDoArquivoRemessa(HtmlDocument document)
+        public List<Models.OperacaoNetEmpresa> PegarBoletosDoArquivoRemessa(HtmlDocument document,string name)
         {
-            List<Models.BoletoQuitado> boletos = new List<Models.BoletoQuitado>();
+            List<Models.OperacaoNetEmpresa> boletos = new List<Models.OperacaoNetEmpresa>();
             DateTime dataOperacao = DateTime.Now;
 
-            var tables = document.DocumentNode.SelectNodes("//*[contains(@class,'pdf2xl')]");
+            var tables = document.DocumentNode.SelectNodes("//*[contains(@class,'tabelaListagem mt10 tabColada')]");
 
             //Quote Info
             var table = tables[0];
             var rows = table.Descendants("tr")
-                            .Select(n => n.Elements("td").Select(e => e.InnerText).ToArray());
+                            .Select(n => n.Elements("td").Select(e => e.InnerText).ToArray()).ToList();
+
+            for(int i=0,len= rows.Count; i < len; i++)
+            {
+                if (rows[i].Length < 9) continue;
+                
+                Models.OperacaoNetEmpresa operacao = new Models.OperacaoNetEmpresa();
+                operacao.Tipo = TextHelper.CleanString(rows[i][0]);
+                operacao.Pagador = TextHelper.CleanString(rows[i][1]);
+                operacao.SeuNumero = TextHelper.CleanString(rows[i][2]).Replace(" ","");
+                operacao.NossoNumero = TextHelper.CleanString(rows[i][3]);
+                operacao.DataVencimento = Conversor.ToDateTime(TextHelper.CleanString(rows[i][4]));
+                operacao.ValorTitulo = Conversor.ToDecimal(TextHelper.CleanString(rows[i][5]));
+                operacao.ValorPago = Conversor.ToDecimal(TextHelper.CleanString(rows[i][6]));
+                operacao.ValorOscilacao = Conversor.ToDecimal(TextHelper.CleanString(rows[i][7]));
+                operacao.DataLeitura = dataOperacao;
+                operacao.NomeArquivo = name;
+
+                boletos.Add(operacao);
+            }
 
             return boletos;
         }

@@ -452,7 +452,7 @@ namespace NotaAzul.Repository
         /// Altera a situação de Boleto 
         /// </summary>        
         /// <returns></returns>
-        public void QuitarBoleto(Models.BoletoQuitado operacao)
+        public void QuitarBoleto(Models.OperacaoNetEmpresa operacao)
         {
             Int32[] boletos = this.PegarBoletosASeremQuitados(operacao);
             string ids = String.Join(",", boletos);
@@ -462,23 +462,23 @@ namespace NotaAzul.Repository
 
 
             List<DbParameter> parametros = new List<DbParameter>();
-            string statusBoleto = (operacao.ValorPago + operacao.ValorDesconto >= operacao.ValorTitulo)
+            string statusBoleto = (operacao.ValorPago + operacao.ValorOscilacao >= operacao.ValorTitulo)
                 ? "Quitado"
                 : "Aberto";
 
             if (statusBoleto.Equals("Quitado"))
             {
-                situacaoTitulo = repSituacao.BuscarPelaSituacao("Titulo", "Quitado").Id;
+                situacaoTitulo = repSituacao.BuscarPelaSituacao("Título", "Quitado").Id;
                 situacaoMensalidade = repSituacao.BuscarPelaSituacao("Mensalidade", "Quitada").Id;
             }
             else
             {
-                situacaoTitulo = repSituacao.BuscarPelaSituacao("Titulo", "Aberto").Id;
+                situacaoTitulo = repSituacao.BuscarPelaSituacao("Título", "Aberto").Id;
                 situacaoMensalidade = repSituacao.BuscarPelaSituacao("Mensalidade", "Aberta").Id;
             }
 
             String sql =@" UPDATE Boleto SET  StatusBoleto=@StatusBoleto, ValorPago=@ValorPago, DataPagamento=@DataPagamento 
-                            WHERE IdBoleto IN (@ids)";
+                            WHERE Id IN (@ids)";
 
             parametros.Add(this.Conexao.CriarParametro("@ValorPago", DbType.Decimal, operacao.ValorPago));
             parametros.Add(this.Conexao.CriarParametro("@DataPagamento", DbType.DateTime, operacao.DataLeitura));
@@ -490,12 +490,13 @@ namespace NotaAzul.Repository
 
             parametros = new List<DbParameter>();
             parametros.Add(this.Conexao.CriarParametro("@Situacao", DbType.Int32, situacaoTitulo));
+            parametros.Add(this.Conexao.CriarParametro("@ValorPago", DbType.Decimal, operacao.ValorPago));
+            parametros.Add(this.Conexao.CriarParametro("@DataPagamento", DbType.DateTime, operacao.DataLeitura));
             parametros.Add(this.Conexao.CriarParametro("@ids", DbType.String, ids));
 
             sql = " UPDATE Titulo SET IdSituacao=@Situacao,ValorPago=@ValorPago,DataOperacao=@DataPagamento WHERE Id IN " +
                 " (SELECT Titulo.Id FROM Titulo INNER JOIN BoletoTitulo ON BoletoTitulo.IdTitulo = Titulo.Id " +
-                " INNER JOIN Boleto ON Boleto.Id = BoletoTitulo.IdBoleto " +
-                " WHERE Boleto.NossoNumero = @NossoNumero)";
+                " WHERE BoletoTitulo.IdBoleto IN (@ids))";
 
             this.Conexao.Update(sql, parametros);
 
@@ -506,11 +507,36 @@ namespace NotaAzul.Repository
             sql = " UPDATE Mensalidade SET IdSituacao=@Situacao WHERE Id IN" +
               " (SELECT Mensalidade.Id FROM Mensalidade INNER JOIN MensalidadeTitulo ON MensalidadeTitulo.IdMensalidade=Mensalidade.Id " +
               " INNER JOIN BoletoTitulo ON BoletoTitulo.IdTitulo = MensalidadeTitulo.IdTitulo " +
-              " INNER JOIN Boleto ON Boleto.Id = BoletoTitulo.IdBoleto " +
-              " WHERE Boleto.NossoNumero = @NossoNumero)";
+              " WHERE BoletoTitulo.IdBoleto IN (@ids))";
+
 
             this.Conexao.Update(sql, parametros);
 
+        }
+
+
+        /// <summary>
+        /// Altera a situação de Boleto 
+        /// </summary>        
+        /// <returns></returns>
+        public void SalvarOperacaoNetEmpresa(Models.OperacaoNetEmpresa operacao)
+        {
+            List<DbParameter> parametros = new List<DbParameter>();
+            String sql = "INSERT INTO OperacaoNetEmpresa(Tipo,Pagador,SeuNumero,NossoNumero,ValorPago,ValorTitulo,ValorOscilacao,DataVencimento,DataLeitura,NomeArquivo) " +
+                        " VALUES (@Tipo,@Pagador,@SeuNumero,@NossoNumero,@ValorPago,@ValorTitulo,@ValorOscilacao,@DataVencimento,@DataLeitura,@NomeArquivo)";
+
+            parametros.Add(this.Conexao.CriarParametro("@Tipo", DbType.String, operacao.Tipo));
+            parametros.Add(this.Conexao.CriarParametro("@Pagador", DbType.String, operacao.Pagador));
+            parametros.Add(this.Conexao.CriarParametro("@SeuNumero", DbType.String, operacao.SeuNumero));
+            parametros.Add(this.Conexao.CriarParametro("@NossoNumero", DbType.String, operacao.NossoNumero));
+            parametros.Add(this.Conexao.CriarParametro("@ValorPago", DbType.Decimal, operacao.ValorPago));
+            parametros.Add(this.Conexao.CriarParametro("@ValorTitulo", DbType.Decimal, operacao.ValorTitulo));
+            parametros.Add(this.Conexao.CriarParametro("@ValorOscilacao", DbType.Decimal, operacao.ValorOscilacao));
+            parametros.Add(this.Conexao.CriarParametro("@DataVencimento", DbType.DateTime, operacao.DataVencimento));
+            parametros.Add(this.Conexao.CriarParametro("@DataLeitura", DbType.DateTime, operacao.DataLeitura));
+            parametros.Add(this.Conexao.CriarParametro("@NomeArquivo", DbType.String, operacao.NomeArquivo));
+
+            Int32 id = this.Conexao.Insert(sql, parametros);
         }
 
         /// <summary>
@@ -557,7 +583,7 @@ namespace NotaAzul.Repository
 
         public bool VerificarSeArquivoFoiLido(string nomeArquivo)
         {
-            string sql = "SELECT Count(Id) FROM BoletoRetorno WHERE NomeArquivo='" + nomeArquivo + "' AND YEAR(DataOperacao) = " + DateTime.Now.Year.ToString();
+            string sql = "SELECT Count(Id) FROM OperacaoNetEmpresa WHERE NomeArquivo='" + nomeArquivo + "' AND YEAR(DataLeitura) = " + DateTime.Now.Year.ToString();
             Int32 qnt = Convert.ToInt32(this.Conexao.Select(sql).Rows[0][0].ToString());
 
             return qnt > 0;
@@ -635,7 +661,7 @@ namespace NotaAzul.Repository
             return ids.ToArray();
         }
 
-        public Int32[] PegarBoletosASeremQuitados(Models.BoletoQuitado operacao)
+        public Int32[] PegarBoletosASeremQuitados(Models.OperacaoNetEmpresa operacao)
         {
             string sql = @"Select distinct Boleto.Id from Boleto
                             INNER JOIN BoletoTitulo ON Boleto.Id = BoletoTitulo.IdBoleto
@@ -646,11 +672,12 @@ namespace NotaAzul.Repository
                             INNER JOIN CursoAnoLetivo ON CursoAnoLetivo.Id = Turma.IdCursoAnoLetivo
                             INNER JOIN Matricula ON MatriculaCurso.IdMatricula = Matricula.Id
                             INNER JOIN Aluno ON Aluno.Id = Matricula.IdAluno
-                            Where Matricula.NumeroMatricula like @Matricula AND Boleto.DataVencimento = @DataVencimento";
+                            Where Matricula.NumeroMatricula like @Matricula AND MONTH(Boleto.DataVencimento) = @MesVencimento AND YEAR(Boleto.DataVencimento) = @AnoVencimento AND StatusBoleto = 'Aberto'";
 
             List<DbParameter> parametros = new List<DbParameter>();
             parametros.Add(this.Conexao.CriarParametro("@Matricula", DbType.String, operacao.Matricula));
-            parametros.Add(this.Conexao.CriarParametro("@DataVencimento", DbType.DateTime, operacao.DataVencimento));
+            parametros.Add(this.Conexao.CriarParametro("@MesVencimento", DbType.Int32, operacao.DataVencimento.Month));
+            parametros.Add(this.Conexao.CriarParametro("@AnoVencimento", DbType.Int32, operacao.DataVencimento.Year));
 
             Prion.Generic.Models.Lista lista = this.Select(sql, parametros);
             List<Int32> ids = new List<int>();

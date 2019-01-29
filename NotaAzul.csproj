@@ -70,7 +70,7 @@
     </Reference>
     <Reference Include="itextsharp.xmlworker, Version=5.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DllsPrion\Prion.Framework\itextsharp.xmlworker.dll</HintPath>
+      <HintPath>..\DLLsPrion\itextsharp.xmlworker.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Optimization">
@@ -79,30 +79,50 @@
     <Reference Include="NReco.PdfGenerator, Version=1.1.15.0, Culture=neutral, PublicKeyToken=231663d50a41b451, processorArchitecture=MSIL">
       <HintPath>packages\NReco.PdfGenerator.1.1.15\lib\net20\NReco.PdfGenerator.dll</HintPath>
     </Reference>
-    <Reference Include="Prion.Boleto">
-      <HintPath>..\MixVarejo-Contrato\bin\Prion.Boleto.dll</HintPath>
-    </Reference>
-    <Reference Include="Prion.Data">
-      <HintPath>..\DLLsPrion\Prion.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Prion.Generic">
-      <HintPath>..\DLLsPrion\Prion.Generic.dll</HintPath>
-    </Reference>
-    <Reference Include="Prion.Interface">
-      <HintPath>..\DLLsPrion\Prion.Interface.dll</HintPath>
-    </Reference>
-    <Reference Include="Prion.Pdf">
-      <HintPath>..\DllsPrion\Prion.Framework\Prion.Pdf.dll</HintPath>
-    </Reference>
-    <Reference Include="Prion.Tools">
-      <HintPath>..\DLLsPrion\Prion.Tools.dll</HintPath>
-    </Reference>
-    <Reference Include="Prion.Tools4">
-      <HintPath>..\DllsPrion\Prion.Framework\Prion.Tools4.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Prion.Boleto, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\Prion.Boleto.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Data, Version=1.0.5679.32401, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\Prion.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.DBLib.Common.v2">
+      <HintPath>..\DllsPrion\Prion.DBLib.Common.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.DBLib.Framework.v2">
+      <HintPath>..\DllsPrion\Prion.DBLib.Framework.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Excel">
+      <HintPath>..\DllsPrion\Prion.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Generic, Version=1.0.5679.32730, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\Prion.Generic.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\Prion.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Pdf, Version=1.0.5679.32401, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\Prion.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.SincronizadorBD">
+      <HintPath>..\DllsPrion\Prion.SincronizadorBD.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Tools, Version=1.0.5679.32399, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\Prion.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Tools4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\Prion.Tools4.dll</HintPath>
+    </Reference>
+    <Reference Include="Prion.Web.Common.v2">
+      <HintPath>..\DllsPrion\Prion.Web.Common.v2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -112,14 +132,22 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Razor">
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\DllsPrion\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsPrion\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DllsPrion\System.Web.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DllsPrion\System.Web.WebPages.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DllsPrion\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
@@ -224,6 +252,7 @@
     <Compile Include="Helpers\Log.cs" />
     <Compile Include="Helpers\MapeamentoTabela.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Helpers\TextHelper.cs" />
     <Compile Include="Helpers\VerifySession.cs" />
     <Compile Include="Models\Aluno.cs" />
     <Compile Include="Models\AlunoFilantropia.cs" />
@@ -231,7 +260,7 @@
     <Compile Include="Models\AlunoResponsavelGrauResponsabilidade.cs" />
     <Compile Include="Models\AlunoResponsavelTelefone.cs" />
     <Compile Include="Models\Boleto.cs" />
-    <Compile Include="Models\BoletoQuitado.cs" />
+    <Compile Include="Models\OperacaoNetEmpresa.cs" />
     <Compile Include="Models\ComposicaoNotaPeriodo.cs" />
     <Compile Include="Models\ContasPagar.cs" />
     <Compile Include="Models\Curso.cs" />
@@ -247,6 +276,7 @@
     <Compile Include="Models\MatriculaMedia.cs" />
     <Compile Include="Models\MatriculaNota.cs" />
     <Compile Include="Models\Mensalidade.cs" />
+    <Compile Include="Models\MensalidadeTitulo.cs" />
     <Compile Include="Models\MovimentacaoFinanceira.cs" />
     <Compile Include="Models\ComposicaoNota.cs" />
     <Compile Include="Models\Observacao.cs" />
@@ -670,6 +700,7 @@
     <Content Include="Scripts\Views\ProfessorConfiguracao\configuracao.js" />
     <Content Include="Scripts\Views\Professor\dados.js" />
     <Content Include="Scripts\Views\Professor\lista.js" />
+    <Content Include="Scripts\Views\Relatorios\arquivoRetornoNETEmpresa.js" />
     <Content Include="Scripts\Views\Relatorios\arquivoRetorno.js" />
     <Content Include="Scripts\Views\Relatorios\boletosPagamento.js" />
     <Content Include="Scripts\Views\Relatorios\contasAPagar.js" />
@@ -772,6 +803,7 @@
     <Content Include="Views\Relatorios\RelatorioInadimplentes.cshtml" />
     <Content Include="Views\Relatorios\RelatorioArquivoRetorno.cshtml" />
     <Content Include="Views\Relatorios\RelatorioContasRecebidas.cshtml" />
+    <Content Include="Views\Relatorios\RelatorioNetEmpresa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Login\Index.cshtml" />

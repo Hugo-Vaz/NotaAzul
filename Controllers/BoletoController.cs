@@ -161,5 +161,18 @@ namespace NotaAzul.Controllers
 
             return Json(new { success = true });
         }
+
+        public ActionResult GetLista()
+        {
+            Prion.Tools.Request.ProcessarRequest request = new Prion.Tools.Request.ProcessarRequest();
+            Prion.Tools.Request.ParametrosRequest parametros = request.Processar(Sistema.Lista, Request);
+            Business.Boleto biBoleto = new Business.Boleto();
+            parametros = JsonFiltro(Request.Form["Query"], parametros);
+            Prion.Generic.Models.Lista lista = biBoleto.Lista(parametros);
+            String rowsStr = Prion.Tools.Conversor.ToJson(lista.DataTable);
+
+            return Json(new { success = true, page = parametros.Inicio, total = lista.Count, rows = rowsStr }, JsonRequestBehavior.AllowGet);
+        }
+       
     }
 }

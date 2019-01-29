@@ -5,8 +5,9 @@ using System.Web;
 
 namespace NotaAzul.Models
 {
-    public class BoletoQuitado
+    public class OperacaoNetEmpresa
     {
+        public string Tipo { get; set; }
         public string Pagador { get; set; }
         public string SeuNumero { get; set; }
         public string NossoNumero { get; set; }
@@ -17,9 +18,8 @@ namespace NotaAzul.Models
         } 
         public decimal ValorTitulo { get; set; }
         public decimal ValorPago { get; set; }
-        public decimal ValorDesconto { get; set; }
+        public decimal ValorOscilacao { get; set; }
         public DateTime DataVencimento { get; set; }
-        public string Tipo { get; set; }
         public string NomeArquivo { get; set; }
         public DateTime DataLeitura { get; set; }
     }
