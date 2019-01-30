@@ -460,11 +460,12 @@ namespace NotaAzul.Repository
             Int32 situacaoTitulo, situacaoMensalidade;
             Prion.Generic.Repository.Situacao repSituacao = new Prion.Generic.Repository.Situacao(ref this._conexao);
 
-
             List<DbParameter> parametros = new List<DbParameter>();
-            string statusBoleto = (operacao.ValorPago + operacao.ValorOscilacao >= operacao.ValorTitulo)
-                ? "Quitado"
-                : "Aberto";
+            //string statusBoleto = (operacao.ValorPago + operacao.ValorOscilacao >= operacao.ValorTitulo)
+            //    ? "Quitado"
+            //    : "Aberto";
+
+            string statusBoleto = "Quitado";
 
             if (statusBoleto.Equals("Quitado"))
             {

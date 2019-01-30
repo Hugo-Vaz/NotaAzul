@@ -352,6 +352,7 @@ $(window).ready(function (window, document) {
 
 
             _grid.addButton({
+                show: _permissoes.update,
                 click: function () {
                     var objSelecionado = NotaAzul.Boleto.Lista.Grid().getSelected();
 
@@ -372,6 +373,7 @@ $(window).ready(function (window, document) {
             });
 
             _grid.addButton({
+                show: _permissoes.delete,
                 click: function () {
                     var objSelecionado = NotaAzul.Boleto.Lista.Grid().getSelected();
 

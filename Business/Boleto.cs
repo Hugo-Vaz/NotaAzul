@@ -263,7 +263,10 @@ namespace NotaAzul.Business
                     boletosPagos++;
                     repBoleto.SalvarOperacaoNetEmpresa(operacao);
                     Int32[] boletos = repBoleto.PegarBoletosASeremQuitados(operacao);
-                    repBoleto.QuitarBoleto(operacao);
+                    if (boletos != null && boletos.Length > 0)
+                    {
+                        repBoleto.QuitarBoleto(operacao);
+                    }
                 }               
 
                 retorno.Mensagem = (boletosPagos > 0) ? boletosPagos.ToString() +" operações foram processadas." : "Nenhum pagamento foi processado.";
